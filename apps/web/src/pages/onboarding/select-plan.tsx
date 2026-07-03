@@ -5,6 +5,7 @@ import { env } from "next-runtime-env";
 import { authClient } from "@kan/auth/client";
 
 import { PageHead } from "~/components/PageHead";
+import { BRAND_TITLE_SUFFIX } from "~/lib/brand";
 import SelectPlanView from "~/views/onboarding/select-plan";
 
 export default function SelectPlanPage() {
@@ -24,7 +25,7 @@ export default function SelectPlanPage() {
 
   return (
     <>
-      <PageHead title="Select plan | kan.bn" />
+      <PageHead title={`Select plan | ${BRAND_TITLE_SUFFIX}`} />
       <SelectPlanView />
     </>
   );

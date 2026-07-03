@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { t } from "@lingui/core/macro";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -89,28 +88,7 @@ export default function FeedbackModal() {
           }}
         />
       </div>
-      <div className="mt-6 flex items-center justify-between border-t border-light-600 px-5 pb-5 pt-5 dark:border-dark-600">
-        <div className="text-xs text-neutral-600 dark:text-dark-800">
-          <p>
-            {t`Need help?`}{" "}
-            <Link
-              href="mailto:support@kan.bn"
-              className="text-blue-600 underline dark:text-blue-300"
-            >
-              {t`Contact us`}
-            </Link>
-            {t`, or see our`}{" "}
-            <Link
-              href="https://docs.kan.bn"
-              target="_blank"
-              rel="noreferrer"
-              className="text-blue-600 underline dark:text-blue-300"
-            >
-              {t`docs`}
-            </Link>
-            .
-          </p>
-        </div>
+      <div className="mt-6 flex items-center justify-end border-t border-light-600 px-5 pb-5 pt-5 dark:border-dark-600">
         <div>
           <Button type="submit" isLoading={createFeedback.isPending}>
             {t`Send feedback`}

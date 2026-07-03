@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { authClient } from "@kan/auth/client";
 
 import { PageHead } from "~/components/PageHead";
+import { BRAND_TITLE_SUFFIX } from "~/lib/brand";
 import WorkspaceDetailsView from "~/views/onboarding/workspace-details";
 
 export default function WorkspaceDetailsPage() {
@@ -21,7 +22,7 @@ export default function WorkspaceDetailsPage() {
 
   return (
     <>
-      <PageHead title="Create workspace | kan.bn" />
+      <PageHead title={`Create workspace | ${BRAND_TITLE_SUFFIX}`} />
       <WorkspaceDetailsView />
     </>
   );

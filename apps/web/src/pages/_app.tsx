@@ -12,6 +12,7 @@ import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { useEffect } from "react";
 
+import { BRAND_NAME } from "~/lib/brand";
 import { FontSizeProvider } from "~/providers/font-size";
 import { KeyboardShortcutProvider } from "~/providers/keyboard-shortcuts";
 import { LinguiProviderWrapper } from "~/providers/lingui";
@@ -25,9 +26,12 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Kan",
-  description: "The open source Trello alternative",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  title: BRAND_NAME,
+  description: "Sade, tamamen Türkçe Kanban görev yönetimi",
+  icons: [
+    { rel: "icon", type: "image/svg+xml", url: "/favicon.svg" },
+    { rel: "icon", url: "/favicon.ico" },
+  ],
 };
 
 export const viewport: Viewport = {

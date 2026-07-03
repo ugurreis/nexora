@@ -21,7 +21,8 @@
         102
       ]
     ],
-    "translation": ", veya şuraya bakın:"
+    "translation": ", veya şuraya bakın:",
+    "obsolete": true
   },
   "J/hVSQ": {
     "message": "{0}",
@@ -268,6 +269,22 @@
     ],
     "translation": "14 gün ücretsiz deneme · İstediğiniz zaman plan değiştirin veya iptal edin"
   },
+  "h7cjOW": {
+    "translation": "404 - Sayfa Bulunamadı | {BRAND_TITLE_SUFFIX}",
+    "message": "404 - Page Not Found | {BRAND_TITLE_SUFFIX}",
+    "placeholders": {
+      "BRAND_TITLE_SUFFIX": [
+        "BRAND_TITLE_SUFFIX"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/404.tsx",
+        12
+      ]
+    ]
+  },
   "4obmDr": {
     "message": "404 - Page Not Found | kan.bn",
     "placeholders": {},
@@ -278,7 +295,8 @@
         11
       ]
     ],
-    "translation": "404 - Sayfa Bulunamadı | kan.bn"
+    "translation": "404 - Sayfa Bulunamadı | kan.bn",
+    "obsolete": true
   },
   "/rn4RE": {
     "message": "A powerful, flexible kanban app that helps you organise work, track progress, and deliver results—all in one place.",
@@ -340,6 +358,22 @@
     ],
     "translation": "İşlemler"
   },
+  "+ZSeY8": {
+    "translation": "Etkinleştir | {BRAND_TITLE_SUFFIX}",
+    "message": "Activate | {BRAND_TITLE_SUFFIX}",
+    "placeholders": {
+      "BRAND_TITLE_SUFFIX": [
+        "BRAND_TITLE_SUFFIX"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/partner/activate.tsx",
+        47
+      ]
+    ]
+  },
   "JEt3q7": {
     "message": "Activate | kan.bn",
     "placeholders": {},
@@ -350,7 +384,8 @@
         46
       ]
     ],
-    "translation": "Etkinleştir | kan.bn"
+    "translation": "Etkinleştir | kan.bn",
+    "obsolete": true
   },
   "mkehy7": {
     "message": "Activate your account",
@@ -359,7 +394,7 @@
     "origin": [
       [
         "src/pages/partner/activate.tsx",
-        56
+        57
       ]
     ],
     "translation": "Hesabınızı etkinleştirin"
@@ -909,11 +944,11 @@
     "origin": [
       [
         "src/pages/partner/activate.tsx",
-        96
+        97
       ],
       [
         "src/views/auth/signup/index.tsx",
-        90
+        91
       ]
     ],
     "translation": "Zaten bir hesabınız var mı? <0><1>Giriş yapın</1></0>"
@@ -1681,7 +1716,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        97
+        98
       ],
       [
         "src/views/pricing/components/FeatureComparisonTable.tsx",
@@ -2389,15 +2424,15 @@
     "origin": [
       [
         "src/pages/partner/activate.tsx",
-        56
+        57
       ],
       [
         "src/views/auth/login/index.tsx",
-        43
+        44
       ],
       [
         "src/views/auth/signup/index.tsx",
-        71
+        72
       ]
     ],
     "translation": "Gelen kutunuzu kontrol edin"
@@ -2521,11 +2556,11 @@
     "origin": [
       [
         "src/views/auth/login/index.tsx",
-        48
+        49
       ],
       [
         "src/views/auth/signup/index.tsx",
-        76
+        77
       ]
     ],
     "translation": "Giriş yapmak için {magicLinkRecipient} adresine gönderdiğimiz bağlantıya tıklayın."
@@ -2729,7 +2764,7 @@
     "origin": [
       [
         "src/pages/unsubscribe/index.tsx",
-        81
+        82
       ]
     ],
     "translation": "E-posta tercihlerinizi onaylayın:"
@@ -2851,10 +2886,6 @@
     "placeholders": {},
     "comments": [],
     "origin": [
-      [
-        "src/components/FeedbackModal.tsx",
-        100
-      ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
         96
@@ -3845,7 +3876,7 @@
     "origin": [
       [
         "src/pages/unsubscribe/index.tsx",
-        78
+        79
       ]
     ],
     "translation": "Abonelikten çıkmak istiyor musunuz?"
@@ -3860,7 +3891,8 @@
         109
       ]
     ],
-    "translation": "dokümanlar"
+    "translation": "dokümanlar",
+    "obsolete": true
   },
   "TbjyhA": {
     "message": "Docs",
@@ -3879,10 +3911,6 @@
     "placeholders": {},
     "comments": [],
     "origin": [
-      [
-        "src/components/UserMenu.tsx",
-        209
-      ],
       [
         "src/views/boards/components/TemplateBoards.tsx",
         24
@@ -3913,7 +3941,7 @@
     "origin": [
       [
         "src/views/auth/login/index.tsx",
-        63
+        64
       ]
     ],
     "translation": "Hesabınız yok mu? <0><1>Kayıt olun</1></0>"
@@ -4729,7 +4757,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        52
+        53
       ]
     ],
     "translation": "Davet kabul edilemedi. Lütfen daha sonra tekrar deneyin veya müşteri desteğiyle iletişime geçin."
@@ -4945,11 +4973,11 @@
     "origin": [
       [
         "src/components/FeedbackModal.tsx",
-        59
+        58
       ],
       [
         "src/components/UserMenu.tsx",
-        217
+        195
       ]
     ],
     "translation": "Geri Bildirim"
@@ -4961,7 +4989,7 @@
     "origin": [
       [
         "src/components/FeedbackModal.tsx",
-        33
+        32
       ]
     ],
     "translation": "Geri bildirim gönderildi"
@@ -5173,7 +5201,7 @@
     "origin": [
       [
         "src/views/auth/signup/index.tsx",
-        71
+        72
       ],
       [
         "src/views/home/components/Cta.tsx",
@@ -5337,7 +5365,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        124
+        125
       ]
     ],
     "translation": "Ana Sayfaya Git"
@@ -5353,7 +5381,7 @@
       ],
       [
         "src/views/invite/index.tsx",
-        155
+        156
       ]
     ],
     "translation": "Uygulamaya git"
@@ -5365,11 +5393,11 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        105
+        106
       ],
       [
         "src/pages/404.tsx",
-        44
+        45
       ]
     ],
     "translation": "Panolara git"
@@ -5381,7 +5409,7 @@
     "origin": [
       [
         "src/pages/404.tsx",
-        38
+        39
       ]
     ],
     "translation": "Ana sayfaya git"
@@ -5393,7 +5421,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        129
+        130
       ]
     ],
     "translation": "Üyelere git"
@@ -5405,7 +5433,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        141
+        142
       ]
     ],
     "translation": "Ayarlara git"
@@ -5417,7 +5445,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        117
+        118
       ]
     ],
     "translation": "Şablonlara git"
@@ -5653,7 +5681,7 @@
     "origin": [
       [
         "src/components/FeedbackModal.tsx",
-        75
+        74
       ]
     ],
     "translation": "Bu sayfayı iyileştirmek için fikirler..."
@@ -5885,7 +5913,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        116
+        117
       ]
     ],
     "translation": "Geçersiz davet"
@@ -5989,14 +6017,30 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        90
+        91
       ],
       [
         "src/views/invite/index.tsx",
-        140
+        141
       ]
     ],
     "translation": "Çalışma alanına katıl"
+  },
+  "De0XNA": {
+    "translation": "Çalışma alanına katıl | {BRAND_TITLE_SUFFIX}",
+    "message": "Join workspace | {BRAND_TITLE_SUFFIX}",
+    "placeholders": {
+      "BRAND_TITLE_SUFFIX": [
+        "BRAND_TITLE_SUFFIX"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/invite/index.tsx",
+        103
+      ]
+    ]
   },
   "A23Y7X": {
     "message": "Join workspace | kan.bn",
@@ -6008,7 +6052,8 @@
         102
       ]
     ],
-    "translation": "Çalışma alanına katıl | kan.bn"
+    "translation": "Çalışma alanına katıl | kan.bn",
+    "obsolete": true
   },
   "wM8xd8": {
     "message": "Junior",
@@ -6374,6 +6419,22 @@
     ],
     "translation": "Yükleniyor..."
   },
+  "g4F09/": {
+    "translation": "Giriş | {BRAND_TITLE_SUFFIX}",
+    "message": "Login | {BRAND_TITLE_SUFFIX}",
+    "placeholders": {
+      "BRAND_TITLE_SUFFIX": [
+        "BRAND_TITLE_SUFFIX"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/login/index.tsx",
+        34
+      ]
+    ]
+  },
   "N/bcWA": {
     "message": "Login | kan.bn",
     "placeholders": {},
@@ -6384,7 +6445,8 @@
         33
       ]
     ],
-    "translation": "Giriş | kan.bn"
+    "translation": "Giriş | kan.bn",
+    "obsolete": true
   },
   "nOhz3x": {
     "message": "Logout",
@@ -6393,7 +6455,7 @@
     "origin": [
       [
         "src/components/UserMenu.tsx",
-        227
+        205
       ]
     ],
     "translation": "Çıkış Yap"
@@ -6589,7 +6651,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        121
+        122
       ],
       [
         "src/views/board/components/Filters.tsx",
@@ -6839,7 +6901,8 @@
         95
       ]
     ],
-    "translation": "Yardıma mı ihtiyacınız var?"
+    "translation": "Yardıma mı ihtiyacınız var?",
+    "obsolete": true
   },
   "isRobC": {
     "message": "New",
@@ -7436,7 +7499,7 @@
     "origin": [
       [
         "src/pages/404.tsx",
-        24
+        25
       ]
     ],
     "translation": "Sayfa bulunamadı"
@@ -7852,7 +7915,7 @@
       ],
       [
         "src/components/FeedbackModal.tsx",
-        41
+        40
       ],
       [
         "src/components/NewWorkspaceForm.tsx",
@@ -8979,7 +9042,7 @@
     "origin": [
       [
         "src/components/FeedbackModal.tsx",
-        116
+        94
       ]
     ],
     "translation": "Geri bildirim gönder"
@@ -9099,7 +9162,7 @@
       ],
       [
         "src/components/SideNavigation.tsx",
-        133
+        134
       ]
     ],
     "translation": "Ayarlar"
@@ -9219,7 +9282,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        165
+        166
       ]
     ],
     "translation": "Giriş Yap"
@@ -9235,7 +9298,7 @@
     "origin": [
       [
         "src/pages/partner/activate.tsx",
-        62
+        63
       ]
     ],
     "translation": "{partnerName} lisansınızı etkinleştirmek için giriş yapın veya bir hesap oluşturun"
@@ -9247,7 +9310,7 @@
     "origin": [
       [
         "src/pages/partner/activate.tsx",
-        67
+        68
       ]
     ],
     "translation": "Lisansınızı etkinleştirmek için giriş yapın veya bir hesap oluşturun"
@@ -9275,10 +9338,26 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        173
+        174
       ]
     ],
     "translation": "Kayıt Ol"
+  },
+  "5Ns1c3": {
+    "translation": "Kayıt ol | {BRAND_TITLE_SUFFIX}",
+    "message": "Sign up | {BRAND_TITLE_SUFFIX}",
+    "placeholders": {
+      "BRAND_TITLE_SUFFIX": [
+        "BRAND_TITLE_SUFFIX"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/auth/signup/index.tsx",
+        37
+      ]
+    ]
   },
   "sUZo7y": {
     "message": "Sign up | kan.bn",
@@ -9287,11 +9366,7 @@
     "origin": [
       [
         "src/views/auth/signup/index.tsx",
-        36
-      ],
-      [
-        "src/views/auth/signup/index.tsx",
-        61
+        62
       ]
     ],
     "translation": "Kayıt ol | kan.bn"
@@ -9303,7 +9378,7 @@
     "origin": [
       [
         "src/views/auth/signup/index.tsx",
-        46
+        47
       ]
     ],
     "translation": "Kayıt devre dışı"
@@ -9315,7 +9390,7 @@
     "origin": [
       [
         "src/views/auth/signup/index.tsx",
-        49
+        50
       ]
     ],
     "translation": "Kayıt şu anda devre dışı. Lütfen daha sonra tekrar deneyin."
@@ -9427,7 +9502,7 @@
     "origin": [
       [
         "src/pages/partner/activate.tsx",
-        73
+        74
       ]
     ],
     "translation": "Etkinleştirme sırasında bir şeyler ters gitti. Lütfen tekrar deneyin."
@@ -9487,15 +9562,15 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        225
-      ],
-      [
-        "src/components/SideNavigation.tsx",
         226
       ],
       [
         "src/components/SideNavigation.tsx",
-        236
+        227
+      ],
+      [
+        "src/components/SideNavigation.tsx",
+        237
       ]
     ],
     "translation": "Ücretsiz denemeyi başlat"
@@ -9581,10 +9656,6 @@
     "placeholders": {},
     "comments": [],
     "origin": [
-      [
-        "src/components/UserMenu.tsx",
-        198
-      ],
       [
         "src/views/pricing/components/FeatureComparisonTable.tsx",
         325
@@ -9739,7 +9810,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        109
+        110
       ],
       [
         "src/views/home/components/Features.tsx",
@@ -9839,7 +9910,7 @@
     "origin": [
       [
         "src/components/FeedbackModal.tsx",
-        34
+        33
       ]
     ],
     "translation": "Geri bildiriminiz için teşekkürler!"
@@ -9979,7 +10050,7 @@
     "origin": [
       [
         "src/pages/404.tsx",
-        29
+        30
       ]
     ],
     "translation": "Aradığınız sayfa mevcut değil veya taşınmış."
@@ -10095,7 +10166,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        119
+        120
       ]
     ],
     "translation": "Bu davet bağlantısı geçersiz veya süresi dolmuş."
@@ -10179,7 +10250,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        44
+        45
       ]
     ],
     "translation": "Bu çalışma alanı üye sınırına ulaştı. Çalışma alanı sahibinin planını yükseltmesi gerekecek."
@@ -10691,7 +10762,7 @@
     "origin": [
       [
         "src/components/FeedbackModal.tsx",
-        40
+        39
       ]
     ],
     "translation": "Geri bildirim gönderilemedi"
@@ -11155,11 +11226,11 @@
     "origin": [
       [
         "src/pages/unsubscribe/index.tsx",
-        68
+        69
       ],
       [
         "src/pages/unsubscribe/index.tsx",
-        93
+        94
       ]
     ],
     "translation": "Abonelikten çık"
@@ -11575,7 +11646,7 @@
     "origin": [
       [
         "src/pages/unsubscribe/index.tsx",
-        63
+        64
       ]
     ],
     "translation": "Tercihlerinizi güncelleyemedik. Lütfen tekrar deneyin."
@@ -11591,7 +11662,7 @@
     "origin": [
       [
         "src/pages/partner/activate.tsx",
-        60
+        61
       ]
     ],
     "translation": "{magicLinkRecipient} adresine bir bağlantı gönderdik"
@@ -11767,7 +11838,7 @@
     "origin": [
       [
         "src/views/auth/login/index.tsx",
-        43
+        44
       ]
     ],
     "translation": "Tekrar hoş geldiniz"
@@ -12251,7 +12322,7 @@
     "origin": [
       [
         "src/pages/unsubscribe/index.tsx",
-        98
+        99
       ]
     ],
     "translation": "Abonelikten çıkarıldınız!"
@@ -12287,7 +12358,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        145
+        146
       ]
     ],
     "translation": "kan.bn üzerinde bir çalışma alanına katılmaya davet edildiniz."
@@ -12299,7 +12370,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        146
+        147
       ]
     ],
     "translation": "Bir çalışma alanına katılmaya davet edildiniz."
@@ -12531,7 +12602,7 @@
     "origin": [
       [
         "src/pages/unsubscribe/index.tsx",
-        33
+        34
       ]
     ],
     "translation": "Abonelikten çıkma bağlantınızda bir token eksik. Lütfen en son e-postayı açıp tekrar deneyin."

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { authClient } from "@kan/auth/client";
 
 import { PageHead } from "~/components/PageHead";
+import { BRAND_TITLE_SUFFIX } from "~/lib/brand";
 import SelectPlanView from "~/views/onboarding/select-plan";
 
 export default function UpgradeSelectPlanPage() {
@@ -24,7 +25,7 @@ export default function UpgradeSelectPlanPage() {
 
   return (
     <>
-      <PageHead title="Upgrade | kan.bn" />
+      <PageHead title={`Upgrade | ${BRAND_TITLE_SUFFIX}`} />
       <SelectPlanView />
     </>
   );

@@ -9,6 +9,7 @@ import Button from "~/components/Button";
 import LoadingSpinner from "~/components/LoadingSpinner";
 import { PageHead } from "~/components/PageHead";
 import PatternedBackground from "~/components/PatternedBackground";
+import { BRAND_TITLE_SUFFIX } from "~/lib/brand";
 import { api } from "~/utils/api";
 
 export default function InvitePage() {
@@ -99,7 +100,7 @@ export default function InvitePage() {
   const PageWrapper = ({ children }: { children: React.ReactNode }) => {
     return (
       <>
-        <PageHead title={t`Join workspace | kan.bn`} />
+        <PageHead title={t`Join workspace | ${BRAND_TITLE_SUFFIX}`} />
         {children}
       </>
     );

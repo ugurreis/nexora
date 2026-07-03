@@ -1,5 +1,5 @@
 {
-  "background_color": "#000000",
+  "background_color": "#09090b",
   "categories": [
     "business",
     "productivity",
@@ -31,9 +31,9 @@
     }
   ],
   "orientation": "portrait-primary",
-  "name": "Kan.bn | The open source alternative to Trello",
+  "name": "KanbanTR",
   "scope": "/",
-  "short_name": "Kan.bn",
+  "short_name": "KanbanTR",
   "start_url": "/",
-  "theme_color": "#000000"
+  "theme_color": "#10b981"
 }
