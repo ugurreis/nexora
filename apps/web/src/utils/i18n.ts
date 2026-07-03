@@ -1,19 +1,25 @@
+import type { Messages } from "@lingui/core";
 import { i18n } from "@lingui/core";
 
 import type { Locale } from "~/locales";
 import { defaultLocale } from "~/locales";
-import { messages as enMessages } from "~/locales/en/messages";
 import { messages as trMessages } from "~/locales/tr/messages";
 
-// Türkçe ürün varsayılan dilidir; ilk boyamada senkron gerekmesi için statik import.
-const defaultMessages = defaultLocale === "en" ? enMessages : trMessages;
+// Yalnızca varsayılan dil, ilk boyamadan (hydration öncesi) önce senkron
+// gerekir; bu yüzden statik import edilir. Diğer tüm diller lazy yüklenir.
+// defaultLocale değişirse, yeni varsayılanın kataloğunu buraya ekle; aksi
+// halde initializeI18n aşağıda yanlış dili yüklemek yerine hata fırlatır.
+const eagerMessages: Partial<Record<Locale, Messages>> = {
+  tr: trMessages,
+};
 
-const loadMessages = async (locale: Locale) => {
+const loadMessages = async (locale: Locale): Promise<Messages> => {
+  const eager = eagerMessages[locale];
+  if (eager) return eager;
+
   switch (locale) {
     case "en":
-      return enMessages;
-    case "tr":
-      return trMessages;
+      return (await import("~/locales/en/messages")).messages;
     case "fr":
       return (await import("~/locales/fr/messages")).messages;
     case "de":
@@ -31,15 +37,22 @@ const loadMessages = async (locale: Locale) => {
     case "ptbr":
       return (await import("~/locales/ptbr/messages")).messages;
     default:
-      return enMessages;
+      return (await import("~/locales/en/messages")).messages;
   }
 };
 
 let isInitialized = false;
 const loadedLocales = new Set<string>();
 
-export function initializeI18n(locale: Locale = defaultLocale) {
+export function initializeI18n() {
   if (!isInitialized) {
+    const defaultMessages = eagerMessages[defaultLocale];
+    if (!defaultMessages) {
+      throw new Error(
+        `i18n: defaultLocale "${defaultLocale}" için senkron katalog yok; ` +
+          `utils/i18n.ts içindeki eagerMessages'e statik import ekle.`,
+      );
+    }
     i18n.load(defaultLocale, defaultMessages);
     i18n.activate(defaultLocale);
     loadedLocales.add(defaultLocale);
