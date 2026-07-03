@@ -27,24 +27,6 @@ interface LinguiProviderProps {
   initialLocale?: Locale;
 }
 
-function detectBrowserLocale(availableLocales: readonly string[]): Locale {
-  if (typeof navigator === "undefined") {
-    return defaultLocale;
-  }
-
-  const browserLanguages = navigator.languages || [navigator.language];
-
-  for (const browserLang of browserLanguages) {
-    const langCode = browserLang.split("-")[0];
-
-    if (langCode && availableLocales.includes(langCode.toLowerCase())) {
-      return langCode.toLowerCase() as Locale;
-    }
-  }
-
-  return defaultLocale;
-}
-
 export function LinguiProviderWrapper({
   children,
   initialLocale = defaultLocale,
@@ -60,8 +42,8 @@ export function LinguiProviderWrapper({
     if (savedLocale && locales.includes(savedLocale)) {
       setLocale(savedLocale);
     } else {
-      const detectedLocale = detectBrowserLocale(locales);
-      setLocale(detectedLocale);
+      // Türkçe-öncelikli ürün: ilk ziyarette tarayıcı dili değil, varsayılan (tr).
+      setLocale(defaultLocale);
     }
     setIsHydrated(true);
   }, [initialLocale]);

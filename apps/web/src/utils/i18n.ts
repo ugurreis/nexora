@@ -3,11 +3,17 @@ import { i18n } from "@lingui/core";
 import type { Locale } from "~/locales";
 import { defaultLocale } from "~/locales";
 import { messages as enMessages } from "~/locales/en/messages";
+import { messages as trMessages } from "~/locales/tr/messages";
+
+// Türkçe ürün varsayılan dilidir; ilk boyamada senkron gerekmesi için statik import.
+const defaultMessages = defaultLocale === "en" ? enMessages : trMessages;
 
 const loadMessages = async (locale: Locale) => {
   switch (locale) {
     case "en":
       return enMessages;
+    case "tr":
+      return trMessages;
     case "fr":
       return (await import("~/locales/fr/messages")).messages;
     case "de":
@@ -34,7 +40,7 @@ const loadedLocales = new Set<string>();
 
 export function initializeI18n(locale: Locale = defaultLocale) {
   if (!isInitialized) {
-    i18n.load(defaultLocale, enMessages);
+    i18n.load(defaultLocale, defaultMessages);
     i18n.activate(defaultLocale);
     loadedLocales.add(defaultLocale);
     isInitialized = true;
