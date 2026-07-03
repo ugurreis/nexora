@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { t } from "@lingui/core/macro";
 import { PageHead } from "~/components/PageHead";
 import PatternedBackground from "~/components/PatternedBackground";
+import { BRAND_NAME, BRAND_TITLE_SUFFIX } from "~/lib/brand";
 import { api } from "~/utils/api";
 
 export default function PublicBoardsView() {
@@ -72,7 +73,7 @@ export default function PublicBoardsView() {
 
   return (
     <>
-      <PageHead title={`${data?.name ?? t`Workspace`} | kan.bn`} />
+      <PageHead title={`${data?.name ?? t`Workspace`} | ${BRAND_TITLE_SUFFIX}`} />
       <style jsx global>{`
         html {
           height: 100vh;
@@ -99,7 +100,7 @@ export default function PublicBoardsView() {
           className="text-lg font-bold tracking-tight text-neutral-900 dark:text-dark-1000"
           href="/"
         >
-          kan.bn
+          {BRAND_NAME}
         </Link>
       </div>
     </>

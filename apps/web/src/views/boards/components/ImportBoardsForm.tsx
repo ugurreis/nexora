@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Listbox, Transition } from "@headlessui/react";
 import { t } from "@lingui/core/macro";
 import { Plural, Trans } from "@lingui/react/macro";
@@ -8,7 +7,6 @@ import { FaGithub, FaTrello } from "react-icons/fa";
 import {
   HiChevronUpDown,
   HiMiniArrowTopRightOnSquare,
-  HiOutlineQuestionMarkCircle,
   HiXMark,
 } from "react-icons/hi2";
 
@@ -512,13 +510,6 @@ export function ImportBoardsForm() {
           <h2 className="text-sm font-medium text-neutral-900 dark:text-dark-1000">
             {t`New import`}
           </h2>
-          <Link
-            href="https://docs.kan.bn/imports/trello"
-            target="_blank"
-            className="ml-2 text-neutral-500 hover:text-neutral-700 dark:text-dark-900 dark:hover:text-dark-700"
-          >
-            <HiOutlineQuestionMarkCircle className="h-4.5 w-4.5" />
-          </Link>
         </div>
 
         <button
