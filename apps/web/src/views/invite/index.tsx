@@ -20,8 +20,6 @@ export default function InvitePage() {
   const { data: session, isPending: isSessionLoading } =
     authClient.useSession();
 
-  const isCloudEnv = env("NEXT_PUBLIC_KAN_ENV") === "cloud";
-
   const inviteCode = Array.isArray(code) ? code[0] : code;
 
   const acceptInviteMutation = api.member.acceptInviteLink.useMutation({
@@ -142,9 +140,7 @@ export default function InvitePage() {
             </h2>
             {!error ? (
               <p className="mt-4 text-center text-sm text-light-900 dark:text-dark-800">
-                {isCloudEnv
-                  ? t`You've been invited to join a workspace on kan.bn.`
-                  : t`You've been invited to join a workspace.`}
+                {t`You've been invited to join a workspace.`}
               </p>
             ) : (
               <p className="mt-4 text-center text-sm text-red-500">{error}</p>

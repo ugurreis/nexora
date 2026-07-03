@@ -270,7 +270,6 @@
     "translation": "14 gün ücretsiz deneme · İstediğiniz zaman plan değiştirin veya iptal edin"
   },
   "h7cjOW": {
-    "translation": "404 - Sayfa Bulunamadı | {BRAND_TITLE_SUFFIX}",
     "message": "404 - Page Not Found | {BRAND_TITLE_SUFFIX}",
     "placeholders": {
       "BRAND_TITLE_SUFFIX": [
@@ -283,7 +282,8 @@
         "src/pages/404.tsx",
         12
       ]
-    ]
+    ],
+    "translation": "404 - Sayfa Bulunamadı | {BRAND_TITLE_SUFFIX}"
   },
   "4obmDr": {
     "message": "404 - Page Not Found | kan.bn",
@@ -359,7 +359,6 @@
     "translation": "İşlemler"
   },
   "+ZSeY8": {
-    "translation": "Etkinleştir | {BRAND_TITLE_SUFFIX}",
     "message": "Activate | {BRAND_TITLE_SUFFIX}",
     "placeholders": {
       "BRAND_TITLE_SUFFIX": [
@@ -372,7 +371,8 @@
         "src/pages/partner/activate.tsx",
         47
       ]
-    ]
+    ],
+    "translation": "Etkinleştir | {BRAND_TITLE_SUFFIX}"
   },
   "JEt3q7": {
     "message": "Activate | kan.bn",
@@ -3488,7 +3488,7 @@
     "origin": [
       [
         "src/components/UserMenu.tsx",
-        158
+        151
       ]
     ],
     "translation": "Koyu"
@@ -4757,7 +4757,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        53
+        51
       ]
     ],
     "translation": "Davet kabul edilemedi. Lütfen daha sonra tekrar deneyin veya müşteri desteğiyle iletişime geçin."
@@ -4977,7 +4977,7 @@
       ],
       [
         "src/components/UserMenu.tsx",
-        195
+        188
       ]
     ],
     "translation": "Geri Bildirim"
@@ -5365,7 +5365,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        125
+        123
       ]
     ],
     "translation": "Ana Sayfaya Git"
@@ -5381,7 +5381,7 @@
       ],
       [
         "src/views/invite/index.tsx",
-        156
+        152
       ]
     ],
     "translation": "Uygulamaya git"
@@ -5913,7 +5913,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        117
+        115
       ]
     ],
     "translation": "Geçersiz davet"
@@ -6017,17 +6017,16 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        91
+        89
       ],
       [
         "src/views/invite/index.tsx",
-        141
+        139
       ]
     ],
     "translation": "Çalışma alanına katıl"
   },
   "De0XNA": {
-    "translation": "Çalışma alanına katıl | {BRAND_TITLE_SUFFIX}",
     "message": "Join workspace | {BRAND_TITLE_SUFFIX}",
     "placeholders": {
       "BRAND_TITLE_SUFFIX": [
@@ -6038,9 +6037,10 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        103
+        101
       ]
-    ]
+    ],
+    "translation": "Çalışma alanına katıl | {BRAND_TITLE_SUFFIX}"
   },
   "A23Y7X": {
     "message": "Join workspace | kan.bn",
@@ -6298,7 +6298,7 @@
     "origin": [
       [
         "src/components/UserMenu.tsx",
-        172
+        165
       ]
     ],
     "translation": "Açık"
@@ -6420,7 +6420,6 @@
     "translation": "Yükleniyor..."
   },
   "g4F09/": {
-    "translation": "Giriş | {BRAND_TITLE_SUFFIX}",
     "message": "Login | {BRAND_TITLE_SUFFIX}",
     "placeholders": {
       "BRAND_TITLE_SUFFIX": [
@@ -6433,7 +6432,8 @@
         "src/views/auth/login/index.tsx",
         34
       ]
-    ]
+    ],
+    "translation": "Giriş | {BRAND_TITLE_SUFFIX}"
   },
   "N/bcWA": {
     "message": "Login | kan.bn",
@@ -6455,7 +6455,7 @@
     "origin": [
       [
         "src/components/UserMenu.tsx",
-        205
+        198
       ]
     ],
     "translation": "Çıkış Yap"
@@ -9258,7 +9258,7 @@
     "origin": [
       [
         "src/components/UserMenu.tsx",
-        187
+        180
       ]
     ],
     "translation": "Kısayollar"
@@ -9282,7 +9282,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        166
+        162
       ]
     ],
     "translation": "Giriş Yap"
@@ -9338,13 +9338,12 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        174
+        170
       ]
     ],
     "translation": "Kayıt Ol"
   },
   "5Ns1c3": {
-    "translation": "Kayıt ol | {BRAND_TITLE_SUFFIX}",
     "message": "Sign up | {BRAND_TITLE_SUFFIX}",
     "placeholders": {
       "BRAND_TITLE_SUFFIX": [
@@ -9356,8 +9355,13 @@
       [
         "src/views/auth/signup/index.tsx",
         37
+      ],
+      [
+        "src/views/auth/signup/index.tsx",
+        62
       ]
-    ]
+    ],
+    "translation": "Kayıt ol | {BRAND_TITLE_SUFFIX}"
   },
   "sUZo7y": {
     "message": "Sign up | kan.bn",
@@ -9369,7 +9373,8 @@
         62
       ]
     ],
-    "translation": "Kayıt ol | kan.bn"
+    "translation": "Kayıt ol | kan.bn",
+    "obsolete": true
   },
   "WRkpB1": {
     "message": "Sign up disabled",
@@ -9682,7 +9687,7 @@
     "origin": [
       [
         "src/components/UserMenu.tsx",
-        144
+        137
       ]
     ],
     "translation": "Sistem"
@@ -10078,7 +10083,7 @@
     "origin": [
       [
         "src/components/UserMenu.tsx",
-        131
+        124
       ]
     ],
     "translation": "Tema"
@@ -10166,7 +10171,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        120
+        118
       ]
     ],
     "translation": "Bu davet bağlantısı geçersiz veya süresi dolmuş."
@@ -10250,7 +10255,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        45
+        43
       ]
     ],
     "translation": "Bu çalışma alanı üye sınırına ulaştı. Çalışma alanı sahibinin planını yükseltmesi gerekecek."
@@ -11531,6 +11536,18 @@
     ],
     "translation": "Kullanıcı zaten bu çalışma alanının üyesi"
   },
+  "eE0JZ4": {
+    "translation": "Sürüm",
+    "message": "Version",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/UserMenu.tsx",
+        205
+      ]
+    ]
+  },
   "vSJd18": {
     "message": "Video",
     "placeholders": {},
@@ -12361,7 +12378,8 @@
         146
       ]
     ],
-    "translation": "kan.bn üzerinde bir çalışma alanına katılmaya davet edildiniz."
+    "translation": "kan.bn üzerinde bir çalışma alanına katılmaya davet edildiniz.",
+    "obsolete": true
   },
   "uOqaMC": {
     "message": "You've been invited to join a workspace.",
@@ -12370,7 +12388,7 @@
     "origin": [
       [
         "src/views/invite/index.tsx",
-        147
+        143
       ]
     ],
     "translation": "Bir çalışma alanına katılmaya davet edildiniz."
