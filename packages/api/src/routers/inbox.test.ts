@@ -77,9 +77,18 @@ describe("inbox.convertToCard", () => {
 
   it("throws NOT_FOUND when the item is not owned by the user", async () => {
     const { inboxRouter } = await import("./inbox");
+    const listRepo = await import("@kan/db/repository/list.repo");
+    const cardRepo = await import("@kan/db/repository/card.repo");
     mockGetByPublicId.mockResolvedValueOnce({
       userId: "someone-else",
       title: "x",
+    });
+    (
+      listRepo.getWorkspaceAndListIdByListPublicId as ReturnType<typeof vi.fn>
+    ).mockResolvedValueOnce({
+      id: 5,
+      workspaceId: 9,
+      boardPublicId: "brd123brd123",
     });
     const ctx = { user: mockUser, db: mockDb } as never;
     await expect(
@@ -89,7 +98,14 @@ describe("inbox.convertToCard", () => {
           publicId: "abc123abc123",
           listPublicId: "lst123lst123",
         }),
-    ).rejects.toThrow(TRPCError);
+    ).rejects.toMatchObject({ code: "NOT_FOUND", message: "Inbox item not found" });
+    expect(cardRepo.create).not.toHaveBeenCalled();
+    // The list-lookup mock above is never consumed (owner check throws first);
+    // drain its queued once-value here so it doesn't leak into the next test
+    // (vi.clearAllMocks() clears call history but not queued mockResolvedValueOnce values).
+    (
+      listRepo.getWorkspaceAndListIdByListPublicId as ReturnType<typeof vi.fn>
+    ).mockReset();
   });
 
   it("throws NOT_FOUND when the target list does not exist", async () => {
@@ -114,6 +130,7 @@ describe("inbox.convertToCard", () => {
     const { inboxRouter } = await import("./inbox");
     const listRepo = await import("@kan/db/repository/list.repo");
     const cardRepo = await import("@kan/db/repository/card.repo");
+    const { assertPermission } = await import("../utils/permissions");
     mockGetByPublicId.mockResolvedValueOnce({
       userId: "user-1",
       title: "buy milk",
@@ -150,5 +167,39 @@ describe("inbox.convertToCard", () => {
       expect.objectContaining({ title: "buy milk", listId: 5, workspaceId: 9 }),
     );
     expect(mockSoftDelete).toHaveBeenCalled();
+    expect(assertPermission).toHaveBeenCalledWith(mockDb, "user-1", 9, "card:create");
+  });
+
+  it("does not create a card when permission is denied", async () => {
+    const { inboxRouter } = await import("./inbox");
+    const listRepo = await import("@kan/db/repository/list.repo");
+    const cardRepo = await import("@kan/db/repository/card.repo");
+    const { assertPermission } = await import("../utils/permissions");
+    mockGetByPublicId.mockResolvedValueOnce({
+      userId: "user-1",
+      title: "x",
+      sourceMeta: null,
+    });
+    (
+      listRepo.getWorkspaceAndListIdByListPublicId as ReturnType<typeof vi.fn>
+    ).mockResolvedValueOnce({
+      id: 5,
+      workspaceId: 9,
+      boardPublicId: "brd123brd123",
+    });
+    (assertPermission as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+      new TRPCError({ code: "FORBIDDEN", message: "no" }),
+    );
+    const ctx = { user: mockUser, db: mockDb } as never;
+    await expect(
+      inboxRouter
+        .createCaller(ctx)
+        .convertToCard({
+          publicId: "abc123abc123",
+          listPublicId: "lst123lst123",
+        }),
+    ).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(cardRepo.create).not.toHaveBeenCalled();
+    expect(mockSoftDelete).not.toHaveBeenCalled();
   });
 });
