@@ -9,6 +9,7 @@ import Modal from "~/components/modal";
 import { NewWorkspaceForm } from "~/components/NewWorkspaceForm";
 import { PageHead } from "~/components/PageHead";
 import { useModal } from "~/providers/modal";
+import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
 import Avatar from "./components/Avatar";
 import { ChangePasswordFormConfirmation } from "./components/ChangePasswordConfirmation";
@@ -17,9 +18,21 @@ import UpdateDisplayNameForm from "./components/UpdateDisplayNameForm";
 
 export default function AccountSettings() {
   const { modalContentType, openModal, isOpen } = useModal();
+  const { showPopup } = usePopup();
   const isCredentialsEnabled =
     env("NEXT_PUBLIC_ALLOW_CREDENTIALS")?.toLowerCase() === "true";
   const { data } = api.user.getUser.useQuery();
+  const { data: inboxEmail } = api.user.getInboxEmail.useQuery();
+
+  const copyInboxEmail = async () => {
+    if (!inboxEmail?.email) return;
+    await navigator.clipboard.writeText(inboxEmail.email);
+    showPopup({
+      header: t`Copied`,
+      message: t`Inbox email address copied to clipboard.`,
+      icon: "success",
+    });
+  };
 
   return (
     <>
@@ -43,6 +56,28 @@ export default function AccountSettings() {
             {t`Email`}
           </h2>
           <p className="text-sm text-neutral-700 dark:text-dark-900">{data?.email}</p>
+        </div>
+
+        <div className="mb-4">
+          <h2 className="mb-4 mt-8 text-[14px] font-bold text-neutral-900 dark:text-dark-1000">
+            {t`Inbox email address`}
+          </h2>
+          <p className="mb-2 text-sm text-neutral-500 dark:text-dark-900">
+            {t`Send an email to this address to add an item to your inbox. Only send from your registered email address.`}
+          </p>
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-sm text-neutral-700 dark:text-dark-900">
+              {inboxEmail?.email ?? "…"}
+            </span>
+            <Button
+              variant="secondary"
+              size="sm"
+              disabled={!inboxEmail?.email}
+              onClick={copyInboxEmail}
+            >
+              {t`Copy`}
+            </Button>
+          </div>
         </div>
 
         <div className="mb-8 border-t border-light-300 dark:border-dark-300">
