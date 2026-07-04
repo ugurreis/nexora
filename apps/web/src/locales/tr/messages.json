@@ -38,32 +38,59 @@
         53
       ]
     ],
-    "translation": "{0}"
+    "translation": "{0}",
+    "obsolete": true
   },
   "JArWcF": {
     "message": "{0} | {1}",
     "placeholders": {
       "0": [
-        "card?.title ?? t`Card`",
-        "isTemplate ? \"Templates\" : \"Boards\""
+        "card?.title ?? t`Card`"
       ],
       "1": [
-        "board?.name ?? t`Board`",
-        "workspace.name ?? t`Workspace`"
+        "board?.name ?? t`Board`"
       ]
     },
     "comments": [],
     "origin": [
       [
-        "src/views/boards/index.tsx",
-        48
-      ],
-      [
         "src/views/card/index.tsx",
-        321
+        339
       ]
     ],
     "translation": "{0} | {1}"
+  },
+  "yHz0WP": {
+    "translation": "",
+    "message": "{0} favorilerinizden kaldırıldı.",
+    "placeholders": {
+      "0": [
+        "boardName ?? \"Pano\""
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        61
+      ]
+    ]
+  },
+  "oad7Gb": {
+    "translation": "",
+    "message": "{0} favorilerinize eklendi.",
+    "placeholders": {
+      "0": [
+        "boardName ?? \"Pano\""
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        60
+      ]
+    ]
   },
   "mU+M00": {
     "message": "{0} has been added to your favorites.",
@@ -79,7 +106,8 @@
         60
       ]
     ],
-    "translation": "{0} favorilerinize eklendi."
+    "translation": "{0} favorilerinize eklendi.",
+    "obsolete": true
   },
   "bDI6VI": {
     "message": "{0} has been removed from your favorites.",
@@ -95,7 +123,45 @@
         61
       ]
     ],
-    "translation": "{0} favorilerinizden kaldırıldı."
+    "translation": "{0} favorilerinizden kaldırıldı.",
+    "obsolete": true
+  },
+  "us0K3+": {
+    "translation": "",
+    "message": "{0} ile devam et",
+    "placeholders": {
+      "0": [
+        "isMagicLinkMode ? \"Sihirli bağlantı\" : \"E-posta\"",
+        "key === \"oidc\" ? oidcProviderName : provider.name"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/AuthForm.tsx",
+        360
+      ],
+      [
+        "src/components/AuthForm.tsx",
+        444
+      ]
+    ]
+  },
+  "3RDQS0": {
+    "translation": "",
+    "message": "{0} ile kayıt ol",
+    "placeholders": {
+      "0": [
+        "isMagicLinkMode ? \"Sihirli bağlantı\" : \"E-posta\""
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/components/AuthForm.tsx",
+        443
+      ]
+    ]
   },
   "CJukzS": {
     "message": "{0} labels",
@@ -127,7 +193,8 @@
         565
       ]
     ],
-    "translation": "{0} bulunamadı"
+    "translation": "{0} bulunamadı",
+    "obsolete": true
   },
   "0xWkkH": {
     "message": "{boardCount, plural, one {Import board (1)} other {Import boards ({boardCount})}}",
@@ -143,7 +210,91 @@
         489
       ]
     ],
-    "translation": "{boardCount, plural, one {Panoyu içe aktar (1)} other {Panoları içe aktar ({boardCount})}}"
+    "translation": "{boardCount, plural, one {Panoyu içe aktar (1)} other {Panoları içe aktar ({boardCount})}}",
+    "obsolete": true
+  },
+  "ckBFbp": {
+    "translation": "",
+    "message": "{boardCount, plural, one {Panoyu içe aktar (1)} other {Panoları içe aktar ({boardCount})}}",
+    "placeholders": {
+      "boardCount": [
+        "boardCount"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        487
+      ]
+    ]
+  },
+  "1r/pXr": {
+    "translation": "",
+    "message": "{BRAND_NAME} nedir?",
+    "placeholders": {
+      "BRAND_NAME": [
+        "BRAND_NAME"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        24
+      ]
+    ]
+  },
+  "bAXviL": {
+    "translation": "",
+    "message": "{BRAND_NAME}, ekiplerin işlerini panolar, listeler ve kartlarla düzenlemesini sağlayan sade, tamamen Türkçe bir Kanban görev yönetimi uygulamasıdır. Amacımız, karmaşık araçların yükü olmadan hızlıca kullanmaya başlayabileceğiniz bir deneyim sunmak.",
+    "placeholders": {
+      "BRAND_NAME": [
+        "BRAND_NAME"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        27
+      ]
+    ]
+  },
+  "mAkS4C": {
+    "translation": "",
+    "message": "{completedByName} tarafından {formattedCompletedAt} tarihinde tamamlandı",
+    "placeholders": {
+      "completedByName": [
+        "completedByName"
+      ],
+      "formattedCompletedAt": [
+        "formattedCompletedAt"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/index.tsx",
+        484
+      ]
+    ]
+  },
+  "z0kTYq": {
+    "translation": "",
+    "message": "{formattedCompletedAt} tarihinde tamamlandı",
+    "placeholders": {
+      "formattedCompletedAt": [
+        "formattedCompletedAt"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/index.tsx",
+        485
+      ]
+    ]
   },
   "yndBF+": {
     "message": "{projectCount, plural, one {Import project (1)} other {Import projects ({projectCount})}}",
@@ -159,7 +310,24 @@
         341
       ]
     ],
-    "translation": "{projectCount, plural, one {Projeyi içe aktar (1)} other {Projeleri içe aktar ({projectCount})}}"
+    "translation": "{projectCount, plural, one {Projeyi içe aktar (1)} other {Projeleri içe aktar ({projectCount})}}",
+    "obsolete": true
+  },
+  "FFbYV9": {
+    "translation": "",
+    "message": "{projectCount, plural, one {Projeyi içe aktar (1)} other {Projeleri içe aktar ({projectCount})}}",
+    "placeholders": {
+      "projectCount": [
+        "projectCount"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        339
+      ]
+    ]
   },
   "9lFfqv": {
     "message": "/month",
@@ -168,7 +336,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        207
+        209
       ]
     ],
     "translation": "/ay"
@@ -180,11 +348,11 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        30
+        32
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        30
+        32
       ]
     ],
     "translation": "$0"
@@ -232,7 +400,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        35
+        37
       ]
     ],
     "translation": "1 kullanıcı"
@@ -256,15 +424,15 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        66
+        68
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        88
+        90
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        263
+        265
       ]
     ],
     "translation": "14 gün ücretsiz deneme · İstediğiniz zaman plan değiştirin veya iptal edin"
@@ -308,7 +476,8 @@
         71
       ]
     ],
-    "translation": "İşinizi düzenlemenize, ilerlemenizi takip etmenize ve sonuç almanıza yardımcı olan güçlü, esnek bir kanban uygulaması—hepsi tek bir yerde."
+    "translation": "İşinizi düzenlemenize, ilerlemenizi takip etmenize ve sonuç almanıza yardımcı olan güçlü, esnek bir kanban uygulaması—hepsi tek bir yerde.",
+    "obsolete": true
   },
   "AeXO77": {
     "message": "Account",
@@ -406,7 +575,7 @@
     "origin": [
       [
         "src/views/boards/index.tsx",
-        26
+        27
       ],
       [
         "src/views/settings/components/NewWebhookModal.tsx",
@@ -426,7 +595,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        476
+        539
       ],
       [
         "src/views/public/board/CardModal.tsx",
@@ -454,10 +623,22 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        110
+        107
       ]
     ],
     "translation": "Etkinlik günlükleri"
+  },
+  "Woxoks": {
+    "translation": "",
+    "message": "Ad",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        134
+      ]
+    ]
   },
   "UGCIzB": {
     "message": "Add / edit label",
@@ -589,7 +770,32 @@
         137
       ]
     ],
-    "translation": "Favorilere ekle"
+    "translation": "Favorilere ekle",
+    "obsolete": true
+  },
+  "Rzb7qS": {
+    "translation": "Gelen kutusuna ekle",
+    "message": "Add to inbox",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/index.tsx",
+        52
+      ]
+    ]
+  },
+  "nBslRj": {
+    "translation": "Gelen kutusuna ekle…",
+    "message": "Add to inbox…",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/index.tsx",
+        58
+      ]
+    ]
   },
   "cWXW+7": {
     "message": "Add webhook",
@@ -693,7 +899,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        278
+        280
       ]
     ],
     "translation": "bir ek ekledi <0>{0}</0>"
@@ -709,7 +915,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        208
+        210
       ]
     ],
     "translation": "kontrol listesi ekledi <0>{0}</0>"
@@ -725,7 +931,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        232
+        234
       ]
     ],
     "translation": "kontrol listesi öğesi ekledi <0>{0}</0>"
@@ -741,7 +947,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        192
+        194
       ]
     ],
     "translation": "etiket ekledi <0>{0}</0>"
@@ -756,7 +962,8 @@
         57
       ]
     ],
-    "translation": "Favorilere eklendi"
+    "translation": "Favorilere eklendi",
+    "obsolete": true
   },
   "14Xi3Z": {
     "message": "Adding a new member will cost an additional {price} ({billingType}) per seat.",
@@ -836,7 +1043,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        103
+        105
       ]
     ],
     "translation": "Gelişmiş yönetici kontrolleri"
@@ -860,7 +1067,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        97
+        99
       ]
     ],
     "translation": "Büyük kuruluşlar için gelişmiş güvenlik, uyumluluk ve özel destek."
@@ -872,7 +1079,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        56
+        58
       ]
     ],
     "translation": "Tüm Ücretsiz özellikler +"
@@ -896,7 +1103,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        101
+        103
       ]
     ],
     "translation": "Tüm Pro özellikler +"
@@ -911,7 +1118,8 @@
         18
       ]
     ],
-    "translation": "Tüm sistemler çalışıyor"
+    "translation": "Tüm sistemler çalışıyor",
+    "obsolete": true
   },
   "EII/X8": {
     "message": "All Teams features +",
@@ -920,7 +1128,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        79
+        81
       ]
     ],
     "translation": "Tüm Teams özellikler +"
@@ -1111,7 +1319,8 @@
         31
       ]
     ],
-    "translation": "API Referansı"
+    "translation": "API Referansı",
+    "obsolete": true
   },
   "bJZm1W": {
     "message": "Applicants",
@@ -1123,7 +1332,8 @@
         75
       ]
     ],
-    "translation": "Başvuranlar"
+    "translation": "Başvuranlar",
+    "obsolete": true
   },
   "yb/fjw": {
     "message": "Approval",
@@ -1135,7 +1345,20 @@
         46
       ]
     ],
-    "translation": "Onay"
+    "translation": "Onay",
+    "obsolete": true
+  },
+  "MZDdWe": {
+    "translation": "",
+    "message": "Arayüz tamamen Türkçe mi?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        64
+      ]
+    ]
   },
   "aKJHG+": {
     "message": "Archive board",
@@ -1147,7 +1370,8 @@
         115
       ]
     ],
-    "translation": "Panoyu arşivle"
+    "translation": "Panoyu arşivle",
+    "obsolete": true
   },
   "TdfEV7": {
     "message": "Archived",
@@ -1156,7 +1380,7 @@
     "origin": [
       [
         "src/views/boards/index.tsx",
-        27
+        28
       ]
     ],
     "translation": "Arşivlendi"
@@ -1223,7 +1447,8 @@
         36
       ]
     ],
-    "translation": "Bu {0} öğesini silmek istediğinizden emin misiniz?"
+    "translation": "Bu {0} öğesini silmek istediğinizden emin misiniz?",
+    "obsolete": true
   },
   "ZT4Khw": {
     "message": "Are you sure you want to delete this card?",
@@ -1285,6 +1510,42 @@
     ],
     "translation": "Hesabınızı silmek istediğinizden emin misiniz?"
   },
+  "RploFp": {
+    "translation": "",
+    "message": "Arşivden çıkar",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        115
+      ]
+    ]
+  },
+  "BbhR3d": {
+    "translation": "",
+    "message": "Arşivlediğiniz panolar burada görünür.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        77
+      ]
+    ]
+  },
+  "ibOs/y": {
+    "translation": "",
+    "message": "Arşivlenmiş pano yok",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        70
+      ]
+    ]
+  },
   "PyYD/v": {
     "message": "assigned <0>{0}</0> to the card",
     "placeholders": {
@@ -1296,7 +1557,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        172
+        174
       ]
     ],
     "translation": "<0>{0}</0> öğesini karta atadı"
@@ -1335,7 +1596,8 @@
         59
       ]
     ],
-    "translation": "Müşteri Bekleniyor"
+    "translation": "Müşteri Bekleniyor",
+    "obsolete": true
   },
   "iH8pgl": {
     "message": "Back",
@@ -1344,7 +1606,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        298
+        299
       ]
     ],
     "translation": "Geri"
@@ -1359,7 +1621,20 @@
         23
       ]
     ],
-    "translation": "Bekleyen İşler"
+    "translation": "Bekleyen İşler",
+    "obsolete": true
+  },
+  "9zADLP": {
+    "translation": "",
+    "message": "Bağlan",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        193
+      ]
+    ]
   },
   "Vt50G1": {
     "message": "Basic Kanban",
@@ -1371,7 +1646,8 @@
         16
       ]
     ],
-    "translation": "Temel Kanban"
+    "translation": "Temel Kanban",
+    "obsolete": true
   },
   "Pat4r8": {
     "message": "Basic Roadmap",
@@ -1383,7 +1659,20 @@
         28
       ]
     ],
-    "translation": "Temel Yol Haritası"
+    "translation": "Temel Yol Haritası",
+    "obsolete": true
+  },
+  "vTnFfr": {
+    "translation": "",
+    "message": "Başlayın",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Footer.tsx",
+        91
+      ]
+    ]
   },
   "Cd4sTD": {
     "message": "Best for individuals and solo creators getting started",
@@ -1392,7 +1681,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        32
+        34
       ]
     ],
     "translation": "Yeni başlayan bireyler ve tek başına çalışan içerik üreticileri için en iyisi"
@@ -1404,7 +1693,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        98
+        100
       ]
     ],
     "translation": "Gelişmiş ihtiyaçları olan büyük kuruluşlar için en iyisi"
@@ -1416,7 +1705,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        53
+        55
       ]
     ],
     "translation": "İş birliğine ihtiyaç duyan küçük ve büyüyen ekipler için en iyisi"
@@ -1440,7 +1729,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        76
+        78
       ]
     ],
     "translation": "Sınırsız büyümek isteyen ekipler için en iyisi"
@@ -1479,10 +1768,6 @@
         58
       ],
       [
-        "src/views/boards/components/TemplateBoards.tsx",
-        68
-      ],
-      [
         "src/views/settings/BillingSettings.tsx",
         88
       ]
@@ -1511,7 +1796,8 @@
         50
       ]
     ],
-    "translation": "Blog Yazısı"
+    "translation": "Blog Yazısı",
+    "obsolete": true
   },
   "QD8opX": {
     "message": "Board",
@@ -1520,15 +1806,23 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        538
+        575
       ],
       [
         "src/views/card/index.tsx",
-        321
+        339
+      ],
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        59
+      ],
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        63
       ],
       [
         "src/views/public/board/index.tsx",
-        125
+        126
       ]
     ],
     "translation": "Pano"
@@ -1555,7 +1849,8 @@
         47
       ]
     ],
-    "translation": "Pano arşivlendi"
+    "translation": "Pano arşivlendi",
+    "obsolete": true
   },
   "wE3hGS": {
     "message": "Board moved",
@@ -1579,7 +1874,8 @@
         23
       ]
     ],
-    "translation": "Pano adı 100 karakteri geçemez"
+    "translation": "Pano adı 100 karakteri geçemez",
+    "obsolete": true
   },
   "R1c3Mq": {
     "message": "Board name is required",
@@ -1591,7 +1887,8 @@
         22
       ]
     ],
-    "translation": "Pano adı gereklidir"
+    "translation": "Pano adı gereklidir",
+    "obsolete": true
   },
   "jwI32v": {
     "message": "Board not found",
@@ -1600,7 +1897,7 @@
     "origin": [
       [
         "src/views/public/board/index.tsx",
-        181
+        182
       ]
     ],
     "translation": "Pano bulunamadı"
@@ -1627,7 +1924,8 @@
         47
       ]
     ],
-    "translation": "Pano arşivden çıkarıldı"
+    "translation": "Pano arşivden çıkarıldı",
+    "obsolete": true
   },
   "Xid3K6": {
     "message": "Board URL can only contain letters, numbers, and hyphens",
@@ -1660,11 +1958,11 @@
     "origin": [
       [
         "src/views/board/components/UpdateBoardSlugButton.tsx",
-        82
+        79
       ],
       [
         "src/views/public/board/index.tsx",
-        79
+        80
       ]
     ],
     "translation": "Pano URL'si panoya kopyalandı"
@@ -1688,7 +1986,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        85
+        82
       ],
       [
         "src/views/pricing/components/FeatureComparisonTable.tsx",
@@ -1716,7 +2014,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        98
+        110
       ],
       [
         "src/views/pricing/components/FeatureComparisonTable.tsx",
@@ -1735,7 +2033,8 @@
         66
       ]
     ],
-    "translation": "Arşivlediğiniz panolar burada görünecek."
+    "translation": "Arşivlediğiniz panolar burada görünecek.",
+    "obsolete": true
   },
   "ZDo4HN": {
     "message": "Brainstorming",
@@ -1747,7 +2046,32 @@
         42
       ]
     ],
-    "translation": "Beyin Fırtınası"
+    "translation": "Beyin Fırtınası",
+    "obsolete": true
+  },
+  "XRbIlz": {
+    "translation": "",
+    "message": "Bu panoyu silmek istediğinize emin misiniz?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/DeleteBoardConfirmation.tsx",
+        40
+      ]
+    ]
+  },
+  "t+wE9g": {
+    "translation": "",
+    "message": "Bu şablonu silmek istediğinize emin misiniz?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/DeleteBoardConfirmation.tsx",
+        39
+      ]
+    ]
   },
   "vXemf6": {
     "message": "Bug",
@@ -1759,7 +2083,8 @@
         24
       ]
     ],
-    "translation": "Hata"
+    "translation": "Hata",
+    "obsolete": true
   },
   "/asTmx": {
     "message": "Bug Report",
@@ -1771,7 +2096,44 @@
         64
       ]
     ],
-    "translation": "Hata Bildirimi"
+    "translation": "Hata Bildirimi",
+    "obsolete": true
+  },
+  "OtFxdO": {
+    "translation": "",
+    "message": "Çalışma alanı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/index.tsx",
+        49
+      ]
+    ]
+  },
+  "aBuq9T": {
+    "translation": "",
+    "message": "Çalışma alanına taşı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        126
+      ]
+    ]
+  },
+  "lHUPeV": {
+    "translation": "",
+    "message": "Çalışma alanınızın \"Üyeler\" sayfasından üyelerin e-posta adreslerini girerek davet gönderebilirsiniz. Davet edilen kişiler, çalışma alanına katılmak için bir bağlantı içeren e-posta alır.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        59
+      ]
+    ]
   },
   "t6FvJH": {
     "message": "Can add comments",
@@ -2176,7 +2538,7 @@
       ],
       [
         "src/views/board/components/DeleteBoardConfirmation.tsx",
-        44
+        48
       ],
       [
         "src/views/board/components/MoveBoardForm.tsx",
@@ -2197,6 +2559,10 @@
       [
         "src/views/card/components/DeleteCommentConfirmation.tsx",
         77
+      ],
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        103
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -2244,7 +2610,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        321
+        339
       ]
     ],
     "translation": "Kart"
@@ -2296,11 +2662,11 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        384
+        402
       ],
       [
         "src/views/card/index.tsx",
-        421
+        439
       ]
     ],
     "translation": "Kart bulunamadı"
@@ -2324,7 +2690,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        309
+        346
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -2344,11 +2710,11 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        88
+        123
       ],
       [
         "src/views/settings/AccountSettings.tsx",
-        100
+        135
       ],
       [
         "src/views/settings/components/ChangePasswordConfirmation.tsx",
@@ -2368,7 +2734,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        63
+        98
       ]
     ],
     "translation": "Uygulama yazı tipi boyutunu değiştirin."
@@ -2380,7 +2746,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        53
+        88
       ]
     ],
     "translation": "Dil tercihlerinizi değiştirin."
@@ -2396,11 +2762,11 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        303
+        305
       ],
       [
         "src/views/card/components/ActivityList.tsx",
-        317
+        319
       ]
     ],
     "translation": "son tarihi <0>{formattedDate}</0> olarak değiştirdi"
@@ -2412,7 +2778,7 @@
     "origin": [
       [
         "src/views/oss-friends/index.tsx",
-        61
+        62
       ]
     ],
     "translation": "En sevdiğimiz açık kaynak projelerinden bazılarına göz atın."
@@ -2460,7 +2826,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        39
+        41
       ]
     ],
     "translation": "Kontrol listeleri"
@@ -2576,7 +2942,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        375
+        393
       ],
       [
         "src/views/members/components/EditMemberPermissionsModal.tsx",
@@ -2599,7 +2965,8 @@
         23
       ]
     ],
-    "translation": "Kod İncelemesi"
+    "translation": "Kod İncelemesi",
+    "obsolete": true
   },
   "EvArWh": {
     "message": "Collaborate seamlessly with your team.",
@@ -2608,7 +2975,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        91
+        88
       ]
     ],
     "translation": "Ekibinizle sorunsuz bir şekilde iş birliği yapın."
@@ -2632,7 +2999,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        67
+        64
       ],
       [
         "src/views/settings/components/UpgradeToProConfirmation.tsx",
@@ -2648,7 +3015,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        105
+        102
       ],
       [
         "src/views/pricing/components/FeatureComparisonTable.tsx",
@@ -2664,7 +3031,7 @@
     "origin": [
       [
         "src/views/home/components/Footer.tsx",
-        95
+        72
       ]
     ],
     "translation": "Şirket"
@@ -2679,7 +3046,8 @@
         94
       ]
     ],
-    "translation": "Tamamlandı"
+    "translation": "Tamamlandı",
+    "obsolete": true
   },
   "cAgBMh": {
     "message": "Complete control and ownership:",
@@ -2716,7 +3084,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        249
+        251
       ]
     ],
     "translation": "kontrol listesi öğesini tamamladı <0>{0}</0>"
@@ -2728,7 +3096,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        82
+        84
       ]
     ],
     "translation": "Yapılandırılabilir kullanıcı rolleri ve izinleri"
@@ -2791,7 +3159,8 @@
         195
       ]
     ],
-    "translation": "Bağlan"
+    "translation": "Bağlan",
+    "obsolete": true
   },
   "3jod3l": {
     "message": "Connect GitHub",
@@ -2827,7 +3196,8 @@
         122
       ]
     ],
-    "translation": "İş akışınızı kolaylaştırmak için en sevdiğiniz araçları bağlayın."
+    "translation": "İş akışınızı kolaylaştırmak için en sevdiğiniz araçları bağlayın.",
+    "obsolete": true
   },
   "MCIXdZ": {
     "message": "Connect your GitHub account to import projects.",
@@ -2860,11 +3230,11 @@
     "origin": [
       [
         "src/views/home/components/Footer.tsx",
-        38
+        23
       ],
       [
         "src/views/home/components/Header.tsx",
-        42
+        21
       ]
     ],
     "translation": "İletişim"
@@ -2876,7 +3246,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        95
+        97
       ]
     ],
     "translation": "Satış ile İletişime Geç"
@@ -2888,11 +3258,11 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        96
+        98
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        96
+        98
       ]
     ],
     "translation": "Bize ulaşın"
@@ -2907,7 +3277,8 @@
         40
       ]
     ],
-    "translation": "İçerik Üretimi"
+    "translation": "İçerik Üretimi",
+    "obsolete": true
   },
   "xGVfLh": {
     "message": "Continue",
@@ -2920,7 +3291,7 @@
       ],
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        315
+        316
       ]
     ],
     "translation": "Devam et"
@@ -2935,7 +3306,8 @@
         442
       ]
     ],
-    "translation": "Şununla devam et: "
+    "translation": "Şununla devam et: ",
+    "obsolete": true
   },
   "gkzAEM": {
     "message": "Continue with {0}",
@@ -2951,7 +3323,8 @@
         360
       ]
     ],
-    "translation": "{0} ile devam et"
+    "translation": "{0} ile devam et",
+    "obsolete": true
   },
   "va/3u1": {
     "message": "Control who can view and edit your boards.",
@@ -2960,7 +3333,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        86
+        83
       ]
     ],
     "translation": "Panolarınızı kimlerin görüntüleyip düzenleyebileceğini kontrol edin."
@@ -2977,6 +3350,30 @@
     ],
     "translation": "Bağlantıya dönüştür"
   },
+  "6V3Ea3": {
+    "translation": "Kopyalandı",
+    "message": "Copied",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        31
+      ]
+    ]
+  },
+  "he3ygx": {
+    "translation": "Kopyala",
+    "message": "Copy",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        78
+      ]
+    ]
+  },
   "5RkSzq": {
     "message": "Copy board link",
     "placeholders": {},
@@ -2984,7 +3381,7 @@
     "origin": [
       [
         "src/views/board/components/UpdateBoardSlugButton.tsx",
-        87
+        84
       ]
     ],
     "translation": "Pano bağlantısını kopyala"
@@ -3073,6 +3470,30 @@
     ],
     "translation": "Temel özellikler"
   },
+  "67tKLV": {
+    "translation": "Öğe eklenemedi",
+    "message": "Could not add item",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/index.tsx",
+        29
+      ]
+    ]
+  },
+  "omlfCk": {
+    "translation": "Öğe taşınamadı",
+    "message": "Could not move item",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        41
+      ]
+    ]
+  },
   "b9XOHo": {
     "message": "Create {0}",
     "placeholders": {
@@ -3087,7 +3508,8 @@
         166
       ]
     ],
-    "translation": "{0} Oluştur"
+    "translation": "{0} Oluştur",
+    "obsolete": true
   },
   "vgdzLf": {
     "message": "Create another",
@@ -3199,7 +3621,8 @@
         41
       ]
     ],
-    "translation": "Yeni {0} oluştur"
+    "translation": "Yeni {0} oluştur",
+    "obsolete": true
   },
   "okpxfB": {
     "message": "Create new key",
@@ -3240,7 +3663,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        679
+        716
       ]
     ],
     "translation": "Yeni liste oluştur"
@@ -3327,7 +3750,8 @@
         36
       ]
     ],
-    "translation": "Kritik"
+    "translation": "Kritik",
+    "obsolete": true
   },
   "pa9o5D": {
     "message": "Crop your avatar",
@@ -3360,7 +3784,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        38
+        40
       ]
     ],
     "translation": "Özel pano şablonları"
@@ -3376,7 +3800,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        83
+        85
       ]
     ],
     "translation": "Özel marka"
@@ -3412,7 +3836,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        105
+        107
       ]
     ],
     "translation": "Özel SLA"
@@ -3440,7 +3864,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        241
+        242
       ]
     ],
     "translation": "Özel kullanıcı adları için Pro plana yükseltme gerekir"
@@ -3464,7 +3888,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        81
+        83
       ]
     ],
     "translation": "Özel çalışma alanı kullanıcı adı"
@@ -3479,7 +3903,8 @@
         54
       ]
     ],
-    "translation": "Müşteri Desteği"
+    "translation": "Müşteri Desteği",
+    "obsolete": true
   },
   "pvnfJD": {
     "message": "Dark",
@@ -3512,7 +3937,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        104
+        106
       ]
     ],
     "translation": "Özel hesap yöneticisi"
@@ -3552,7 +3977,7 @@
       ],
       [
         "src/views/board/components/DeleteBoardConfirmation.tsx",
-        47
+        51
       ],
       [
         "src/views/card/components/DeleteCardConfirmation.tsx",
@@ -3565,6 +3990,10 @@
       [
         "src/views/card/components/DeleteCommentConfirmation.tsx",
         83
+      ],
+      [
+        "src/views/inbox/components/InboxItemRow.tsx",
+        81
       ],
       [
         "src/views/settings/components/DeleteWebhookConfirmation.tsx",
@@ -3584,11 +4013,11 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        70
+        105
       ],
       [
         "src/views/settings/AccountSettings.tsx",
-        80
+        115
       ],
       [
         "src/views/settings/components/DeleteAccountConfirmation.tsx",
@@ -3607,7 +4036,8 @@
         148
       ]
     ],
-    "translation": "Panoyu sil"
+    "translation": "Panoyu sil",
+    "obsolete": true
   },
   "nabda1": {
     "message": "Delete card",
@@ -3659,7 +4089,8 @@
         148
       ]
     ],
-    "translation": "Şablonu sil"
+    "translation": "Şablonu sil",
+    "obsolete": true
   },
   "snMaH4": {
     "message": "Delete webhook",
@@ -3728,7 +4159,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        224
+        226
       ]
     ],
     "translation": "kontrol listesini sildi <0>{0}</0>"
@@ -3744,7 +4175,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        267
+        269
       ]
     ],
     "translation": "kontrol listesi öğesini sildi <0>{0}</0>"
@@ -3759,7 +4190,20 @@
         45
       ]
     ],
-    "translation": "Tasarım"
+    "translation": "Tasarım",
+    "obsolete": true
+  },
+  "T8NNDc": {
+    "translation": "",
+    "message": "Destek nasıl alırım?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        80
+      ]
+    ]
   },
   "Uf+1DF": {
     "message": "Destination workspace",
@@ -3804,7 +4248,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        106
+        103
       ]
     ],
     "translation": "Kartlar üzerinde tartışın ve iş birliği yapın."
@@ -3816,7 +4260,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        36
+        49
       ]
     ],
     "translation": "Görünen ad"
@@ -3867,7 +4311,8 @@
         83
       ]
     ],
-    "translation": "Ücretsiz bir plan sunuyor musunuz?"
+    "translation": "Ücretsiz bir plan sunuyor musunuz?",
+    "obsolete": true
   },
   "jDRt4n": {
     "message": "Do you want to unsubscribe?",
@@ -3904,7 +4349,8 @@
         20
       ]
     ],
-    "translation": "Dokümanlar"
+    "translation": "Dokümanlar",
+    "obsolete": true
   },
   "TvY/XA": {
     "message": "Documentation",
@@ -3932,7 +4378,8 @@
         36
       ]
     ],
-    "translation": "Dokümantasyon"
+    "translation": "Dokümantasyon",
+    "obsolete": true
   },
   "vUr5JT": {
     "message": "Don't have an account? <0><1>Sign up</1></0>",
@@ -3962,30 +4409,6 @@
       [
         "src/views/board/components/CardContextMembersModal.tsx",
         68
-      ],
-      [
-        "src/views/boards/components/TemplateBoards.tsx",
-        17
-      ],
-      [
-        "src/views/boards/components/TemplateBoards.tsx",
-        23
-      ],
-      [
-        "src/views/boards/components/TemplateBoards.tsx",
-        29
-      ],
-      [
-        "src/views/boards/components/TemplateBoards.tsx",
-        35
-      ],
-      [
-        "src/views/boards/components/TemplateBoards.tsx",
-        48
-      ],
-      [
-        "src/views/boards/components/TemplateBoards.tsx",
-        61
       ]
     ],
     "translation": "Tamamlandı"
@@ -4017,7 +4440,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        153
+        156
       ]
     ],
     "translation": "Son tarih"
@@ -4136,10 +4559,6 @@
     "comments": [],
     "origin": [
       [
-        "src/views/board/components/BoardDropdown.tsx",
-        106
-      ],
-      [
         "src/views/board/components/UpdateBoardSlugForm.tsx",
         116
       ]
@@ -4185,6 +4604,18 @@
       ]
     ],
     "translation": "İzinleri düzenle"
+  },
+  "ZBdbv9": {
+    "translation": "Başlığı düzenle",
+    "message": "Edit title",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/components/InboxItemRow.tsx",
+        44
+      ]
+    ]
   },
   "fW5sSv": {
     "message": "Edit webhook",
@@ -4232,7 +4663,44 @@
         44
       ]
     ],
-    "translation": "Düzenleniyor"
+    "translation": "Düzenleniyor",
+    "obsolete": true
+  },
+  "LAidIg": {
+    "translation": "",
+    "message": "Ekibiniz için sade, Türkçe görev yönetimi",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/index.tsx",
+        34
+      ]
+    ]
+  },
+  "AqeOE0": {
+    "translation": "",
+    "message": "Ekibinizi bugün taşıyın",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Cta.tsx",
+        54
+      ]
+    ]
+  },
+  "/nb4GU": {
+    "translation": "",
+    "message": "Ekip üyelerini nasıl davet ederim?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        56
+      ]
+    ]
   },
   "b/LfJo": {
     "message": "email",
@@ -4244,7 +4712,8 @@
         443
       ]
     ],
-    "translation": "e-posta"
+    "translation": "e-posta",
+    "obsolete": true
   },
   "O3oNi5": {
     "message": "Email",
@@ -4252,12 +4721,16 @@
     "comments": [],
     "origin": [
       [
+        "src/views/inbox/components/InboxItemRow.tsx",
+        72
+      ],
+      [
         "src/views/members/components/InviteMemberForm.tsx",
         258
       ],
       [
         "src/views/settings/AccountSettings.tsx",
-        43
+        56
       ]
     ],
     "translation": "E-posta"
@@ -4281,7 +4754,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        60
+        62
       ]
     ],
     "translation": "Bahsetmeler için e-posta bildirimleri"
@@ -4317,7 +4790,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        181
+        182
       ]
     ],
     "translation": "Mühendislik"
@@ -4340,7 +4813,8 @@
         36
       ]
     ],
-    "translation": "İyileştirme"
+    "translation": "İyileştirme",
+    "obsolete": true
   },
   "V8YWP3": {
     "message": "Enter a custom title",
@@ -4449,7 +4923,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        92
+        94
       ]
     ],
     "translation": "Kurumsal"
@@ -4462,10 +4936,6 @@
       [
         "src/views/boards/components/NewBoardForm.tsx",
         77
-      ],
-      [
-        "src/views/boards/components/NewBoardForm.tsx",
-        92
       ],
       [
         "src/views/members/components/InviteMemberForm.tsx",
@@ -4726,6 +5196,34 @@
     ],
     "translation": "İhtiyacınız olan her şey, sonsuza dek ücretsiz. Sınırsız pano, sınırsız liste, sınırsız kart. İstediğiniz zaman yükseltin."
   },
+  "EomJrI": {
+    "translation": "",
+    "message": "Evet. {BRAND_NAME} varsayılan olarak tamamen Türkçedir. Dilerseniz alt kısımdaki dil seçiciden başka dillere de geçebilirsiniz.",
+    "placeholders": {
+      "BRAND_NAME": [
+        "BRAND_NAME"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        67
+      ]
+    ]
+  },
+  "2Om7EO": {
+    "translation": "",
+    "message": "Evet. Arayüz masaüstü, tablet ve mobil ekranlara uyumludur; tarayıcınızdan herhangi bir cihazda kullanabilirsiniz.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        75
+      ]
+    ]
+  },
   "t+R8+P": {
     "message": "Execution",
     "placeholders": {},
@@ -4736,7 +5234,8 @@
         91
       ]
     ],
-    "translation": "Uygulama"
+    "translation": "Uygulama",
+    "obsolete": true
   },
   "GwNIE2": {
     "message": "Extended Roadmap",
@@ -4748,7 +5247,8 @@
         34
       ]
     ],
-    "translation": "Genişletilmiş Yol Haritası"
+    "translation": "Genişletilmiş Yol Haritası",
+    "obsolete": true
   },
   "HYV6Lq": {
     "message": "Failed to accept invitation. Please try again later, or contact customer support.",
@@ -4782,10 +5282,6 @@
       [
         "src/views/boards/components/NewBoardForm.tsx",
         78
-      ],
-      [
-        "src/views/boards/components/NewBoardForm.tsx",
-        93
       ]
     ],
     "translation": "Pano oluşturulamadı"
@@ -4889,7 +5385,11 @@
     "origin": [
       [
         "src/views/home/components/Header.tsx",
-        41
+        14
+      ],
+      [
+        "src/views/home/components/Header.tsx",
+        19
       ]
     ],
     "translation": "SSS"
@@ -4908,7 +5408,64 @@
         52
       ]
     ],
-    "translation": "SSS"
+    "translation": "SSS",
+    "obsolete": true
+  },
+  "1BdoQD": {
+    "translation": "",
+    "message": "Favorilerden kaldır",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        136
+      ],
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        131
+      ]
+    ]
+  },
+  "uJ+lCF": {
+    "translation": "",
+    "message": "Favorilerden kaldırıldı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        58
+      ]
+    ]
+  },
+  "Rk5dMB": {
+    "translation": "",
+    "message": "Favorilere ekle",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        137
+      ],
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        131
+      ]
+    ]
+  },
+  "5D36Ng": {
+    "translation": "",
+    "message": "Favorilere eklendi",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        57
+      ]
+    ]
   },
   "en3oy5": {
     "message": "Feature",
@@ -4928,7 +5485,8 @@
         36
       ]
     ],
-    "translation": "Özellik"
+    "translation": "Özellik",
+    "obsolete": true
   },
   "JCdzgZ": {
     "message": "Feature Request",
@@ -4940,7 +5498,8 @@
         65
       ]
     ],
-    "translation": "Özellik Talebi"
+    "translation": "Özellik Talebi",
+    "obsolete": true
   },
   "PpZkda": {
     "message": "Features",
@@ -4949,19 +5508,19 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        132
+        123
       ],
       [
         "src/views/home/components/Footer.tsx",
-        50
+        15
       ],
       [
         "src/views/home/components/Header.tsx",
-        17
+        13
       ],
       [
         "src/views/home/components/Header.tsx",
-        33
+        18
       ]
     ],
     "translation": "Özellikler"
@@ -5028,7 +5587,8 @@
         150
       ]
     ],
-    "translation": "Kan hakkında sık sorulan soruların yanıtlarını bulun. Aradığınızı bulamadınız mı? Çekinmeden <0>bize ulaşın</0>."
+    "translation": "Kan hakkında sık sorulan soruların yanıtlarını bulun. Aradığınızı bulamadınız mı? Çekinmeden <0>bize ulaşın</0>.",
+    "obsolete": true
   },
   "q3il6U": {
     "message": "Font size",
@@ -5037,7 +5597,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        60
+        95
       ]
     ],
     "translation": "Yazı tipi boyutu"
@@ -5052,7 +5612,8 @@
         41
       ]
     ],
-    "translation": "Uzun vadeli sürdürülebilirlik için, tüm iyi açık kaynak projelerinin bir gelir kaynağına ihtiyaç duyduğunun farkındayız. Bizimki, birden fazla kullanıcısı olan çalışma alanları ve özel çalışma alanı adları için ücretli bulut sunumundan geliyor. Kullanma zorunluluğu yok; yazılımı kendi altyapınızda ücretsiz olarak self-host edebilirsiniz."
+    "translation": "Uzun vadeli sürdürülebilirlik için, tüm iyi açık kaynak projelerinin bir gelir kaynağına ihtiyaç duyduğunun farkındayız. Bizimki, birden fazla kullanıcısı olan çalışma alanları ve özel çalışma alanı adları için ücretli bulut sunumundan geliyor. Kullanma zorunluluğu yok; yazılımı kendi altyapınızda ücretsiz olarak self-host edebilirsiniz.",
+    "obsolete": true
   },
   "2POOFK": {
     "message": "Free",
@@ -5081,7 +5642,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        26
+        28
       ]
     ],
     "translation": "Ücretsiz"
@@ -5105,7 +5666,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        31
+        33
       ]
     ],
     "translation": "Herkes için ücretsiz"
@@ -5168,7 +5729,8 @@
         82
       ]
     ],
-    "translation": "Tam zamanlı"
+    "translation": "Tam zamanlı",
+    "obsolete": true
   },
   "rmN315": {
     "message": "Fun",
@@ -5180,7 +5742,8 @@
         96
       ]
     ],
-    "translation": "Eğlence"
+    "translation": "Eğlence",
+    "obsolete": true
   },
   "Weq9zb": {
     "message": "General",
@@ -5204,24 +5767,20 @@
         72
       ],
       [
-        "src/views/home/components/Cta.tsx",
-        61
-      ],
-      [
         "src/views/home/components/Header.tsx",
-        106
+        88
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        29
+        31
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        50
+        52
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        73
+        75
       ]
     ],
     "translation": "Başlayın"
@@ -5256,7 +5815,8 @@
         66
       ]
     ],
-    "translation": "Yeni bir {0} oluşturarak başlayın"
+    "translation": "Yeni bir {0} oluşturarak başlayın",
+    "obsolete": true
   },
   "zC8Whw": {
     "message": "Get started by creating a new list",
@@ -5265,7 +5825,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        664
+        701
       ]
     ],
     "translation": "Yeni bir liste oluşturarak başlayın"
@@ -5280,7 +5840,8 @@
         54
       ]
     ],
-    "translation": "Bugün ücretsiz başlayın"
+    "translation": "Bugün ücretsiz başlayın",
+    "obsolete": true
   },
   "+OhFss": {
     "message": "Get started for free, with no usage limits. For collaboration, upgrade to a plan that fits the size of your team.",
@@ -5304,7 +5865,8 @@
         75
       ]
     ],
-    "translation": "Cloud'da başlayın"
+    "translation": "Cloud'da başlayın",
+    "obsolete": true
   },
   "7hktsm": {
     "message": "Getting started",
@@ -5316,17 +5878,30 @@
         25
       ]
     ],
-    "translation": "Başlarken"
+    "translation": "Başlarken",
+    "obsolete": true
+  },
+  "j0Tkfy": {
+    "translation": "",
+    "message": "Giriş yap",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Footer.tsx",
+        19
+      ],
+      [
+        "src/views/home/index.tsx",
+        44
+      ]
+    ]
   },
   "RkXlPZ": {
     "message": "GitHub",
     "placeholders": {},
     "comments": [],
     "origin": [
-      [
-        "src/views/home/components/Footer.tsx",
-        37
-      ],
       [
         "src/views/settings/IntegrationsSettings.tsx",
         186
@@ -5377,7 +5952,7 @@
     "origin": [
       [
         "src/views/home/components/Header.tsx",
-        100
+        82
       ],
       [
         "src/views/invite/index.tsx",
@@ -5393,7 +5968,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        106
+        118
       ],
       [
         "src/pages/404.tsx",
@@ -5414,6 +5989,18 @@
     ],
     "translation": "Ana sayfaya git"
   },
+  "4XEC0o": {
+    "translation": "Gelen kutusuna git",
+    "message": "Go to inbox",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/SideNavigation.tsx",
+        106
+      ]
+    ]
+  },
   "KAsRdK": {
     "message": "Go to members",
     "placeholders": {},
@@ -5421,7 +6008,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        130
+        142
       ]
     ],
     "translation": "Üyelere git"
@@ -5433,7 +6020,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        142
+        154
       ]
     ],
     "translation": "Ayarlara git"
@@ -5445,7 +6032,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        118
+        130
       ]
     ],
     "translation": "Şablonlara git"
@@ -5506,6 +6093,58 @@
     ],
     "translation": "Misafir"
   },
+  "apWU4g": {
+    "translation": "",
+    "message": "Hata",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        92
+      ]
+    ]
+  },
+  "30nLzp": {
+    "translation": "",
+    "message": "Hayır. Yeni pano oluştururken \"Şablon kullan\" seçeneğiyle Satış Pipeline, İçerik Takvimi, Yazılım Geliştirme, Müşteri Destek gibi 10 hazır Türkçe şablondan birini seçip saniyeler içinde çalışmaya başlayabilirsiniz. Sütunlar ve etiketler sizin için önceden hazırlanır.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        35
+      ]
+    ]
+  },
+  "a2OdVx": {
+    "translation": "",
+    "message": "Hemen başla",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Cta.tsx",
+        61
+      ],
+      [
+        "src/views/home/index.tsx",
+        42
+      ]
+    ]
+  },
+  "bQAIK2": {
+    "translation": "",
+    "message": "Hesap oluştur",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Footer.tsx",
+        20
+      ]
+    ]
+  },
   "CB/NpV": {
     "message": "High Priority",
     "placeholders": {},
@@ -5516,7 +6155,8 @@
         18
       ]
     ],
-    "translation": "Yüksek Öncelik"
+    "translation": "Yüksek Öncelik",
+    "obsolete": true
   },
   "XXbgHS": {
     "message": "Hired",
@@ -5528,7 +6168,8 @@
         80
       ]
     ],
-    "translation": "İşe Alındı"
+    "translation": "İşe Alındı",
+    "obsolete": true
   },
   "SRvxId": {
     "message": "HMAC secret for signature verification",
@@ -5564,7 +6205,8 @@
         64
       ]
     ],
-    "translation": "Özel bir URL nasıl alabilirim?"
+    "translation": "Özel bir URL nasıl alabilirim?",
+    "obsolete": true
   },
   "yV7o5I": {
     "message": "How do I import my Trello boards?",
@@ -5576,7 +6218,8 @@
         46
       ]
     ],
-    "translation": "Trello panolarımı nasıl içe aktarırım?"
+    "translation": "Trello panolarımı nasıl içe aktarırım?",
+    "obsolete": true
   },
   "nol/Fb": {
     "message": "How do I invite team members?",
@@ -5588,7 +6231,8 @@
         108
       ]
     ],
-    "translation": "Ekip üyelerini nasıl davet ederim?"
+    "translation": "Ekip üyelerini nasıl davet ederim?",
+    "obsolete": true
   },
   "KuSt9W": {
     "message": "How do I self-host?",
@@ -5600,7 +6244,8 @@
         124
       ]
     ],
-    "translation": "Self-host nasıl yaparım?"
+    "translation": "Self-host nasıl yaparım?",
+    "obsolete": true
   },
   "UeDFpo": {
     "message": "How is the project funded?",
@@ -5612,7 +6257,8 @@
         38
       ]
     ],
-    "translation": "Proje nasıl finanse ediliyor?"
+    "translation": "Proje nasıl finanse ediliyor?",
+    "obsolete": true
   },
   "6S8zjx": {
     "message": "https://www.youtube.com/watch?v=...",
@@ -5650,6 +6296,38 @@
     ],
     "translation": "Çalışma alanı verilerinin tamamen silineceğini kabul ediyorum ve devam etmek istiyorum."
   },
+  "j4mkub": {
+    "translation": "",
+    "message": "İçe aktarma başarısız",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        240
+      ],
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        392
+      ]
+    ]
+  },
+  "uatB+0": {
+    "translation": "",
+    "message": "İçe aktarma tamamlandı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        227
+      ],
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        379
+      ]
+    ]
+  },
   "VOwhhz": {
     "message": "ID copied",
     "placeholders": {},
@@ -5672,7 +6350,8 @@
         88
       ]
     ],
-    "translation": "Fikirler"
+    "translation": "Fikirler",
+    "obsolete": true
   },
   "F/vB2g": {
     "message": "Ideas to improve this page...",
@@ -5693,7 +6372,7 @@
     "origin": [
       [
         "src/views/boards/index.tsx",
-        73
+        74
       ]
     ],
     "translation": "İçe aktar"
@@ -5712,7 +6391,8 @@
         381
       ]
     ],
-    "translation": "İçe aktarma tamamlandı"
+    "translation": "İçe aktarma tamamlandı",
+    "obsolete": true
   },
   "BEVzjL": {
     "message": "Import failed",
@@ -5728,7 +6408,8 @@
         394
       ]
     ],
-    "translation": "İçe aktarma başarısız oldu"
+    "translation": "İçe aktarma başarısız oldu",
+    "obsolete": true
   },
   "rRM7r0": {
     "message": "Import your Trello boards and hit the ground running.",
@@ -5737,7 +6418,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        96
+        93
       ]
     ],
     "translation": "Trello panolarınızı içe aktarın ve hemen çalışmaya başlayın."
@@ -5752,7 +6433,8 @@
         96
       ]
     ],
-    "translation": "Önemli"
+    "translation": "Önemli",
+    "obsolete": true
   },
   "xMn+V9": {
     "message": "Importing from Trello",
@@ -5764,7 +6446,8 @@
         27
       ]
     ],
-    "translation": "Trello'dan içe aktarılıyor"
+    "translation": "Trello'dan içe aktarılıyor",
+    "obsolete": true
   },
   "g2xBxu": {
     "message": "Importing your Trello boards into Kan is easy. You can follow our step-by-step guide <0>here</0>.",
@@ -5776,7 +6459,8 @@
         49
       ]
     ],
-    "translation": "Trello panolarınızı Kan'a aktarmak kolaydır. Adım adım kılavuzumuzu <0>burada</0> takip edebilirsiniz."
+    "translation": "Trello panolarınızı Kan'a aktarmak kolaydır. Adım adım kılavuzumuzu <0>burada</0> takip edebilirsiniz.",
+    "obsolete": true
   },
   "02i3WU": {
     "message": "Imports",
@@ -5828,7 +6512,8 @@
         58
       ]
     ],
-    "translation": "Devam Ediyor"
+    "translation": "Devam Ediyor",
+    "obsolete": true
   },
   "NoNwIX": {
     "message": "Inactive",
@@ -5841,6 +6526,46 @@
       ]
     ],
     "translation": "Pasif"
+  },
+  "Gp4Yi6": {
+    "translation": "Gelen Kutusu",
+    "message": "Inbox",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/SideNavigation.tsx",
+        98
+      ],
+      [
+        "src/views/inbox/index.tsx",
+        48
+      ]
+    ]
+  },
+  "VVtIEj": {
+    "translation": "Gelen kutusu e-posta adresin",
+    "message": "Inbox email address",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        63
+      ]
+    ]
+  },
+  "7rl+BF": {
+    "translation": "Gelen kutusu e-posta adresi panoya kopyalandı.",
+    "message": "Inbox email address copied to clipboard.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        32
+      ]
+    ]
   },
   "6mbe4b": {
     "message": "Individuals",
@@ -5862,10 +6587,6 @@
       [
         "src/components/SettingsLayout.tsx",
         77
-      ],
-      [
-        "src/views/home/components/Features.tsx",
-        121
       ]
     ],
     "translation": "Entegrasyonlar"
@@ -5892,7 +6613,8 @@
         77
       ]
     ],
-    "translation": "Mülakat"
+    "translation": "Mülakat",
+    "obsolete": true
   },
   "XILg0L": {
     "message": "Invalid email address",
@@ -5965,7 +6687,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        58
+        60
       ]
     ],
     "translation": "Davet bağlantıları"
@@ -6065,7 +6787,8 @@
         82
       ]
     ],
-    "translation": "Junior"
+    "translation": "Junior",
+    "obsolete": true
   },
   "aWDhU5": {
     "message": "Kanban is better with a team. Perfect for small and growing teams looking to collaborate.",
@@ -6086,10 +6809,70 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        136
+        127
       ]
     ],
     "translation": "Yeniden tasarlanmış Kanban"
+  },
+  "lDiLTf": {
+    "translation": "",
+    "message": "Kart güncellenemedi",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        311
+      ]
+    ]
+  },
+  "JfXhWr": {
+    "translation": "",
+    "message": "kartı tamamlandı olarak işaretledi",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/ActivityList.tsx",
+        145
+      ]
+    ]
+  },
+  "mso8+Z": {
+    "translation": "",
+    "message": "kartı tamamlanmadı olarak işaretledi",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/components/ActivityList.tsx",
+        146
+      ]
+    ]
+  },
+  "Kl8f+a": {
+    "translation": "",
+    "message": "Kaynak kodu",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Footer.tsx",
+        24
+      ]
+    ]
+  },
+  "hDIUxU": {
+    "translation": "",
+    "message": "Kaynak seç",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        193
+      ]
+    ]
   },
   "JbXXUW": {
     "message": "Keep in mind that this action is irreversible.",
@@ -6138,7 +6921,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        133
+        136
       ]
     ],
     "translation": "Etiketler"
@@ -6162,7 +6945,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        100
+        97
       ]
     ],
     "translation": "Etiketler ve Filtreler"
@@ -6174,7 +6957,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        50
+        85
       ]
     ],
     "translation": "Dil"
@@ -6198,7 +6981,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        159
+        161
       ],
       [
         "src/views/settings/components/UpgradeToProConfirmation.tsx",
@@ -6226,7 +7009,7 @@
     "origin": [
       [
         "src/views/oss-friends/index.tsx",
-        110
+        111
       ]
     ],
     "translation": "Daha fazla bilgi"
@@ -6241,7 +7024,8 @@
         96
       ]
     ],
-    "translation": "Öğrenme"
+    "translation": "Öğrenme",
+    "obsolete": true
   },
   "vifyyw": {
     "message": "Legal",
@@ -6250,7 +7034,7 @@
     "origin": [
       [
         "src/views/home/components/Footer.tsx",
-        131
+        108
       ]
     ],
     "translation": "Yasal"
@@ -6262,7 +7046,7 @@
     "origin": [
       [
         "src/views/home/components/Footer.tsx",
-        45
+        29
       ]
     ],
     "translation": "Lisans"
@@ -6322,11 +7106,11 @@
     "origin": [
       [
         "src/views/board/components/UpdateBoardSlugButton.tsx",
-        80
+        77
       ],
       [
         "src/views/board/index.tsx",
-        307
+        344
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -6338,7 +7122,7 @@
       ],
       [
         "src/views/public/board/index.tsx",
-        77
+        78
       ]
     ],
     "translation": "Bağlantı kopyalandı"
@@ -6354,7 +7138,15 @@
       ],
       [
         "src/views/card/index.tsx",
-        124
+        127
+      ],
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        83
+      ],
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        87
       ]
     ],
     "translation": "Liste"
@@ -6390,7 +7182,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        579
+        583
       ]
     ],
     "translation": "Daha fazla etkinlik yükle"
@@ -6414,10 +7206,22 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        579
+        583
       ]
     ],
     "translation": "Yükleniyor..."
+  },
+  "Pwqkdw": {
+    "translation": "Yükleniyor…",
+    "message": "Loading…",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/index.tsx",
+        63
+      ]
+    ]
   },
   "g4F09/": {
     "message": "Login | {BRAND_TITLE_SUFFIX}",
@@ -6470,7 +7274,8 @@
         96
       ]
     ],
-    "translation": "Uzun vadeli"
+    "translation": "Uzun vadeli",
+    "obsolete": true
   },
   "RHZu7R": {
     "message": "Loved by teams worldwide",
@@ -6482,7 +7287,8 @@
         236
       ]
     ],
-    "translation": "Dünya çapında ekipler tarafından seviliyor"
+    "translation": "Dünya çapında ekipler tarafından seviliyor",
+    "obsolete": true
   },
   "O9jVbx": {
     "message": "Low Priority",
@@ -6494,7 +7300,32 @@
         18
       ]
     ],
-    "translation": "Düşük Öncelik"
+    "translation": "Düşük Öncelik",
+    "obsolete": true
+  },
+  "FEuNir": {
+    "translation": "",
+    "message": "Lütfen daha sonra tekrar deneyin.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        69
+      ],
+      [
+        "src/views/board/index.tsx",
+        312
+      ],
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        241
+      ],
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        393
+      ]
+    ]
   },
   "JnWJXY": {
     "message": "magic link",
@@ -6506,7 +7337,8 @@
         443
       ]
     ],
-    "translation": "sihirli bağlantı"
+    "translation": "sihirli bağlantı",
+    "obsolete": true
   },
   "DbZgsJ": {
     "message": "Make template",
@@ -6518,7 +7350,8 @@
         95
       ]
     ],
-    "translation": "Şablon yap"
+    "translation": "Şablon yap",
+    "obsolete": true
   },
   "hB02vO": {
     "message": "Manage members",
@@ -6535,6 +7368,18 @@
       ]
     ],
     "translation": "Üyeleri yönet"
+  },
+  "BWTzAb": {
+    "translation": "Elle",
+    "message": "Manual",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/components/InboxItemRow.tsx",
+        72
+      ]
+    ]
   },
   "IDvohQ": {
     "message": "marked a checklist item as incomplete",
@@ -6559,7 +7404,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        258
+        260
       ]
     ],
     "translation": "kontrol listesi öğesini <0>{0}</0> tamamlanmadı olarak işaretledi"
@@ -6571,7 +7416,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        181
+        182
       ]
     ],
     "translation": "Pazarlama"
@@ -6598,7 +7443,8 @@
         18
       ]
     ],
-    "translation": "Orta Öncelik"
+    "translation": "Orta Öncelik",
+    "obsolete": true
   },
   "NwiNTb": {
     "message": "member",
@@ -6651,7 +7497,7 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        122
+        134
       ],
       [
         "src/views/board/components/Filters.tsx",
@@ -6663,7 +7509,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        143
+        146
       ],
       [
         "src/views/members/index.tsx",
@@ -6704,6 +7550,18 @@
     ],
     "translation": "Bahsetmeler"
   },
+  "fDHyjO": {
+    "translation": "",
+    "message": "Mobil ve tablette çalışır mı?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        72
+      ]
+    ]
+  },
   "hty0d5": {
     "message": "Monday",
     "placeholders": {},
@@ -6731,7 +7589,7 @@
       ],
       [
         "src/views/pricing/index.tsx",
-        20
+        17
       ]
     ],
     "translation": "Aylık"
@@ -6747,6 +7605,18 @@
       ]
     ],
     "translation": "aylık faturalandırma"
+  },
+  "QWdKwH": {
+    "translation": "Taşı",
+    "message": "Move",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        112
+      ]
+    ]
   },
   "sZ/WDz": {
     "message": "Move board",
@@ -6784,6 +7654,22 @@
     ],
     "translation": "Başka bir listeye taşı"
   },
+  "ffVW/N": {
+    "translation": "Panoya taşı",
+    "message": "Move to board",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/components/InboxItemRow.tsx",
+        78
+      ],
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        52
+      ]
+    ]
+  },
   "J4+OTA": {
     "message": "Move to list",
     "placeholders": {},
@@ -6806,7 +7692,8 @@
         126
       ]
     ],
-    "translation": "Çalışma alanına taşı"
+    "translation": "Çalışma alanına taşı",
+    "obsolete": true
   },
   "BOqTi5": {
     "message": "moved the card from <0>{0}</0> to<1>{1}</1>",
@@ -6822,7 +7709,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        160
+        162
       ]
     ],
     "translation": "kartı <0>{0}</0> öğesinden <1>{1}</1> öğesine taşıdı"
@@ -6838,6 +7725,18 @@
       ]
     ],
     "translation": "kartı başka bir listeye taşıdı"
+  },
+  "JgXqAo": {
+    "translation": "Panoya taşındı",
+    "message": "Moved to board",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        34
+      ]
+    ]
   },
   "uEGGDs": {
     "message": "My webhook",
@@ -6863,10 +7762,6 @@
       [
         "src/views/board/components/NewTemplateForm.tsx",
         118
-      ],
-      [
-        "src/views/boards/components/NewBoardForm.tsx",
-        134
       ],
       [
         "src/views/settings/components/NewWebhookModal.tsx",
@@ -6911,11 +7806,11 @@
     "origin": [
       [
         "src/views/boards/index.tsx",
-        95
+        96
       ],
       [
         "src/views/home/components/Features.tsx",
-        73
+        70
       ]
     ],
     "translation": "Yeni"
@@ -6934,7 +7829,8 @@
         120
       ]
     ],
-    "translation": "Yeni {0}"
+    "translation": "Yeni {0}",
+    "obsolete": true
   },
   "TjREUS": {
     "message": "New API key",
@@ -6982,7 +7878,8 @@
         513
       ]
     ],
-    "translation": "Yeni içe aktarma"
+    "translation": "Yeni içe aktarma",
+    "obsolete": true
   },
   "n1GRql": {
     "message": "New label",
@@ -7007,7 +7904,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        628
+        665
       ]
     ],
     "translation": "Yeni liste"
@@ -7058,7 +7955,8 @@
         56
       ]
     ],
-    "translation": "Yeni Talep"
+    "translation": "Yeni Talep",
+    "obsolete": true
   },
   "sbNNyi": {
     "message": "New webhook",
@@ -7094,7 +7992,8 @@
         50
       ]
     ],
-    "translation": "Bülten"
+    "translation": "Bülten",
+    "obsolete": true
   },
   "HeFWjW": {
     "message": "Next Steps",
@@ -7106,7 +8005,8 @@
         93
       ]
     ],
-    "translation": "Sonraki Adımlar"
+    "translation": "Sonraki Adımlar",
+    "obsolete": true
   },
   "/glL9Q": {
     "message": "No {0}",
@@ -7122,7 +8022,8 @@
         63
       ]
     ],
-    "translation": "{0} yok"
+    "translation": "{0} yok",
+    "obsolete": true
   },
   "tlhgDC": {
     "message": "No archived boards",
@@ -7134,7 +8035,8 @@
         63
       ]
     ],
-    "translation": "Arşivlenmiş pano yok"
+    "translation": "Arşivlenmiş pano yok",
+    "obsolete": true
   },
   "Eg99Sc": {
     "message": "No authentication methods are currently available",
@@ -7158,7 +8060,8 @@
         432
       ]
     ],
-    "translation": "Pano bulunamadı"
+    "translation": "Pano bulunamadı",
+    "obsolete": true
   },
   "OpNhRn": {
     "message": "No credit card required",
@@ -7170,7 +8073,8 @@
         85
       ]
     ],
-    "translation": "Kredi kartı gerekmez"
+    "translation": "Kredi kartı gerekmez",
+    "obsolete": true
   },
   "MK16u2": {
     "message": "No dates",
@@ -7227,7 +8131,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        660
+        697
       ]
     ],
     "translation": "Liste yok"
@@ -7239,7 +8143,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        665
+        702
       ]
     ],
     "translation": "Henüz liste oluşturulmadı"
@@ -7254,7 +8158,8 @@
         283
       ]
     ],
-    "translation": "Proje bulunamadı"
+    "translation": "Proje bulunamadı",
+    "obsolete": true
   },
   "ERpq2P": {
     "message": "No results found for \"{debouncedQuery}\".",
@@ -7306,7 +8211,8 @@
         78
       ]
     ],
-    "translation": "Teklif"
+    "translation": "Teklif",
+    "obsolete": true
   },
   "QnzD50": {
     "message": "On-premise",
@@ -7327,7 +8233,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        106
+        108
       ]
     ],
     "translation": "Şirket içi dağıtım seçeneği"
@@ -7342,7 +8248,8 @@
         79
       ]
     ],
-    "translation": "Oryantasyon"
+    "translation": "Oryantasyon",
+    "obsolete": true
   },
   "usVytm": {
     "message": "Once you delete your account, there is no going back. This action cannot be undone.",
@@ -7351,7 +8258,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        73
+        108
       ]
     ],
     "translation": "Hesabınızı sildiğinizde geri dönüş yoktur. Bu işlem geri alınamaz."
@@ -7411,7 +8318,7 @@
     "origin": [
       [
         "src/views/oss-friends/index.tsx",
-        58
+        59
       ]
     ],
     "translation": "Açık Kaynak Dostları"
@@ -7435,7 +8342,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        101
+        98
       ]
     ],
     "translation": "Güçlü filtreleme araçlarıyla kartları düzenleyin ve hızlıca bulun."
@@ -7446,12 +8353,8 @@
     "comments": [],
     "origin": [
       [
-        "src/views/home/components/Footer.tsx",
-        39
-      ],
-      [
         "src/views/oss-friends/index.tsx",
-        52
+        53
       ]
     ],
     "translation": "OSS Dostları"
@@ -7504,6 +8407,274 @@
     ],
     "translation": "Sayfa bulunamadı"
   },
+  "vOVkQG": {
+    "translation": "",
+    "message": "Pano {0} çalışma alanına taşındı.",
+    "placeholders": {
+      "0": [
+        "targetWorkspace?.name ?? \"çalışma alanı\""
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/MoveBoardForm.tsx",
+        34
+      ]
+    ]
+  },
+  "7dT0sG": {
+    "translation": "",
+    "message": "Pano adı 100 karakteri geçemez",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        23
+      ]
+    ]
+  },
+  "voIiNA": {
+    "translation": "",
+    "message": "Pano adı zorunludur",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        22
+      ]
+    ]
+  },
+  "lJEnUJ": {
+    "translation": "",
+    "message": "Pano arşivden çıkarıldı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        47
+      ]
+    ]
+  },
+  "RKkn8g": {
+    "translation": "",
+    "message": "Pano arşivden çıkarıldı.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        50
+      ]
+    ]
+  },
+  "Dfrf5M": {
+    "translation": "",
+    "message": "Pano arşivlendi",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        47
+      ]
+    ]
+  },
+  "MpNkXC": {
+    "translation": "",
+    "message": "Pano arşivlendi.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        49
+      ]
+    ]
+  },
+  "HLS0cT": {
+    "translation": "",
+    "message": "Pano bağlantısını düzenle",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        106
+      ]
+    ]
+  },
+  "WhDbdu": {
+    "translation": "",
+    "message": "Pano bulunamadı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        602
+      ],
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        430
+      ]
+    ]
+  },
+  "Fa5xr0": {
+    "translation": "",
+    "message": "Pano güncellenemedi",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        68
+      ]
+    ]
+  },
+  "bjVL44": {
+    "translation": "",
+    "message": "Pano oluştur",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        166
+      ]
+    ]
+  },
+  "3KYNKa": {
+    "translation": "",
+    "message": "Pano oluşturulamadı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        93
+      ]
+    ]
+  },
+  "HbKw1s": {
+    "translation": "",
+    "message": "Pano yok",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        73
+      ]
+    ]
+  },
+  "iH219o": {
+    "translation": "",
+    "message": "Panolar",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/index.tsx",
+        49
+      ],
+      [
+        "src/views/boards/index.tsx",
+        54
+      ]
+    ]
+  },
+  "AsyOjc": {
+    "translation": "",
+    "message": "Panolar, listeler ve kartlarla işlerinizi düzenleyin, ilerlemeyi takip edin ve ekibinizle birlikte sonuç alın. Karmaşa yok, İngilizce menü yok.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/index.tsx",
+        38
+      ]
+    ]
+  },
+  "Xqqhyx": {
+    "translation": "",
+    "message": "Panolarımı başka bir uygulamadan taşıyabilir miyim?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        40
+      ]
+    ]
+  },
+  "d8F3bG": {
+    "translation": "",
+    "message": "Panolarınız içe aktarıldı.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        380
+      ]
+    ]
+  },
+  "3axozI": {
+    "translation": "",
+    "message": "Panonuzun görünürlüğü gizli olarak ayarlandı.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/VisibilityButton.tsx",
+        52
+      ]
+    ]
+  },
+  "nXZ64n": {
+    "translation": "",
+    "message": "Panonuzun görünürlüğü herkese açık olarak ayarlandı.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/VisibilityButton.tsx",
+        51
+      ]
+    ]
+  },
+  "Eazxvw": {
+    "translation": "",
+    "message": "Panoyu arşivle",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        115
+      ]
+    ]
+  },
+  "TRxGq4": {
+    "translation": "",
+    "message": "Panoyu sil",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        148
+      ],
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        143
+      ]
+    ]
+  },
   "Uworke": {
     "message": "Part-time",
     "placeholders": {},
@@ -7514,7 +8685,8 @@
         82
       ]
     ],
-    "translation": "Yarı zamanlı"
+    "translation": "Yarı zamanlı",
+    "obsolete": true
   },
   "nG7mus": {
     "message": "Password already set",
@@ -7623,7 +8795,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        120
+        122
       ]
     ],
     "translation": "Ödeme sıklığı"
@@ -7655,11 +8827,11 @@
       ],
       [
         "src/views/pricing/index.tsx",
-        21
+        18
       ],
       [
         "src/views/pricing/index.tsx",
-        26
+        23
       ]
     ],
     "translation": "kullanıcı başına/ay"
@@ -7683,7 +8855,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        52
+        54
       ]
     ],
     "translation": "İş birliği yapmak isteyen küçük ve büyüyen ekipler için mükemmel."
@@ -7750,7 +8922,8 @@
         86
       ]
     ],
-    "translation": "Kişisel Proje"
+    "translation": "Kişisel Proje",
+    "obsolete": true
   },
   "Oi+J+N": {
     "message": "Pick a plan to get started. All paid plans include a 14-day free trial.",
@@ -7790,7 +8963,8 @@
         35
       ]
     ],
-    "translation": "Planlandı"
+    "translation": "Planlandı",
+    "obsolete": true
   },
   "dUh9QW": {
     "message": "Planning",
@@ -7802,7 +8976,8 @@
         90
       ]
     ],
-    "translation": "Planlama"
+    "translation": "Planlama",
+    "obsolete": true
   },
   "F3bW6y": {
     "message": "Platform",
@@ -7922,10 +9097,6 @@
         110
       ],
       [
-        "src/views/board/components/BoardDropdown.tsx",
-        69
-      ],
-      [
         "src/views/board/components/NewCardForm.tsx",
         193
       ],
@@ -7947,7 +9118,7 @@
       ],
       [
         "src/views/board/components/VisibilityButton.tsx",
-        57
+        59
       ],
       [
         "src/views/board/index.tsx",
@@ -7956,14 +9127,6 @@
       [
         "src/views/board/index.tsx",
         275
-      ],
-      [
-        "src/views/boards/components/ImportBoardsForm.tsx",
-        243
-      ],
-      [
-        "src/views/boards/components/ImportBoardsForm.tsx",
-        395
       ],
       [
         "src/views/card/components/AttachmentThumbnails.tsx",
@@ -8031,11 +9194,11 @@
       ],
       [
         "src/views/card/index.tsx",
-        236
+        254
       ],
       [
         "src/views/card/index.tsx",
-        249
+        267
       ],
       [
         "src/views/members/components/DeleteMemberConfirmation.tsx",
@@ -8063,11 +9226,11 @@
       ],
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        121
+        122
       ],
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        170
+        171
       ],
       [
         "src/views/settings/components/Avatar.tsx",
@@ -8139,7 +9302,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        316
+        353
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -8154,12 +9317,20 @@
         100
       ],
       [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        42
+      ],
+      [
+        "src/views/inbox/index.tsx",
+        30
+      ],
+      [
         "src/views/public/board/CardModal.tsx",
         45
       ],
       [
         "src/views/public/board/index.tsx",
-        86
+        87
       ]
     ],
     "translation": "Lütfen tekrar deneyin."
@@ -8182,28 +9353,16 @@
     "comments": [],
     "origin": [
       [
-        "src/views/home/components/Footer.tsx",
-        51
-      ],
-      [
-        "src/views/home/components/Header.tsx",
-        18
-      ],
-      [
-        "src/views/home/components/Header.tsx",
-        34
-      ],
-      [
         "src/views/pricing/components/Pricing.tsx",
         85
       ],
       [
         "src/views/pricing/index.tsx",
-        34
+        31
       ],
       [
         "src/views/pricing/index.tsx",
-        40
+        37
       ]
     ],
     "translation": "Fiyatlandırma"
@@ -8223,7 +9382,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        61
+        63
       ],
       [
         "src/views/settings/components/UpgradeToProConfirmation.tsx",
@@ -8239,7 +9398,7 @@
     "origin": [
       [
         "src/views/home/components/Footer.tsx",
-        43
+        28
       ]
     ],
     "translation": "Gizlilik politikası"
@@ -8251,7 +9410,7 @@
     "origin": [
       [
         "src/views/board/components/VisibilityButton.tsx",
-        84
+        86
       ]
     ],
     "translation": "Özel"
@@ -8271,7 +9430,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        70
+        72
       ]
     ],
     "translation": "Pro"
@@ -8323,10 +9482,34 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        30
+        43
       ]
     ],
     "translation": "Profil resmi"
+  },
+  "OKeK6l": {
+    "translation": "",
+    "message": "Proje bulunamadı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        281
+      ]
+    ]
+  },
+  "vme5mU": {
+    "translation": "",
+    "message": "Projeleriniz içe aktarıldı.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        228
+      ]
+    ]
   },
   "7d1a0d": {
     "message": "Public",
@@ -8335,7 +9518,7 @@
     "origin": [
       [
         "src/views/board/components/VisibilityButton.tsx",
-        79
+        81
       ]
     ],
     "translation": "Herkese açık"
@@ -8350,7 +9533,8 @@
         47
       ]
     ],
-    "translation": "Yayınlama"
+    "translation": "Yayınlama",
+    "obsolete": true
   },
   "bfgr/e": {
     "message": "Question",
@@ -8362,7 +9546,8 @@
         66
       ]
     ],
-    "translation": "Soru"
+    "translation": "Soru",
+    "obsolete": true
   },
   "1H5u1m": {
     "message": "Questions?",
@@ -8374,7 +9559,8 @@
         147
       ]
     ],
-    "translation": "Sorularınız mı var?"
+    "translation": "Sorularınız mı var?",
+    "obsolete": true
   },
   "kfOGMr": {
     "message": "Quick Win",
@@ -8386,7 +9572,8 @@
         96
       ]
     ],
-    "translation": "Hızlı Kazanım"
+    "translation": "Hızlı Kazanım",
+    "obsolete": true
   },
   "6EWT6T": {
     "message": "Recruitment",
@@ -8398,7 +9585,8 @@
         73
       ]
     ],
-    "translation": "İşe Alım"
+    "translation": "İşe Alım",
+    "obsolete": true
   },
   "ekCRTP": {
     "message": "Rejected",
@@ -8410,7 +9598,8 @@
         35
       ]
     ],
-    "translation": "Reddedildi"
+    "translation": "Reddedildi",
+    "obsolete": true
   },
   "qlAIQ1": {
     "message": "Remote",
@@ -8422,7 +9611,8 @@
         82
       ]
     ],
-    "translation": "Uzaktan"
+    "translation": "Uzaktan",
+    "obsolete": true
   },
   "t/YqKh": {
     "message": "Remove",
@@ -8446,7 +9636,8 @@
         136
       ]
     ],
-    "translation": "Favorilerden kaldır"
+    "translation": "Favorilerden kaldır",
+    "obsolete": true
   },
   "99VIgC": {
     "message": "Remove member",
@@ -8526,7 +9717,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        288
+        290
       ]
     ],
     "translation": "bir eki kaldırdı <0>{0}</0>"
@@ -8541,7 +9732,8 @@
         58
       ]
     ],
-    "translation": "Favorilerden kaldırıldı"
+    "translation": "Favorilerden kaldırıldı",
+    "obsolete": true
   },
   "YVT40D": {
     "message": "removed label <0>{0}</0>",
@@ -8554,7 +9746,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        200
+        202
       ]
     ],
     "translation": "etiketi kaldırdı <0>{0}</0>"
@@ -8570,7 +9762,7 @@
       ],
       [
         "src/views/card/components/ActivityList.tsx",
-        324
+        326
       ]
     ],
     "translation": "son tarihi kaldırdı"
@@ -8598,7 +9790,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        216
+        218
       ]
     ],
     "translation": "kontrol listesini yeniden adlandırdı <0>{0}</0>"
@@ -8614,7 +9806,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        240
+        242
       ]
     ],
     "translation": "kontrol listesi öğesini <0>{0}</0> olarak yeniden adlandırdı"
@@ -8633,7 +9825,8 @@
         35
       ]
     ],
-    "translation": "Talep Edildi"
+    "translation": "Talep Edildi",
+    "obsolete": true
   },
   "bdztP2": {
     "message": "Research",
@@ -8645,7 +9838,8 @@
         89
       ]
     ],
-    "translation": "Araştırma"
+    "translation": "Araştırma",
+    "obsolete": true
   },
   "e4hPSt": {
     "message": "Reset to role defaults",
@@ -8669,7 +9863,8 @@
         60
       ]
     ],
-    "translation": "Çözüm"
+    "translation": "Çözüm",
+    "obsolete": true
   },
   "s+MGs7": {
     "message": "Resources",
@@ -8681,7 +9876,8 @@
         114
       ]
     ],
-    "translation": "Kaynaklar"
+    "translation": "Kaynaklar",
+    "obsolete": true
   },
   "5k0NLb": {
     "message": "Review",
@@ -8693,7 +9889,8 @@
         92
       ]
     ],
-    "translation": "İnceleme"
+    "translation": "İnceleme",
+    "obsolete": true
   },
   "/gaSVU": {
     "message": "Roadmap",
@@ -8701,20 +9898,8 @@
     "comments": [],
     "origin": [
       [
-        "src/views/home/components/Footer.tsx",
-        36
-      ],
-      [
-        "src/views/home/components/Header.tsx",
-        13
-      ],
-      [
-        "src/views/home/components/Header.tsx",
-        28
-      ],
-      [
         "src/views/onboarding/workspace-details/index.tsx",
-        181
+        182
       ]
     ],
     "translation": "Yol Haritası"
@@ -8767,6 +9952,98 @@
     ],
     "translation": "Kendi altyapınızda çalıştırın"
   },
+  "VpZCLm": {
+    "translation": "",
+    "message": "Şablon bulunamadı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/index.tsx",
+        602
+      ]
+    ]
+  },
+  "f5Pw0C": {
+    "translation": "",
+    "message": "Şablon kullan",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        154
+      ]
+    ]
+  },
+  "7tQFo3": {
+    "translation": "",
+    "message": "Şablon oluştur",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        166
+      ]
+    ]
+  },
+  "TV+VBk": {
+    "translation": "",
+    "message": "Şablon yap",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        95
+      ]
+    ]
+  },
+  "65iu9n": {
+    "translation": "",
+    "message": "Şablon yok",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        72
+      ]
+    ]
+  },
+  "VmCuP7": {
+    "translation": "",
+    "message": "Şablonlar",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/index.tsx",
+        49
+      ],
+      [
+        "src/views/boards/index.tsx",
+        54
+      ]
+    ]
+  },
+  "mwxNXG": {
+    "translation": "",
+    "message": "Şablonu sil",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/BoardDropdown.tsx",
+        148
+      ],
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        143
+      ]
+    ]
+  },
   "YEOVrT": {
     "message": "SAML SSO",
     "placeholders": {},
@@ -8774,7 +10051,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        102
+        104
       ]
     ],
     "translation": "SAML SSO"
@@ -8830,7 +10107,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        116
+        113
       ]
     ],
     "translation": "Yeniden kullanılabilir pano şablonlarıyla zamandan tasarruf edin."
@@ -8845,7 +10122,8 @@
         76
       ]
     ],
-    "translation": "Ön Eleme"
+    "translation": "Ön Eleme",
+    "obsolete": true
   },
   "SkCNhl": {
     "message": "Search boards and cards...",
@@ -8933,7 +10211,20 @@
         239
       ]
     ],
-    "translation": "Kullanıcılarımızın Kan hakkında neler söylediğini görün"
+    "translation": "Kullanıcılarımızın Kan hakkında neler söylediğini görün",
+    "obsolete": true
+  },
+  "ksgFyQ": {
+    "translation": "Bir pano seç",
+    "message": "Select a board",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        71
+      ]
+    ]
   },
   "zYRVNp": {
     "message": "Select a list",
@@ -8943,6 +10234,10 @@
       [
         "src/views/board/components/CardContextDuplicateModal.tsx",
         131
+      ],
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        93
       ]
     ],
     "translation": "Bir liste seçin"
@@ -8973,7 +10268,8 @@
         464
       ]
     ],
-    "translation": "Tümünü seç"
+    "translation": "Tümünü seç",
+    "obsolete": true
   },
   "o4e/70": {
     "message": "Select at least one event",
@@ -8997,7 +10293,8 @@
         195
       ]
     ],
-    "translation": "Kaynak seç"
+    "translation": "Kaynak seç",
+    "obsolete": true
   },
   "ppaRWv": {
     "message": "Self Host",
@@ -9021,7 +10318,8 @@
         81
       ]
     ],
-    "translation": "Github ile self-host et"
+    "translation": "Github ile self-host et",
+    "obsolete": true
   },
   "VXk54Y": {
     "message": "self-assigned the card",
@@ -9030,10 +10328,22 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        169
+        171
       ]
     ],
     "translation": "kartı kendine atadı"
+  },
+  "VlC4RB": {
+    "translation": "Gelen kutuna öğe eklemek için bu adrese e-posta gönder. Yalnızca kayıtlı e-posta adresinden gönder.",
+    "message": "Send an email to this address to add an item to your inbox. Only send from your registered email address.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        66
+      ]
+    ]
   },
   "RoafuO": {
     "message": "Send feedback",
@@ -9069,7 +10379,8 @@
         82
       ]
     ],
-    "translation": "Senior"
+    "translation": "Senior",
+    "obsolete": true
   },
   "GXGbXi": {
     "message": "Set a password to enable password-based login.",
@@ -9078,7 +10389,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        93
+        128
       ]
     ],
     "translation": "Şifre tabanlı girişi etkinleştirmek için bir şifre belirleyin."
@@ -9110,11 +10421,11 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        88
+        123
       ],
       [
         "src/views/settings/AccountSettings.tsx",
-        100
+        135
       ],
       [
         "src/views/settings/components/ChangePasswordConfirmation.tsx",
@@ -9146,7 +10457,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        199
+        200
       ]
     ],
     "translation": "Çalışma alanınızı kurun"
@@ -9162,7 +10473,7 @@
       ],
       [
         "src/components/SideNavigation.tsx",
-        134
+        146
       ]
     ],
     "translation": "Ayarlar"
@@ -9174,7 +10485,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        26
+        39
       ]
     ],
     "translation": "Ayarlar | Hesap"
@@ -9270,7 +10581,7 @@
     "origin": [
       [
         "src/views/home/components/Header.tsx",
-        104
+        86
       ]
     ],
     "translation": "Giriş yap"
@@ -9326,7 +10637,7 @@
       ],
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        386
+        387
       ]
     ],
     "translation": "Çıkış yap"
@@ -9410,7 +10721,8 @@
         442
       ]
     ],
-    "translation": "Şununla kayıt ol: "
+    "translation": "Şununla kayıt ol: ",
+    "obsolete": true
   },
   "m2nk0i": {
     "message": "Simple pricing",
@@ -9423,7 +10735,7 @@
       ],
       [
         "src/views/pricing/index.tsx",
-        44
+        41
       ]
     ],
     "translation": "Basit fiyatlandırma"
@@ -9435,10 +10747,46 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        139
+        130
       ]
     ],
     "translation": "Sorunsuz çalışan, basit ve görsel görev yönetimi. Kartları sürükleyip bırakın, ekibinizle iş birliği yapın ve daha fazlasını başarın."
+  },
+  "30rLr+": {
+    "translation": "",
+    "message": "Sıfırdan mı başlamam gerekiyor?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        32
+      ]
+    ]
+  },
+  "xNShXk": {
+    "translation": "",
+    "message": "Sık sorulan soruların yanıtları aşağıda. Aradığınızı bulamazsanız <0>bize yazın</0>.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        106
+      ]
+    ]
+  },
+  "AZIpLs": {
+    "translation": "",
+    "message": "Sınırsız pano, sınırsız liste, sınırsız kart. Sade ve tamamen Türkçe.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Cta.tsx",
+        57
+      ]
+    ]
   },
   "zEcnBA": {
     "message": "SLA",
@@ -9474,7 +10822,8 @@
         50
       ]
     ],
-    "translation": "Sosyal Medya"
+    "translation": "Sosyal Medya",
+    "obsolete": true
   },
   "wIb7Ng": {
     "message": "Software Development",
@@ -9486,7 +10835,8 @@
         22
       ]
     ],
-    "translation": "Yazılım Geliştirme"
+    "translation": "Yazılım Geliştirme",
+    "obsolete": true
   },
   "6sKjjx": {
     "message": "Solo",
@@ -9524,6 +10874,34 @@
     ],
     "translation": "Lisans etkinleştirme sırasında bir şeyler ters gitti."
   },
+  "1LjpCg": {
+    "translation": "",
+    "message": "Sorularınız için bize <0>{BRAND_CONTACT_EMAIL}</0> adresinden ulaşabilirsiniz.",
+    "placeholders": {
+      "BRAND_CONTACT_EMAIL": [
+        "BRAND_CONTACT_EMAIL"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        83
+      ]
+    ]
+  },
+  "CnOLDj": {
+    "translation": "",
+    "message": "Sorularınız mı var?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        103
+      ]
+    ]
+  },
   "vnS6Rf": {
     "message": "SSO",
     "placeholders": {},
@@ -9536,6 +10914,22 @@
     ],
     "translation": "SSO"
   },
+  "EyWf4T": {
+    "translation": "",
+    "message": "SSS",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        99
+      ],
+      [
+        "src/views/home/components/Footer.tsx",
+        16
+      ]
+    ]
+  },
   "R6pB8R": {
     "message": "Star on Github",
     "placeholders": {},
@@ -9546,7 +10940,8 @@
         37
       ]
     ],
-    "translation": "Github'da yıldızla"
+    "translation": "Github'da yıldızla",
+    "obsolete": true
   },
   "veIDCY": {
     "message": "Start 14 day free trial",
@@ -9567,15 +10962,15 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        226
+        238
       ],
       [
         "src/components/SideNavigation.tsx",
-        227
+        239
       ],
       [
         "src/components/SideNavigation.tsx",
-        237
+        249
       ]
     ],
     "translation": "Ücretsiz denemeyi başlat"
@@ -9587,7 +10982,7 @@
     "origin": [
       [
         "src/views/pricing/index.tsx",
-        47
+        44
       ]
     ],
     "translation": "Ücretsiz başlayın. Ekibiniz büyüdükçe yükseltin. Gizli ücret yok, sözleşme yok."
@@ -9692,6 +11087,70 @@
     ],
     "translation": "Sistem"
   },
+  "kCognR": {
+    "translation": "",
+    "message": "Tamamen Türkçe · Sade · Ekibiniz için",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/index.tsx",
+        28
+      ]
+    ]
+  },
+  "PHkyoc": {
+    "translation": "",
+    "message": "Tamamlandı",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/card/index.tsx",
+        470
+      ],
+      [
+        "src/views/card/index.tsx",
+        477
+      ]
+    ]
+  },
+  "/piqnM": {
+    "translation": "",
+    "message": "Tamamlandı olarak işaretle",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        88
+      ],
+      [
+        "src/views/board/components/Card.tsx",
+        89
+      ],
+      [
+        "src/views/card/index.tsx",
+        471
+      ]
+    ]
+  },
+  "aMTMKH": {
+    "translation": "",
+    "message": "Tamamlanmadı olarak işaretle",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/board/components/Card.tsx",
+        88
+      ],
+      [
+        "src/views/board/components/Card.tsx",
+        89
+      ]
+    ]
+  },
   "KM6m8p": {
     "message": "Team",
     "placeholders": {},
@@ -9739,7 +11198,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        47
+        49
       ]
     ],
     "translation": "Teams"
@@ -9751,11 +11210,11 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        538
+        575
       ],
       [
         "src/views/board/index.tsx",
-        574
+        611
       ]
     ],
     "translation": "Şablon"
@@ -9815,11 +11274,11 @@
     "origin": [
       [
         "src/components/SideNavigation.tsx",
-        110
+        122
       ],
       [
         "src/views/home/components/Features.tsx",
-        115
+        112
       ]
     ],
     "translation": "Şablonlar"
@@ -9831,7 +11290,7 @@
     "origin": [
       [
         "src/views/home/components/Footer.tsx",
-        42
+        27
       ]
     ],
     "translation": "Hizmet şartları"
@@ -9906,7 +11365,8 @@
         232
       ]
     ],
-    "translation": "Referanslar"
+    "translation": "Referanslar",
+    "obsolete": true
   },
   "nhMhRr": {
     "message": "Thank you for your feedback!",
@@ -9942,7 +11402,8 @@
         49
       ]
     ],
-    "translation": "Pano arşivlendi."
+    "translation": "Pano arşivlendi.",
+    "obsolete": true
   },
   "ZWk38w": {
     "message": "The board has been moved to {0}.",
@@ -9958,7 +11419,8 @@
         34
       ]
     ],
-    "translation": "Pano {0} öğesine taşındı."
+    "translation": "Pano {0} öğesine taşındı.",
+    "obsolete": true
   },
   "C6gv54": {
     "message": "The board has been unarchived.",
@@ -9970,7 +11432,8 @@
         50
       ]
     ],
-    "translation": "Pano arşivden çıkarıldı."
+    "translation": "Pano arşivden çıkarıldı.",
+    "obsolete": true
   },
   "nKBUeF": {
     "message": "The card has been duplicated.",
@@ -9996,6 +11459,18 @@
     ],
     "translation": "Girdiğiniz mevcut şifre yanlış."
   },
+  "aDe0eE": {
+    "translation": "Öğe artık bir kart.",
+    "message": "The item is now a card.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/components/MoveToBoardForm.tsx",
+        35
+      ]
+    ]
+  },
   "lkz85l": {
     "message": "The main difference between Kan and Trello is that Kan is open source, allowing anyone to view, modify, and contribute to our code. Our cloud offering also offers no restrictions on features for individual use, whereas Trello locks basic features such as the number of boards you can create behind a paywall.",
     "placeholders": {},
@@ -10006,7 +11481,8 @@
         33
       ]
     ],
-    "translation": "Kan ile Trello arasındaki temel fark, Kan'ın açık kaynak olması ve herkesin kodumuzu görüntüleyebilmesi, değiştirebilmesi ve katkıda bulunabilmesidir. Bulut sunumumuz ayrıca bireysel kullanım için özellik kısıtlaması getirmezken, Trello oluşturabileceğiniz pano sayısı gibi temel özellikleri ücretli duvarın arkasına kilitler."
+    "translation": "Kan ile Trello arasındaki temel fark, Kan'ın açık kaynak olması ve herkesin kodumuzu görüntüleyebilmesi, değiştirebilmesi ve katkıda bulunabilmesidir. Bulut sunumumuz ayrıca bireysel kullanım için özellik kısıtlaması getirmezken, Trello oluşturabileceğiniz pano sayısı gibi temel özellikleri ücretli duvarın arkasına kilitler.",
+    "obsolete": true
   },
   "6tDFBe": {
     "message": "The member's permissions have been updated.",
@@ -10046,7 +11522,8 @@
         65
       ]
     ],
-    "translation": "Trello'nun açık kaynak <0/> alternatifi"
+    "translation": "Trello'nun açık kaynak <0/> alternatifi",
+    "obsolete": true
   },
   "0xD8Of": {
     "message": "The page you're looking for doesn't exist or has been moved.",
@@ -10074,7 +11551,8 @@
         50
       ]
     ],
-    "translation": "Panonuzun görünürlüğü {0} olarak ayarlandı."
+    "translation": "Panonuzun görünürlüğü {0} olarak ayarlandı.",
+    "obsolete": true
   },
   "FEr96N": {
     "message": "Theme",
@@ -10111,7 +11589,7 @@
       ],
       [
         "src/views/board/components/DeleteBoardConfirmation.tsx",
-        39
+        43
       ],
       [
         "src/views/card/components/DeleteCardConfirmation.tsx",
@@ -10147,7 +11625,7 @@
     "origin": [
       [
         "src/views/public/board/index.tsx",
-        184
+        185
       ]
     ],
     "translation": "Bu pano özel veya mevcut değil"
@@ -10195,7 +11673,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        84
+        85
       ]
     ],
     "translation": "Bu URL zaten alınmış"
@@ -10207,7 +11685,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        86
+        87
       ]
     ],
     "translation": "Bu URL rezerve edilmiş"
@@ -10308,6 +11786,18 @@
     ],
     "translation": "Talep ID'si panoya kopyalandı"
   },
+  "HaS2hE": {
+    "translation": "İpucu: bu adrese e-posta göndererek de ekleyebilirsin",
+    "message": "Tip: you can also add items by emailing",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/index.tsx",
+        69
+      ]
+    ]
+  },
   "MHrjPM": {
     "message": "Title",
     "placeholders": {},
@@ -10346,7 +11836,8 @@
         23
       ]
     ],
-    "translation": "Yapılacak"
+    "translation": "Yapılacak",
+    "obsolete": true
   },
   "4gAX8s": {
     "message": "Toggle menu",
@@ -10355,7 +11846,7 @@
     "origin": [
       [
         "src/views/home/components/Header.tsx",
-        114
+        96
       ]
     ],
     "translation": "Menüyü aç/kapat"
@@ -10379,7 +11870,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        111
+        108
       ]
     ],
     "translation": "Detaylı etkinlik geçmişiyle tüm kart değişikliklerini takip edin."
@@ -10419,10 +11910,22 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        95
+        92
       ]
     ],
     "translation": "Trello içe aktarmaları"
+  },
+  "u2ohgr": {
+    "translation": "",
+    "message": "Trello ve GitHub Projects için uygulama içindeki \"İçe aktar\" bölümünden doğrudan aktarım yapabilirsiniz (bu bağlantıların kurulumunuzda etkinleştirilmiş olması gerekir). Asana, Monday, Notion gibi diğer araçlardaki panoları ise ya bir hazır şablonla yeniden kurabilir ya da verinizi önce Trello'ya alıp oradan taşıyabilirsiniz. Geçiş konusunda destek için bizimle iletişime geçebilirsiniz.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        43
+      ]
+    ]
   },
   "HO+uOC": {
     "message": "Triaging",
@@ -10434,7 +11937,8 @@
         57
       ]
     ],
-    "translation": "Önceliklendirme"
+    "translation": "Önceliklendirme",
+    "obsolete": true
   },
   "o+JCfN": {
     "message": "Trusted by fast-moving teams<0/>around the world",
@@ -10446,7 +11950,24 @@
         67
       ]
     ],
-    "translation": "Dünya çapında hızlı hareket eden ekipler tarafından güveniliyor<0/>"
+    "translation": "Dünya çapında hızlı hareket eden ekipler tarafından güveniliyor<0/>",
+    "obsolete": true
+  },
+  "5z/psO": {
+    "translation": "",
+    "message": "Tümünü seç",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        313
+      ],
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        462
+      ]
+    ]
   },
   "bZSICm": {
     "message": "Unable to add checklist item",
@@ -10479,7 +12000,7 @@
     "origin": [
       [
         "src/views/card/index.tsx",
-        248
+        266
       ]
     ],
     "translation": "Etiket eklenemedi"
@@ -10515,7 +12036,7 @@
     "origin": [
       [
         "src/views/board/index.tsx",
-        314
+        351
       ],
       [
         "src/views/card/components/Dropdown.tsx",
@@ -10527,7 +12048,7 @@
       ],
       [
         "src/views/public/board/index.tsx",
-        84
+        85
       ]
     ],
     "translation": "Bağlantı kopyalanamadı"
@@ -10607,7 +12128,7 @@
       ],
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        120
+        121
       ]
     ],
     "translation": "Çalışma alanı oluşturulamadı"
@@ -10779,7 +12300,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        169
+        170
       ]
     ],
     "translation": "Ödeme başlatılamadı"
@@ -10810,7 +12331,8 @@
         68
       ]
     ],
-    "translation": "Pano güncellenemedi"
+    "translation": "Pano güncellenemedi",
+    "obsolete": true
   },
   "XpcjLO": {
     "message": "Unable to update board URL",
@@ -10831,7 +12353,7 @@
     "origin": [
       [
         "src/views/board/components/VisibilityButton.tsx",
-        56
+        58
       ]
     ],
     "translation": "Pano görünürlüğü güncellenemedi"
@@ -10847,7 +12369,7 @@
       ],
       [
         "src/views/card/index.tsx",
-        235
+        253
       ]
     ],
     "translation": "Kart güncellenemedi"
@@ -10990,7 +12512,8 @@
         115
       ]
     ],
-    "translation": "Panoyu arşivden çıkar"
+    "translation": "Panoyu arşivden çıkar",
+    "obsolete": true
   },
   "E8zYtd": {
     "message": "unassigned <0>{0}</0> from the card",
@@ -11003,7 +12526,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        183
+        185
       ]
     ],
     "translation": "<0>{0}</0> öğesini karttan çıkardı"
@@ -11015,7 +12538,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        180
+        182
       ]
     ],
     "translation": "kendini karttan çıkardı"
@@ -11030,7 +12553,8 @@
         35
       ]
     ],
-    "translation": "İncelemede"
+    "translation": "İncelemede",
+    "obsolete": true
   },
   "M9p3Vw": {
     "message": "Unlimited activity log",
@@ -11071,7 +12595,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        36
+        38
       ]
     ],
     "translation": "Sınırsız pano"
@@ -11086,7 +12610,8 @@
         57
       ]
     ],
-    "translation": "Sınırsız pano, sınırsız liste, sınırsız kart. Kredi kartı gerekmez."
+    "translation": "Sınırsız pano, sınırsız liste, sınırsız kart. Kredi kartı gerekmez.",
+    "obsolete": true
   },
   "Zz1qkk": {
     "message": "Unlimited cards",
@@ -11099,7 +12624,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        37
+        39
       ]
     ],
     "translation": "Sınırsız kart"
@@ -11135,7 +12660,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        59
+        61
       ]
     ],
     "translation": "Sınırsız dosya yükleme"
@@ -11179,7 +12704,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        80
+        82
       ],
       [
         "src/views/settings/components/UpgradeToProConfirmation.tsx",
@@ -11219,7 +12744,7 @@
     "origin": [
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        75
+        77
       ]
     ],
     "translation": "Büyüyen ekipler için sınırsız koltuk ve gelişmiş özellikler."
@@ -11263,7 +12788,7 @@
       ],
       [
         "src/views/settings/components/UpdateWorkspaceUrlForm.tsx",
-        157
+        153
       ]
     ],
     "translation": "Güncelle"
@@ -11339,7 +12864,7 @@
     "origin": [
       [
         "src/views/card/components/ActivityList.tsx",
-        152
+        154
       ]
     ],
     "translation": "başlığı <0>{0}</0> olarak güncelledi"
@@ -11379,7 +12904,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        265
+        266
       ]
     ],
     "translation": "Pro'ya yükselt ($29/ay)"
@@ -11410,7 +12935,8 @@
         67
       ]
     ],
-    "translation": "Acil"
+    "translation": "Acil",
+    "obsolete": true
   },
   "IagCbF": {
     "message": "URL",
@@ -11488,6 +13014,18 @@
     ],
     "translation": "URL en az 3 karakter uzunluğunda olmalıdır"
   },
+  "LfRUWa": {
+    "translation": "",
+    "message": "Ürün",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Footer.tsx",
+        55
+      ]
+    ]
+  },
   "QNtP5M": {
     "message": "Use template",
     "placeholders": {},
@@ -11498,7 +13036,8 @@
         154
       ]
     ],
-    "translation": "Şablonu kullan"
+    "translation": "Şablonu kullan",
+    "obsolete": true
   },
   "n6EWYz": {
     "message": "Used to sign webhook payloads for verification. Leave blank to keep existing secret.",
@@ -11536,8 +13075,31 @@
     ],
     "translation": "Kullanıcı zaten bu çalışma alanının üyesi"
   },
+  "Cc/EsW": {
+    "translation": "",
+    "message": "Verilerim nerede saklanıyor?",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        48
+      ]
+    ]
+  },
+  "S1VXnh": {
+    "translation": "",
+    "message": "Verileriniz size tahsis edilen kurulumda barındırılır ve sizde kalır. Kişisel verilerin işlenmesine ilişkin ayrıntılar Gizlilik Politikamızda açıklanmıştır.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/home/components/Faqs.tsx",
+        51
+      ]
+    ]
+  },
   "eE0JZ4": {
-    "translation": "Sürüm",
     "message": "Version",
     "placeholders": {},
     "comments": [],
@@ -11546,7 +13108,8 @@
         "src/components/UserMenu.tsx",
         205
       ]
-    ]
+    ],
+    "translation": "Sürüm"
   },
   "vSJd18": {
     "message": "Video",
@@ -11558,7 +13121,8 @@
         50
       ]
     ],
-    "translation": "Video"
+    "translation": "Video",
+    "obsolete": true
   },
   "FmfJjN": {
     "message": "View and manage your API keys.",
@@ -11603,7 +13167,7 @@
     "origin": [
       [
         "src/views/public/board/index.tsx",
-        153
+        154
       ]
     ],
     "translation": "Sadece görüntüleme"
@@ -11618,7 +13182,8 @@
         154
       ]
     ],
-    "translation": "Yol haritamızı görüntüleyin."
+    "translation": "Yol haritamızı görüntüleyin.",
+    "obsolete": true
   },
   "U5dMR6": {
     "message": "View workspace",
@@ -11627,7 +13192,7 @@
     "origin": [
       [
         "src/views/public/board/index.tsx",
-        187
+        188
       ]
     ],
     "translation": "Çalışma alanını görüntüle"
@@ -11639,7 +13204,7 @@
     "origin": [
       [
         "src/views/board/components/VisibilityButton.tsx",
-        103
+        105
       ]
     ],
     "translation": "Görünürlük"
@@ -11654,7 +13219,8 @@
         94
       ]
     ],
-    "translation": "<0>AGPL-3.0 lisansını</0> kullanıyoruz."
+    "translation": "<0>AGPL-3.0 lisansını</0> kullanıyoruz.",
+    "obsolete": true
   },
   "+EkBs0": {
     "message": "We couldn't update your preferences. Please try again.",
@@ -11694,7 +13260,8 @@
         152
       ]
     ],
-    "translation": "Daha yeni başlıyoruz. "
+    "translation": "Daha yeni başlıyoruz. ",
+    "obsolete": true
   },
   "an6ayw": {
     "message": "Webhook created",
@@ -11870,7 +13437,8 @@
         91
       ]
     ],
-    "translation": "Hangi lisansı kullanıyorsunuz?"
+    "translation": "Hangi lisansı kullanıyorsunuz?",
+    "obsolete": true
   },
   "H5G+qG": {
     "message": "What's the difference between Kan and Trello?",
@@ -11882,7 +13450,8 @@
         30
       ]
     ],
-    "translation": "Kan ile Trello arasındaki fark nedir?"
+    "translation": "Kan ile Trello arasındaki fark nedir?",
+    "obsolete": true
   },
   "mVZH9V": {
     "message": "When Trello launched in 2011, it blew everyone away with its carefully designed simplicity, but over the years it lost its magic and grew into something closer to \"Jira Lite\". This project is our attempt to recapture the original magic of Trello's simplicity, in open source.",
@@ -11894,7 +13463,8 @@
         25
       ]
     ],
-    "translation": "Trello 2011'de piyasaya çıktığında, özenle tasarlanmış sadeliğiyle herkesi büyülemişti; ancak yıllar içinde bu büyüsünü kaybederek daha çok \"Jira Lite\"a benzer bir şeye dönüştü. Bu proje, Trello'nun orijinal sadelik büyüsünü açık kaynak olarak yeniden yakalama girişimimizdir."
+    "translation": "Trello 2011'de piyasaya çıktığında, özenle tasarlanmış sadeliğiyle herkesi büyülemişti; ancak yıllar içinde bu büyüsünü kaybederek daha çok \"Jira Lite\"a benzer bir şeye dönüştü. Bu proje, Trello'nun orijinal sadelik büyüsünü açık kaynak olarak yeniden yakalama girişimimizdir.",
+    "obsolete": true
   },
   "SFnH1j": {
     "message": "Why make an open source Trello?",
@@ -11906,7 +13476,8 @@
         22
       ]
     ],
-    "translation": "Neden açık kaynak bir Trello yapalım?"
+    "translation": "Neden açık kaynak bir Trello yapalım?",
+    "obsolete": true
   },
   "pmUArF": {
     "message": "Workspace",
@@ -11919,11 +13490,7 @@
       ],
       [
         "src/views/board/index.tsx",
-        538
-      ],
-      [
-        "src/views/boards/index.tsx",
-        48
+        575
       ],
       [
         "src/views/members/index.tsx",
@@ -11931,11 +13498,11 @@
       ],
       [
         "src/views/public/board/index.tsx",
-        125
+        126
       ],
       [
         "src/views/public/boards/index.tsx",
-        75
+        76
       ]
     ],
     "translation": "Çalışma alanı"
@@ -11959,7 +13526,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        275
+        276
       ],
       [
         "src/views/settings/WorkspaceSettings.tsx",
@@ -12011,7 +13578,7 @@
     "origin": [
       [
         "src/views/home/components/Features.tsx",
-        90
+        87
       ],
       [
         "src/views/pricing/components/Pricing.tsx",
@@ -12019,7 +13586,7 @@
       ],
       [
         "src/views/pricing/components/PricingTiers.tsx",
-        57
+        59
       ]
     ],
     "translation": "Çalışma alanı üyeleri"
@@ -12035,7 +13602,7 @@
       ],
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        208
+        209
       ],
       [
         "src/views/settings/WorkspaceSettings.tsx",
@@ -12166,7 +13733,8 @@
         43
       ]
     ],
-    "translation": "Yazma"
+    "translation": "Yazma",
+    "obsolete": true
   },
   "zkWmBh": {
     "message": "Yearly",
@@ -12179,10 +13747,102 @@
       ],
       [
         "src/views/pricing/index.tsx",
-        25
+        22
       ]
     ],
     "translation": "Yıllık"
+  },
+  "jiIKsa": {
+    "translation": "",
+    "message": "Yeni bir pano oluşturarak başlayın",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        80
+      ]
+    ]
+  },
+  "SR3Jjt": {
+    "translation": "",
+    "message": "Yeni bir şablon oluşturarak başlayın",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        79
+      ]
+    ]
+  },
+  "28OIaT": {
+    "translation": "",
+    "message": "Yeni içe aktarma",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/ImportBoardsForm.tsx",
+        511
+      ]
+    ]
+  },
+  "J2xuQO": {
+    "translation": "",
+    "message": "Yeni pano",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        120
+      ]
+    ]
+  },
+  "HivuZ6": {
+    "translation": "",
+    "message": "Yeni pano oluştur",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        94
+      ],
+      [
+        "src/views/boards/index.tsx",
+        42
+      ]
+    ]
+  },
+  "OqOCKA": {
+    "translation": "",
+    "message": "Yeni şablon",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/NewBoardForm.tsx",
+        120
+      ]
+    ]
+  },
+  "8j7OFr": {
+    "translation": "",
+    "message": "Yeni şablon oluştur",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/boards/components/BoardsList.tsx",
+        94
+      ],
+      [
+        "src/views/boards/index.tsx",
+        42
+      ]
+    ]
   },
   "eZCGbT": {
     "message": "Yes, we offer an forever free plan for individual use. No restrictions, no paywalls, no limits.",
@@ -12194,7 +13854,8 @@
         86
       ]
     ],
-    "translation": "Evet, bireysel kullanım için sonsuza dek ücretsiz bir plan sunuyoruz. Kısıtlama yok, ücretli duvar yok, sınır yok."
+    "translation": "Evet, bireysel kullanım için sonsuza dek ücretsiz bir plan sunuyoruz. Kısıtlama yok, ücretli duvar yok, sınır yok.",
+    "obsolete": true
   },
   "RtlIYB": {
     "message": "You are about to change your password.",
@@ -12203,7 +13864,7 @@
     "origin": [
       [
         "src/views/settings/AccountSettings.tsx",
-        92
+        127
       ]
     ],
     "translation": "Şifrenizi değiştirmek üzeresiniz."
@@ -12215,7 +13876,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        202
+        203
       ]
     ],
     "translation": "Bunları her zaman ayarlardan daha sonra değiştirebilirsiniz."
@@ -12230,7 +13891,8 @@
         67
       ]
     ],
-    "translation": "<1>Çalışma alanı ayarlarınıza</1> giderek ve bir pro çalışma alanı aboneliği satın alarak <0>kan.bn/kan</0> gibi özel bir çalışma alanı URL'si edinebilirsiniz. Tüm abonelikler projenin geliştirilmesine katkı sağlar!"
+    "translation": "<1>Çalışma alanı ayarlarınıza</1> giderek ve bir pro çalışma alanı aboneliği satın alarak <0>kan.bn/kan</0> gibi özel bir çalışma alanı URL'si edinebilirsiniz. Tüm abonelikler projenin geliştirilmesine katkı sağlar!",
+    "obsolete": true
   },
   "kSxwQL": {
     "message": "You can invite team members by clicking the \"Invite\" button in the top right corner of the <0>members page</0> and entering their email address. They will receive an email with a link to join the workspace.",
@@ -12242,7 +13904,8 @@
         111
       ]
     ],
-    "translation": "<0>Üyeler sayfasının</0> sağ üst köşesindeki \"Davet Et\" düğmesine tıklayıp e-posta adreslerini girerek ekip üyelerini davet edebilirsiniz. Çalışma alanına katılmaları için bir bağlantı içeren e-posta alacaklardır."
+    "translation": "<0>Üyeler sayfasının</0> sağ üst köşesindeki \"Davet Et\" düğmesine tıklayıp e-posta adreslerini girerek ekip üyelerini davet edebilirsiniz. Çalışma alanına katılmaları için bir bağlantı içeren e-posta alacaklardır.",
+    "obsolete": true
   },
   "vAj6xG": {
     "message": "You can self-host by following the instructions in our <0>repo</0>.",
@@ -12254,7 +13917,8 @@
         127
       ]
     ],
-    "translation": "<0>Deposundaki</0> talimatları izleyerek self-host edebilirsiniz."
+    "translation": "<0>Deposundaki</0> talimatları izleyerek self-host edebilirsiniz.",
+    "obsolete": true
   },
   "tUL16u": {
     "message": "You don't have any other workspaces to move this board to.",
@@ -12279,31 +13943,31 @@
       ],
       [
         "src/views/board/components/UpdateBoardSlugButton.tsx",
-        58
+        55
       ],
       [
         "src/views/board/components/VisibilityButton.tsx",
-        72
+        74
       ],
       [
         "src/views/board/index.tsx",
-        612
+        649
       ],
       [
         "src/views/board/index.tsx",
-        670
+        707
       ],
       [
         "src/views/boards/components/BoardsList.tsx",
-        71
+        85
       ],
       [
         "src/views/boards/index.tsx",
-        59
+        60
       ],
       [
         "src/views/boards/index.tsx",
-        80
+        81
       ]
     ],
     "translation": "İzniniz yok"
@@ -12455,7 +14119,8 @@
         382
       ]
     ],
-    "translation": "Panolarınız içe aktarıldı."
+    "translation": "Panolarınız içe aktarıldı.",
+    "obsolete": true
   },
   "LqWW5F": {
     "message": "Your display name has been updated.",
@@ -12516,6 +14181,18 @@
       ]
     ],
     "translation": "GitHub hesabınız bağlı."
+  },
+  "Oyv63N": {
+    "translation": "Gelen kutun boş.",
+    "message": "Your inbox is empty.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/inbox/index.tsx",
+        66
+      ]
+    ]
   },
   "ygpeZ8": {
     "message": "Your license has been activated successfully.",
@@ -12587,7 +14264,8 @@
         230
       ]
     ],
-    "translation": "Projeleriniz içe aktarıldı."
+    "translation": "Projeleriniz içe aktarıldı.",
+    "obsolete": true
   },
   "CJWDTP": {
     "message": "Your Trello account has been disconnected.",
@@ -12632,7 +14310,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        346
+        347
       ]
     ],
     "translation": "Çalışma alanınız"
@@ -12644,7 +14322,7 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        349
+        350
       ]
     ],
     "translation": "Çalışma alanı açıklamanız"
@@ -12704,11 +14382,11 @@
     "origin": [
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        218
+        219
       ],
       [
         "src/views/onboarding/workspace-details/index.tsx",
-        219
+        220
       ]
     ],
     "translation": "calisma-alanin"
