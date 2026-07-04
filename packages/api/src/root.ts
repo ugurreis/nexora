@@ -5,6 +5,7 @@ import { checklistRouter } from "./routers/checklist";
 import { feedbackRouter } from "./routers/feedback";
 import { healthRouter } from "./routers/health";
 import { importRouter } from "./routers/import";
+import { inboxRouter } from "./routers/inbox";
 import { integrationRouter } from "./routers/integration";
 import { labelRouter } from "./routers/label";
 import { listRouter } from "./routers/list";
@@ -26,6 +27,7 @@ export const appRouter = createTRPCRouter({
   list: listRouter,
   member: memberRouter,
   import: importRouter,
+  inbox: inboxRouter,
   permission: permissionRouter,
   user: userRouter,
   webhook: webhookRouter,
