@@ -2,7 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 import * as userRepo from "@kan/db/repository/user.repo";
-import { generateAvatarUrl } from "@kan/shared/utils";
+import { generateAvatarUrl, generateInboxEmailToken } from "@kan/shared/utils";
 
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
@@ -173,5 +173,25 @@ export const userRouter = createTRPCRouter({
       }
 
       return { success: true };
+    }),
+  getInboxEmail: protectedProcedure
+    .input(z.void())
+    .output(z.object({ email: z.string() }))
+    .query(async ({ ctx }) => {
+      const userId = ctx.user?.id;
+      if (!userId)
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "User not authenticated",
+        });
+
+      let token = await userRepo.getInboxEmailToken(ctx.db, userId);
+      if (!token) {
+        token = generateInboxEmailToken();
+        await userRepo.setInboxEmailToken(ctx.db, userId, token);
+      }
+
+      const domain = process.env.INBOX_EMAIL_DOMAIN ?? "nexovias.com";
+      return { email: `inbox+${token}@${domain}` };
     }),
 });
