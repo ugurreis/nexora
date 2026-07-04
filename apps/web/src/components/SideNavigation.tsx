@@ -95,6 +95,18 @@ export default function SideNavigation({
     keyboardShortcut: KeyboardShortcut;
   }[] = [
     {
+      name: t`Inbox`,
+      href: "/inbox",
+      icon: isDarkMode ? boardsIconDark : boardsIconLight,
+      keyboardShortcut: {
+        type: "SEQUENCE",
+        strokes: [{ key: "G" }, { key: "I" }],
+        action: () => router.push("/inbox"),
+        group: "NAVIGATION",
+        description: t`Go to inbox`,
+      },
+    },
+    {
       name: t`Boards`,
       href: "/boards",
       icon: isDarkMode ? boardsIconDark : boardsIconLight,
