@@ -66,3 +66,89 @@ describe("inbox.add / inbox.list", () => {
     expect(mockGetAll).toHaveBeenCalledWith(mockDb, "user-1");
   });
 });
+
+describe("inbox.convertToCard", () => {
+  const mockGetByPublicId = inboxRepo.getByPublicId as ReturnType<
+    typeof vi.fn
+  >;
+  const mockSoftDelete = inboxRepo.softDelete as ReturnType<typeof vi.fn>;
+
+  beforeEach(() => vi.clearAllMocks());
+
+  it("throws NOT_FOUND when the item is not owned by the user", async () => {
+    const { inboxRouter } = await import("./inbox");
+    mockGetByPublicId.mockResolvedValueOnce({
+      userId: "someone-else",
+      title: "x",
+    });
+    const ctx = { user: mockUser, db: mockDb } as never;
+    await expect(
+      inboxRouter
+        .createCaller(ctx)
+        .convertToCard({
+          publicId: "abc123abc123",
+          listPublicId: "lst123lst123",
+        }),
+    ).rejects.toThrow(TRPCError);
+  });
+
+  it("throws NOT_FOUND when the target list does not exist", async () => {
+    const { inboxRouter } = await import("./inbox");
+    const listRepo = await import("@kan/db/repository/list.repo");
+    mockGetByPublicId.mockResolvedValueOnce({ userId: "user-1", title: "x" });
+    (
+      listRepo.getWorkspaceAndListIdByListPublicId as ReturnType<typeof vi.fn>
+    ).mockResolvedValueOnce(null);
+    const ctx = { user: mockUser, db: mockDb } as never;
+    await expect(
+      inboxRouter
+        .createCaller(ctx)
+        .convertToCard({
+          publicId: "abc123abc123",
+          listPublicId: "lst123lst123",
+        }),
+    ).rejects.toThrow(TRPCError);
+  });
+
+  it("creates a card and soft-deletes the item on success", async () => {
+    const { inboxRouter } = await import("./inbox");
+    const listRepo = await import("@kan/db/repository/list.repo");
+    const cardRepo = await import("@kan/db/repository/card.repo");
+    mockGetByPublicId.mockResolvedValueOnce({
+      userId: "user-1",
+      title: "buy milk",
+      description: "2 litre",
+      dueDate: null,
+      sourceMeta: null,
+    });
+    (
+      listRepo.getWorkspaceAndListIdByListPublicId as ReturnType<typeof vi.fn>
+    ).mockResolvedValueOnce({
+      id: 5,
+      workspaceId: 9,
+      boardPublicId: "brd123brd123",
+    });
+    (cardRepo.create as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      publicId: "crd123crd123",
+    });
+    mockSoftDelete.mockResolvedValueOnce({ id: 1, publicId: "abc123abc123" });
+    const ctx = { user: mockUser, db: mockDb } as never;
+
+    const res = await inboxRouter
+      .createCaller(ctx)
+      .convertToCard({
+        publicId: "abc123abc123",
+        listPublicId: "lst123lst123",
+      });
+
+    expect(res).toEqual({
+      cardPublicId: "crd123crd123",
+      boardPublicId: "brd123brd123",
+    });
+    expect(cardRepo.create).toHaveBeenCalledWith(
+      mockDb,
+      expect.objectContaining({ title: "buy milk", listId: 5, workspaceId: 9 }),
+    );
+    expect(mockSoftDelete).toHaveBeenCalled();
+  });
+});
