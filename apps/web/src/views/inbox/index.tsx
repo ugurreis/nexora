@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { t } from "@lingui/core/macro";
 
+import Modal from "~/components/modal";
 import { useModal } from "~/providers/modal";
 import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
 import InboxItemRow from "./components/InboxItemRow";
+import MoveToBoardForm from "./components/MoveToBoardForm";
 
 export default function InboxView() {
   const utils = api.useUtils();
   const { showPopup } = usePopup();
-  const { openModal } = useModal();
+  const { openModal, isOpen, modalContentType } = useModal();
   const [title, setTitle] = useState("");
 
   const { data: items = [], isLoading } = api.inbox.list.useQuery();
@@ -89,6 +91,13 @@ export default function InboxView() {
           ))}
         </ul>
       )}
+
+      <Modal
+        modalSize="sm"
+        isVisible={isOpen && modalContentType === "MOVE_INBOX_ITEM"}
+      >
+        <MoveToBoardForm />
+      </Modal>
     </div>
   );
 }
