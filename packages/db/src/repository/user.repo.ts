@@ -126,3 +126,33 @@ export const update = async (
 
   return result;
 };
+
+export const getByInboxEmailToken = async (db: dbClient, token: string) => {
+  return db.query.users.findFirst({
+    columns: { id: true, email: true, inboxEmailToken: true },
+    where: eq(users.inboxEmailToken, token),
+  });
+};
+
+export const getInboxEmailToken = async (db: dbClient, userId: string) => {
+  const row = await db.query.users.findFirst({
+    columns: { inboxEmailToken: true },
+    where: eq(users.id, userId),
+  });
+
+  return row?.inboxEmailToken ?? null;
+};
+
+export const setInboxEmailToken = async (
+  db: dbClient,
+  userId: string,
+  token: string,
+) => {
+  const [result] = await db
+    .update(users)
+    .set({ inboxEmailToken: token })
+    .where(eq(users.id, userId))
+    .returning({ inboxEmailToken: users.inboxEmailToken });
+
+  return result;
+};
