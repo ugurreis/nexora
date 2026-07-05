@@ -7,6 +7,11 @@ import {
   parseRecipientToken,
 } from "./parse";
 
+const NUL = String.fromCharCode(0);
+const BEL = String.fromCharCode(7);
+const UNIT_SEP = String.fromCharCode(0x1f);
+const DEL = String.fromCharCode(0x7f);
+
 describe("parseRecipientToken", () => {
   it("extracts token from To header", () => {
     expect(
@@ -53,6 +58,12 @@ describe("buildTitle", () => {
   it("truncates to 512 chars", () => {
     expect(buildTitle("x".repeat(600))).toHaveLength(512);
   });
+  it("strips NUL / C0 controls / DEL that Postgres rejects", () => {
+    expect(buildTitle(`Buy${NUL} mi${BEL}lk${UNIT_SEP}${DEL}`)).toBe("Buy milk");
+  });
+  it("keeps tab/newline/CR as whitespace then trims", () => {
+    expect(buildTitle("\tHello\r\n")).toBe("Hello");
+  });
 });
 
 describe("buildDescription", () => {
@@ -69,5 +80,8 @@ describe("buildDescription", () => {
   });
   it("truncates to 20000 chars", () => {
     expect(buildDescription({ text: "y".repeat(25000) })).toHaveLength(20000);
+  });
+  it("strips NUL from the body before it reaches the DB", () => {
+    expect(buildDescription({ text: `line1${NUL}line2` })).toBe("line1line2");
   });
 });

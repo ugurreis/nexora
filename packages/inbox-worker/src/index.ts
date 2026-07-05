@@ -32,12 +32,15 @@ async function main() {
     const client = buildImapClient(config);
     try {
       await client.connect();
-      backoff = 1000;
       await runOnce(db, client, {
         requireFromMatch: config.requireFromMatch,
         maxPerHour: config.maxPerHour,
       });
       await client.logout();
+      // Reset backoff only after a fully successful cycle. Resetting right
+      // after connect() would keep backoff at 1s forever if connect always
+      // succeeds but runOnce always throws — starving the exponential backoff.
+      backoff = 1000;
       await sleep(config.pollSeconds * 1000);
     } catch (error) {
       logger.error({ error }, "inbox worker poll failed; backing off");
@@ -56,4 +59,11 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-void main();
+main().catch((error) => {
+  // main() only returns via an unrecoverable startup error (loadConfig /
+  // createDrizzleClient); the poll loop itself never resolves. Surface it and
+  // exit non-zero so the orchestrator restarts the container instead of it
+  // sitting dead with a silently swallowed rejection.
+  logger.error({ error }, "inbox worker crashed on startup");
+  process.exit(1);
+});

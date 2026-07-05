@@ -119,26 +119,53 @@ export const inboxRouter = createTRPCRouter({
 
       await assertPermission(ctx.db, userId, list.workspaceId, "card:create");
 
-      const card = await cardRepo.create(ctx.db, {
-        title: item.title,
-        description: item.description ?? "",
-        createdBy: userId,
-        listId: list.id,
-        workspaceId: list.workspaceId,
-        position: "end",
-        dueDate: item.dueDate ?? null,
-      });
+      // Parse sourceMeta BEFORE creating the card. If JSON.parse threw after
+      // creation, the card would already exist but the inbox item would never
+      // be soft-deleted — leaving an orphan the user can convert again into a
+      // duplicate. sourceMeta is worker-written JSON, but treat it as untrusted
+      // and fall back to an empty object rather than throwing.
+      let existingMeta: Record<string, unknown> = {};
+      if (item.sourceMeta) {
+        try {
+          existingMeta = JSON.parse(item.sourceMeta) as Record<string, unknown>;
+        } catch {
+          existingMeta = {};
+        }
+      }
 
-      const existingMeta = item.sourceMeta
-        ? (JSON.parse(item.sourceMeta) as Record<string, unknown>)
-        : {};
-      await inboxRepo.softDelete(ctx.db, {
-        publicId: input.publicId,
-        userId,
-        sourceMeta: JSON.stringify({
-          ...existingMeta,
-          convertedToCardPublicId: card.publicId,
-        }),
+      // Create the card and claim (soft-delete) the inbox item atomically. The
+      // soft-delete is guarded by "deletedAt IS NULL", so if a concurrent
+      // convertToCard already claimed this item, softDelete returns undefined
+      // and we throw — rolling back the card we just created. Without this,
+      // a double-submit / retry races into TWO cards from one item, and a
+      // soft-delete failure after a successful create orphans the item.
+      const card = await ctx.db.transaction(async (tx) => {
+        const created = await cardRepo.create(tx, {
+          title: item.title,
+          description: item.description ?? "",
+          createdBy: userId,
+          listId: list.id,
+          workspaceId: list.workspaceId,
+          position: "end",
+          dueDate: item.dueDate ?? null,
+        });
+
+        const claimed = await inboxRepo.softDelete(tx, {
+          publicId: input.publicId,
+          userId,
+          sourceMeta: JSON.stringify({
+            ...existingMeta,
+            convertedToCardPublicId: created.publicId,
+          }),
+        });
+
+        if (!claimed)
+          throw new TRPCError({
+            code: "CONFLICT",
+            message: "Inbox item already converted",
+          });
+
+        return created;
       });
 
       return { cardPublicId: card.publicId, boardPublicId: list.boardPublicId };

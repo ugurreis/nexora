@@ -16,6 +16,13 @@ export type dbClient = NodePgDatabase<typeof schema> & {
   $client: Pool;
 };
 
+// The transaction handle passed to db.transaction(async (tx) => ...). It lacks
+// the top-level `$client` pool, so repo functions that must run inside a
+// caller-provided transaction accept `dbClient | Transaction`.
+export type Transaction = Parameters<
+  Parameters<dbClient["transaction"]>[0]
+>[0];
+
 export const createDrizzleClient = (): dbClient => {
   const connectionString = process.env.POSTGRES_URL;
 

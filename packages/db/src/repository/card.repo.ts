@@ -10,7 +10,7 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { dbClient } from "@kan/db/client";
+import type { dbClient, Transaction } from "@kan/db/client";
 import {
   cardActivities,
   cardAttachments,
@@ -36,7 +36,7 @@ export const getCount = async (db: dbClient) => {
 };
 
 export const create = async (
-  db: dbClient,
+  db: dbClient | Transaction,
   cardInput: {
     title: string;
     description: string;

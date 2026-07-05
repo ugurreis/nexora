@@ -24,7 +24,13 @@ import * as inboxRepo from "@kan/db/repository/inboxItem.repo";
 const mockCreate = inboxRepo.create as ReturnType<typeof vi.fn>;
 const mockGetAll = inboxRepo.getAllByUser as ReturnType<typeof vi.fn>;
 
-const mockDb = {} as never;
+// convertToCard now wraps card-create + item-claim in ctx.db.transaction, so
+// the db mock must expose transaction(cb) that runs the callback with a tx
+// stand-in. Repo calls inside the transaction receive `mockTx`, not `mockDb`.
+const mockTx = { __brand: "tx" } as never;
+const mockDb = {
+  transaction: async (cb: (tx: unknown) => unknown) => cb(mockTx),
+} as never;
 const mockUser = { id: "user-1", email: "a@b.com", name: "A" };
 
 describe("inbox.add / inbox.list", () => {
@@ -162,12 +168,53 @@ describe("inbox.convertToCard", () => {
       cardPublicId: "crd123crd123",
       boardPublicId: "brd123brd123",
     });
+    // create + softDelete run inside the transaction → called with mockTx.
     expect(cardRepo.create).toHaveBeenCalledWith(
-      mockDb,
+      mockTx,
       expect.objectContaining({ title: "buy milk", listId: 5, workspaceId: 9 }),
     );
-    expect(mockSoftDelete).toHaveBeenCalled();
+    expect(mockSoftDelete).toHaveBeenCalledWith(
+      mockTx,
+      expect.objectContaining({ publicId: "abc123abc123", userId: "user-1" }),
+    );
+    // assertPermission runs before the transaction → called with ctx.db.
     expect(assertPermission).toHaveBeenCalledWith(mockDb, "user-1", 9, "card:create");
+  });
+
+  it("throws CONFLICT (rolling back the card) when the item was already claimed", async () => {
+    const { inboxRouter } = await import("./inbox");
+    const listRepo = await import("@kan/db/repository/list.repo");
+    const cardRepo = await import("@kan/db/repository/card.repo");
+    mockGetByPublicId.mockResolvedValueOnce({
+      userId: "user-1",
+      title: "buy milk",
+      description: null,
+      dueDate: null,
+      sourceMeta: null,
+    });
+    (
+      listRepo.getWorkspaceAndListIdByListPublicId as ReturnType<typeof vi.fn>
+    ).mockResolvedValueOnce({
+      id: 5,
+      workspaceId: 9,
+      boardPublicId: "brd123brd123",
+    });
+    (cardRepo.create as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      publicId: "crd123crd123",
+    });
+    // A concurrent conversion already soft-deleted the item, so the guarded
+    // softDelete matches zero rows and resolves undefined.
+    mockSoftDelete.mockResolvedValueOnce(undefined);
+    const ctx = { user: mockUser, db: mockDb } as never;
+
+    await expect(
+      inboxRouter
+        .createCaller(ctx)
+        .convertToCard({
+          publicId: "abc123abc123",
+          listPublicId: "lst123lst123",
+        }),
+    ).rejects.toMatchObject({ code: "CONFLICT" });
   });
 
   it("does not create a card when permission is denied", async () => {

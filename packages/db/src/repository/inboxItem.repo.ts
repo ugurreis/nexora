@@ -1,6 +1,6 @@
 import { and, count, desc, eq, gte, isNull } from "drizzle-orm";
 
-import type { dbClient } from "@kan/db/client";
+import type { dbClient, Transaction } from "@kan/db/client";
 import type { InboxSource } from "@kan/db/schema";
 import { inboxItems } from "@kan/db/schema";
 import { generateUID } from "@kan/shared/utils";
@@ -97,7 +97,7 @@ export const update = async (
 };
 
 export const softDelete = async (
-  db: dbClient,
+  db: dbClient | Transaction,
   input: { publicId: string; userId: string; sourceMeta?: string },
 ) => {
   const [result] = await db

@@ -42,11 +42,28 @@ export async function runOnce(
         // Poison message: no fetchable source. Mark \Seen anyway so it does
         // not resurface on every search({ seen: false }) as an infinite retry.
         logger.warn({ uid }, "email dropped: no source; marking seen to avoid retry loop");
-        await client.messageFlagsAdd(uid, ["\\Seen"], { uid: true });
+        await markSeen(client, uid);
         continue;
       }
 
-      const parsed = await simpleParser(message.source);
+      let parsed: Awaited<ReturnType<typeof simpleParser>>;
+      try {
+        parsed = await simpleParser(message.source);
+      } catch (error) {
+        // Unparseable MIME fails identically on every retry (permanent). If we
+        // let it throw, the loop aborts, \Seen is never set, and the same UID
+        // resurfaces first on the next poll — an infinite loop that wedges the
+        // shared mailbox for ALL users behind one malformed email. Dead-letter
+        // it: mark \Seen + log. NOTE: transient/DB failures are deliberately
+        // NOT caught here — those must propagate to the backoff loop and retry.
+        logger.warn(
+          { uid, error },
+          "email dropped: unparseable MIME; marking seen to avoid wedging inbox",
+        );
+        await markSeen(client, uid);
+        continue;
+      }
+
       const incoming: IncomingMessage = {
         to: addressText(parsed.to),
         deliveredTo: firstHeader(parsed.headers.get("delivered-to")),
@@ -67,10 +84,24 @@ export async function runOnce(
       }
 
       // Idempotency: her işlenen mesaj (oluşturulmuş VEYA düşürülmüş) okundu işaretlenir.
-      await client.messageFlagsAdd(uid, ["\\Seen"], { uid: true });
+      await markSeen(client, uid);
     }
   } finally {
     lock.release();
+  }
+}
+
+// messageFlagsAdd resolves false when the store did not apply the flag. If we
+// ignore that, the message stays unseen and gets reprocessed next poll (a
+// duplicate item). We cannot force it, but a warning makes the cause visible
+// instead of surfacing later as a mystery duplicate.
+async function markSeen(client: ImapFlow, uid: number): Promise<void> {
+  const ok = await client.messageFlagsAdd(uid, ["\\Seen"], { uid: true });
+  if (!ok) {
+    logger.warn(
+      { uid },
+      "failed to set \\Seen flag; message may be reprocessed on next poll",
+    );
   }
 }
 
