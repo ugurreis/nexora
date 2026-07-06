@@ -149,3 +149,20 @@ Dal: `kanbantr-faz0` (fork: ugurreis/kan, upstream: kanbn/kan)
 - DOĞRULAMA (chrome-devtools): header logosu artık "Nexora"; curl /login SSR "Nexora".
 - BİLİNEN DEV ARTEFAKTI: rename sonrası kimlikli sayfalarda "Text content does not match server-rendered HTML" hydration overlay'i çıktı. Kök neden [Doğrulandı: curl /]: dev sunucusu bazı route'ların (/, dashboard) SSR modülünü stale cache'ten servis ediyor (KanbanTR), client bundle Nexora → uyumsuzluk. Kaynak DOĞRU; PRODUCTION BUILD'de her route tek seferde Nexora derlenir, uyumsuzluk OLMAZ. Çözüm: dev sunucu RESTART (browser reload/dosya-touch yetmedi). KOD DEĞİŞİKLİĞİ GEREKMEZ.
 - TYPECHECK: değişiklikler string/JSON, tip etkisi yok.
+
+## EK TUR 11 — Görsel cila: tek-kişi-tek-renk avatar + aciliyet rozetleri + zengin pano kartları (2026-07-06)
+- BAĞLAM: Bu tur önceki oturumdan COMMIT'SİZ WIP olarak devralındı (11 dosya). "devam" ile tamamlandı ve canlı doğrulandı.
+- GERÇEK BASELINE DÜZELTMESİ: progress.md eski turlarda "@kan/web=14 baseline" diyordu; git stash + typecheck ile ölçülen GERÇEK baseline = 13. [Doğrulandı: git stash -u + pnpm typecheck karşılaştırması]. WIP, MemberSelector'a zorunlu `email` ekleyip CardContextMembersModal'ı beslemediği için 14'e çıkarmıştı (1 regresyon).
+- YAPILAN DÜZELTMELER (bu oturum):
+  * utils/avatarColor.ts (WIP'ten): tek kaynak `getAvatarColor(seed=email)` — aynı kişi TÜM sitede aynı renk (8 renkli palet). analytics + BoardPreview + NewBoardForm + Avatar.tsx dağınık `AVATARS/hashIndex` kopyaları buna bağlandı.
+  * REGRESYON KAPATILDI: CardContextMembersModal.tsx formattedMembers'a `email` alanı eklendi (card/index.tsx zaten besliyordu; ikinci çağıran atlanmıştı) → typecheck 14→13 baseline'a döndü. [Doğrulandı: pnpm --filter @kan/web typecheck]
+  * DRY: `dueTone` 3 dosyaya (Card.tsx, DueDateSelector.tsx, BoardPreview.tsx) kopyalanmıştı → tek `utils/dueTone.ts`'e alındı (geçmiş=kırmızı, ≤3g=amber, ileri=emerald). Card.tsx'te fonksiyon import bloğunun ortasına düşmüştü, o da giderildi.
+  * i18n DÜZELTMESİ: DueDateSelector tarih rozeti `format(...)`'i locale'siz çağırıp en-US'a düşüyordu ("10 Jul 2026"). useLocalisation dateLocale eklendi → "10 Tem 2026" (EK TUR 5 Türkçe-tarih hattıyla tutarlı). [Doğrulandı: chrome-devtools reload]
+- CANLI DOĞRULAMA (chrome-devtools, localhost:3001, demo DB):
+  * /templates + /boards: zengin BoardsList kartları — etiket renk çubukları, liste kolonları önizleme ("+N" taşma), gradient ikon, uzatılmış kart. Gerçek şablon/pano verisinden.
+  * Pano (Mobil Uygulama): Card.tsx aciliyet rozetleri — NEX-14 "9 Tem" amber (≤3g), diğerleri emerald pill + saat ikonu. Avatar renkleri kişi-başı tutarlı (AK kırmızı, ED teal).
+  * Kart detayı (NEX-11): MemberSelector "+ Ekle" üye atanmışken de görünür; Üyeler avatarı renkli; Son tarih rozeti Türkçe.
+  * Konsol: yalnız önceden var olan dev uyarıları (Tooltip unmount, Tiptap SSR) — değişen bileşenlerden hata YOK.
+  * analytics: rol-korumalı (demo admin değil, Ayarlar'a yönlendi); getAvatarColor aynı util, 4 yüzeyde teyitli.
+- TYPECHECK: @kan/web=13 (gerçek baseline, YENİ hata yok). [Doğrulandı: pnpm --filter @kan/web typecheck]
+- DURUM: Kod hazır + doğrulandı. COMMIT KULLANICI ONAYI BEKLİYOR (henüz commit'lenmedi). Deploy hâlâ duruyor (token yok).

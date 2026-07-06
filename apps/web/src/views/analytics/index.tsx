@@ -9,15 +9,7 @@ import { PageHead } from "~/components/PageHead";
 import { usePermissions } from "~/hooks/usePermissions";
 import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
-
-const AVATARS = [
-  "bg-brand-500",
-  "bg-amber-500",
-  "bg-sky-500",
-  "bg-violet-500",
-  "bg-rose-500",
-  "bg-teal-500",
-];
+import { getAvatarColor } from "~/utils/avatarColor";
 
 function initials(name?: string | null, email?: string) {
   const src = name?.trim() || email?.split("@")[0] || "?";
@@ -26,12 +18,6 @@ function initials(name?: string | null, email?: string) {
     .slice(0, 2)
     .map((p) => p[0]?.toUpperCase() ?? "")
     .join("");
-}
-
-function hashIndex(seed: string, mod: number) {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) | 0;
-  return Math.abs(h) % mod;
 }
 
 export default function AnalyticsView() {
@@ -128,9 +114,9 @@ export default function AnalyticsView() {
                       />
                     ) : (
                       <span
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white ${
-                          AVATARS[hashIndex(m.memberPublicId, AVATARS.length)]
-                        }`}
+                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white ${getAvatarColor(
+                          m.email,
+                        )}`}
                       >
                         {initials(m.name, m.email)}
                       </span>

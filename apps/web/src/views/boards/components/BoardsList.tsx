@@ -3,7 +3,6 @@ import { t } from "@lingui/core/macro";
 import { HiOutlineRectangleStack, HiOutlineStar, HiOutlineTrash, HiStar } from "react-icons/hi2";
 import { motion } from "framer-motion";
 import Button from "~/components/Button";
-import PatternedBackground from "~/components/PatternedBackground";
 import { Tooltip } from "~/components/Tooltip";
 import { usePermissions } from "~/hooks/usePermissions";
 import { useModal } from "~/providers/modal";
@@ -122,13 +121,17 @@ export function BoardsList({ isTemplate, archived = false }: { isTemplate?: bool
           <Link
             href={`${isTemplate ? "templates" : "boards"}/${board.publicId}`}
           >
-            <div className="group relative mr-5 flex h-[150px] w-full flex-col justify-between overflow-hidden rounded-2xl bg-white p-4 ring-1 ring-light-300/70 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7),0_2px_8px_-2px_rgba(16,24,40,0.06),0_16px_36px_-18px_rgba(13,148,136,0.14)] transition-all hover:-translate-y-0.5 hover:ring-brand-400/60 dark:bg-dark-50 dark:ring-dark-300">
+            <div className="group relative mr-5 flex h-[190px] w-full flex-col overflow-hidden rounded-2xl bg-white p-4 ring-1 ring-light-300/70 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7),0_2px_8px_-2px_rgba(16,24,40,0.06),0_16px_36px_-18px_rgba(13,148,136,0.14)] transition-all hover:-translate-y-0.5 hover:ring-brand-400/60 dark:bg-dark-50 dark:ring-dark-300">
               {/* Landing kartlarındaki yumuşak emerald aksan */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 to-brand-600 opacity-70"
+                className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 to-brand-600"
               />
-              <PatternedBackground />
+              {/* Yumuşak emerald parıltı — derinlik */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-brand-400/15 blur-2xl"
+              />
               <button
                 onClick={(e) => handleToggleFavorite(e, board.publicId, board.favorite)}
                 className={`absolute right-3 top-3 z-10 rounded p-1 transition-all hover:bg-light-300 dark:hover:bg-dark-200 ${board.favorite ? "" : "md:opacity-0 md:group-hover:opacity-100"
@@ -150,13 +153,50 @@ export function BoardsList({ isTemplate, archived = false }: { isTemplate?: bool
                   <HiOutlineTrash className="h-5 w-5" />
                 </button>
               )}
-              <div className="relative z-[1] mt-auto flex items-center gap-2.5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400">
+              {/* Başlık */}
+              <div className="relative z-[1] flex items-center gap-2.5 pr-16">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-[0_4px_10px_-2px_rgba(13,148,136,0.45)]">
                   <HiOutlineRectangleStack className="h-4 w-4" />
                 </span>
                 <p className="truncate text-[14px] font-bold text-light-1000 dark:text-dark-1000">
                   {board.name}
                 </p>
+              </div>
+
+              {/* Etiket renkleri */}
+              {board.labels.length > 0 && (
+                <div className="relative z-[1] mt-3 flex flex-wrap gap-1">
+                  {board.labels.slice(0, 8).map((label) => (
+                    <span
+                      key={label.publicId}
+                      title={label.name}
+                      className="h-1.5 w-6 rounded-full"
+                      style={{ backgroundColor: label.colourCode ?? "#cbd5e1" }}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Liste kolonları önizleme — şablonun/panonun içi */}
+              <div className="relative z-[1] mt-auto flex flex-wrap gap-1.5">
+                {board.lists.slice(0, 4).map((list) => (
+                  <span
+                    key={list.publicId}
+                    className="rounded-md bg-light-100 px-2 py-1 text-[11px] font-medium text-light-950 dark:bg-dark-100 dark:text-dark-900"
+                  >
+                    {list.name}
+                  </span>
+                ))}
+                {board.lists.length > 4 && (
+                  <span className="rounded-md bg-light-100 px-2 py-1 text-[11px] font-medium text-light-900 dark:bg-dark-100 dark:text-dark-800">
+                    +{board.lists.length - 4}
+                  </span>
+                )}
+                {board.lists.length === 0 && (
+                  <span className="text-[11px] text-light-800 dark:text-dark-800">
+                    {t`Boş`}
+                  </span>
+                )}
               </div>
             </div>
           </Link>

@@ -1,13 +1,15 @@
 import { t } from "@lingui/core/macro";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
-import { HiMiniPlus } from "react-icons/hi2";
+import { HiMiniPlus, HiOutlineCalendarDays } from "react-icons/hi2";
 
 import DateSelector from "~/components/DateSelector";
+import { useLocalisation } from "~/hooks/useLocalisation";
 import { usePopup } from "~/providers/popup";
 import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
 import { invalidateCard } from "~/utils/cardInvalidation";
+import { dueTone } from "~/utils/dueTone";
 
 interface DueDateSelectorProps {
   cardPublicId: string;
@@ -23,6 +25,7 @@ export function DueDateSelector({
   disabled = false,
 }: DueDateSelectorProps) {
   const { showPopup } = usePopup();
+  const { dateLocale } = useLocalisation();
   const { workspace } = useWorkspace();
   const utils = api.useUtils();
   const [isOpen, setIsOpen] = useState(false);
@@ -114,7 +117,14 @@ export function DueDateSelector({
         className={`flex h-full w-full items-center rounded-[5px] border-[1px] border-light-50 py-1 pl-2 text-left text-xs text-neutral-900 dark:border-dark-50 dark:text-dark-1000 ${disabled ? "cursor-not-allowed opacity-60" : "hover:border-light-300 hover:bg-light-200 dark:hover:border-dark-200 dark:hover:bg-dark-100"}`}
       >
         {dueDate ? (
-          <span>{format(dueDate, "MMM d, yyyy")}</span>
+          <span
+            className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-semibold ${dueTone(
+              new Date(dueDate),
+            )}`}
+          >
+            <HiOutlineCalendarDays className="h-3.5 w-3.5" />
+            {format(dueDate, "d MMM yyyy", { locale: dateLocale })}
+          </span>
         ) : (
           <>
             <HiMiniPlus size={22} className="pr-2" />

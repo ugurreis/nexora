@@ -14,6 +14,7 @@ import { useModal } from "~/providers/modal";
 import { usePopup } from "~/providers/popup";
 import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
+import { getAvatarColor } from "~/utils/avatarColor";
 import TemplateBoards from "./TemplateBoards";
 
 const schema = z.object({
@@ -205,7 +206,11 @@ export function NewBoardForm({ isTemplate }: { isTemplate?: boolean }) {
                         : "bg-light-50 text-light-1000 ring-light-300 hover:ring-brand-400 dark:bg-dark-50 dark:text-dark-1000 dark:ring-dark-300"
                     }`}
                   >
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-[10px] font-bold text-white">
+                    <span
+                      className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold text-white ${getAvatarColor(
+                        m.email,
+                      )}`}
+                    >
                       {memberInitials(m.user?.name, m.email)}
                     </span>
                     {m.user?.name ?? m.email}

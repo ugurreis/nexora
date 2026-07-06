@@ -14,6 +14,7 @@ interface MemberSelectorProps {
   members: {
     key: string;
     value: string;
+    email: string;
     selected: boolean;
     leftIcon: React.ReactNode;
     imageUrl: string | undefined;
@@ -116,25 +117,25 @@ export default function MemberSelector({
           disabled={disabled}
           asChild
         >
-          <div className={`flex h-full w-full items-center rounded-[5px] border-[1px] border-light-50 py-1 pl-2 text-left text-xs text-neutral-900 dark:border-dark-50 dark:text-dark-1000 ${disabled ? "cursor-not-allowed opacity-60" : "hover:border-light-300 hover:bg-light-200 dark:hover:border-dark-200 dark:hover:bg-dark-100"}`}>
-            {selectedMembers.length ? (
-              <div className="isolate flex justify-end -space-x-1 overflow-hidden">
-                {selectedMembers.map(({ value, imageUrl }) => (
+          <div className={`flex h-full w-full items-center gap-2 rounded-[5px] border-[1px] border-light-50 py-1 pl-2 text-left text-xs text-neutral-900 dark:border-dark-50 dark:text-dark-1000 ${disabled ? "cursor-not-allowed opacity-60" : "hover:border-light-300 hover:bg-light-200 dark:hover:border-dark-200 dark:hover:bg-dark-100"}`}>
+            {selectedMembers.length > 0 && (
+              <div className="isolate flex -space-x-1 overflow-hidden">
+                {selectedMembers.map(({ value, email, imageUrl }) => (
                   <Avatar
                     key={value}
                     size="sm"
                     name={value}
                     imageUrl={imageUrl}
-                    email={value}
+                    email={email}
                   />
                 ))}
               </div>
-            ) : (
-              <>
-                <HiMiniPlus size={22} className="pr-2" />
-                {t`Add member`}
-              </>
             )}
+            {/* "Kişi ekle" üye atansa da HER ZAMAN görünür */}
+            <span className="flex items-center gap-0.5 font-medium text-brand-600 dark:text-brand-400">
+              <HiMiniPlus size={16} />
+              {selectedMembers.length ? t`Ekle` : t`Kişi ekle`}
+            </span>
           </div>
         </CheckboxDropdown>
       )}

@@ -28,6 +28,7 @@ export function CardContextMembersModal() {
         member.user?.name ?? null,
         member.user?.email ?? member.email,
       ),
+      email: member.user?.email ?? member.email,
       imageUrl: member.user?.image ? getAvatarUrl(member.user.image) : undefined,
       selected: isSelected,
       leftIcon: (

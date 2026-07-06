@@ -10,19 +10,12 @@ import {
 } from "react-icons/hi2";
 
 import { api } from "~/utils/api";
+import { getAvatarColor } from "~/utils/avatarColor";
+import { dueTone } from "~/utils/dueTone";
 
 // Landing'deki pano mockup'ının birebir karşılığı: renkli etiket çubukları +
 // kart kodu + atanan avatar(lar) + deadline rozeti + tamamlandı çizgisi.
 // Tüm veri board.byId'den gelir (uydurma yok).
-const AVATARS = [
-  "bg-brand-500",
-  "bg-amber-500",
-  "bg-sky-500",
-  "bg-violet-500",
-  "bg-rose-500",
-  "bg-teal-500",
-];
-
 const MAX_CARDS = 5;
 
 function initials(name?: string | null, email?: string) {
@@ -30,12 +23,6 @@ function initials(name?: string | null, email?: string) {
   if (!src) return "?";
   const parts = src.split(/\s+/).slice(0, 2);
   return parts.map((p) => p[0]?.toUpperCase() ?? "").join("") || "?";
-}
-
-function hashIndex(seed: string, mod: number) {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) | 0;
-  return Math.abs(h) % mod;
 }
 
 function formatDue(d: Date) {
@@ -51,15 +38,6 @@ function formatDueFull(d: Date) {
     month: "long",
     year: "numeric",
   }).format(d);
-}
-
-function dueTone(d: Date) {
-  const days = Math.ceil((d.getTime() - Date.now()) / 86400000);
-  if (days < 0)
-    return "bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300";
-  if (days <= 3)
-    return "bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300";
-  return "bg-brand-500/10 text-brand-700 dark:text-brand-300";
 }
 
 export function BoardPreview({
@@ -84,61 +62,66 @@ export function BoardPreview({
       className="relative z-10 mt-4 overflow-hidden rounded-2xl bg-white ring-1 ring-light-300/70 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7),0_2px_8px_-2px_rgba(16,24,40,0.06),0_20px_44px_-20px_rgba(13,148,136,0.16)] dark:bg-dark-50 dark:ring-dark-300"
     >
       <div className="flex items-center justify-between border-b border-light-200/80 px-5 py-3.5 dark:border-dark-200">
-        <div className="flex items-center gap-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-brand-500" />
-          <h2 className="text-sm font-bold text-light-1000 dark:text-dark-1000">
-            {boardName}
-          </h2>
-        </div>
-        <div className="flex items-center gap-3">
-          {/* Proje ekibi (atanan üyeler) */}
-          {data?.members && data.members.length > 0 && (
-            <div className="flex -space-x-1.5">
-              {data.members.slice(0, 4).map((m) =>
-                m.user?.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={m.publicId}
-                    src={m.user.image}
-                    alt=""
-                    className="h-6 w-6 rounded-full object-cover ring-2 ring-white dark:ring-dark-50"
-                    title={m.user.name ?? m.email}
-                  />
-                ) : (
-                  <span
-                    key={m.publicId}
-                    title={m.user?.name ?? m.email}
-                    className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold text-white ring-2 ring-white dark:ring-dark-50 ${
-                      AVATARS[hashIndex(m.publicId, AVATARS.length)]
-                    }`}
-                  >
-                    {initials(m.user?.name, m.email)}
-                  </span>
-                ),
-              )}
-            </div>
-          )}
-          {/* Proje (pano) teslim tarihi — salt-okunur. Düzenleme proje
-              oluşturma/ayarlar ekranında (kişi atama ile birlikte). */}
+        {/* Proje adı + teslim tarihi + ekip = tek grup (deadline'ın bu
+            projeye ait olduğu net olsun diye ada bitişik). */}
+        <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2">
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-brand-500" />
+            <h2 className="text-sm font-bold text-light-1000 dark:text-dark-1000">
+              {boardName}
+            </h2>
+          </div>
+
           {data?.dueDate && (
             <span
-              className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${dueTone(
+              className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold ${dueTone(
                 new Date(data.dueDate),
               )}`}
-              title={t`Proje teslim tarihi`}
+              title={t`Bu projenin teslim tarihi`}
             >
               <HiOutlineFlag className="h-3.5 w-3.5" />
               {t`Proje teslimi`}: {formatDueFull(new Date(data.dueDate))}
             </span>
           )}
-          <Link
-            href={`boards/${boardPublicId}`}
-            className="flex items-center gap-1 text-xs font-semibold text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400"
-          >
-            {t`Panoyu aç`}
-            <HiOutlineArrowRight className="h-3.5 w-3.5" />
-          </Link>
+
+          {data?.members && data.members.length > 0 && (
+            <span className="flex items-center gap-1.5">
+              <span className="text-xs text-light-800 dark:text-dark-800">
+                {t`Ekip`}
+              </span>
+              <span className="flex -space-x-1.5">
+                {data.members.slice(0, 4).map((m) =>
+                  m.user?.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={m.publicId}
+                      src={m.user.image}
+                      alt=""
+                      className="h-6 w-6 rounded-full object-cover ring-2 ring-white dark:ring-dark-50"
+                      title={m.user.name ?? m.email}
+                    />
+                  ) : (
+                    <span
+                      key={m.publicId}
+                      title={m.user?.name ?? m.email}
+                      className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold text-white ring-2 ring-white dark:ring-dark-50 ${getAvatarColor(m.email)}`}
+                    >
+                      {initials(m.user?.name, m.email)}
+                    </span>
+                  ),
+                )}
+              </span>
+            </span>
+          )}
         </div>
+
+        <Link
+          href={`boards/${boardPublicId}`}
+          className="flex shrink-0 items-center gap-1 text-xs font-semibold text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400"
+        >
+          {t`Panoyu aç`}
+          <HiOutlineArrowRight className="h-3.5 w-3.5" />
+        </Link>
       </div>
 
       <div className="flex gap-3 overflow-x-auto bg-gradient-to-b from-transparent to-light-100/40 p-4 dark:to-dark-100/40">
@@ -236,9 +219,7 @@ export function BoardPreview({
                             ) : (
                               <span
                                 key={m.publicId}
-                                className={`flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-bold text-white ring-2 ring-white dark:ring-dark-50 ${
-                                  AVATARS[hashIndex(m.publicId, AVATARS.length)]
-                                }`}
+                                className={`flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-bold text-white ring-2 ring-white dark:ring-dark-50 ${getAvatarColor(m.email)}`}
                               >
                                 {initials(m.user?.name, m.email)}
                               </span>

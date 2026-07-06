@@ -574,7 +574,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
       <PageHead
         title={`${boardData?.name ?? (isTemplate ? t`Board` : t`Template`)} | ${workspace.name ?? t`Workspace`}`}
       />
-      <div className="relative flex h-full flex-col">
+      <div className="relative flex h-full flex-col bg-gradient-to-b from-[#eef3f1] to-[#e7efec] dark:from-dark-100 dark:to-dark-50">
         <PatternedBackground />
         <div className="z-10 flex w-full flex-col justify-between p-6 md:flex-row md:p-8">
           {isLoading && !boardData && (

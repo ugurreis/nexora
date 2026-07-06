@@ -1,4 +1,4 @@
-import { format, isBefore, isSameYear, startOfDay } from "date-fns";
+import { format, isSameYear } from "date-fns";
 import { t } from "@lingui/core/macro";
 import { HiOutlinePaperClip } from "react-icons/hi";
 import {
@@ -15,6 +15,7 @@ import Badge from "~/components/Badge";
 import CircularProgress from "~/components/CircularProgress";
 import LabelIcon from "~/components/LabelIcon";
 import { useLocalisation } from "~/hooks/useLocalisation";
+import { dueTone } from "~/utils/dueTone";
 import { getAvatarUrl } from "~/utils/helpers";
 
 const Card = ({
@@ -57,7 +58,6 @@ const Card = ({
 }) => {
   const { dateLocale } = useLocalisation();
   const showYear = dueDate ? !isSameYear(dueDate, new Date()) : false;
-  const isOverdue = dueDate ? isBefore(dueDate, startOfDay(new Date())) : false;
   const completedItems = checklists.reduce((acc, checklist) => {
     return acc + checklist.items.filter((item) => item.completed).length;
   }, 0);
@@ -134,21 +134,17 @@ const Card = ({
                 </div>
               )}
               {hasDueDate && dueDate && (
-                <div
+                <span
                   className={twMerge(
-                    "flex items-center gap-1",
-                    isOverdue
-                      ? "text-red-600 dark:text-red-400"
-                      : "text-light-800 dark:text-dark-800",
+                    "inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px] font-semibold",
+                    dueTone(dueDate),
                   )}
                 >
-                  <HiOutlineClock className="h-4 w-4" />
-                  <span className="text-[11px]">
-                    {format(dueDate, showYear ? "do MMM yyyy" : "do MMM", {
-                      locale: dateLocale,
-                    })}
-                  </span>
-                </div>
+                  <HiOutlineClock className="h-3.5 w-3.5" />
+                  {format(dueDate, showYear ? "do MMM yyyy" : "do MMM", {
+                    locale: dateLocale,
+                  })}
+                </span>
               )}
               {comments.length > 0 && (
                 <div className="flex items-center gap-1 text-light-700 dark:text-dark-800">
