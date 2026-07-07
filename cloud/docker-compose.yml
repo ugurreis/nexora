@@ -118,7 +118,7 @@ services:
 
   inbox-worker:
     image: ghcr.io/kanbn/kan-inbox-worker:latest
-    container_name: ${CONTAINER_NAME:-kan-inbox-worker}
+    container_name: ${INBOX_WORKER_CONTAINER_NAME:-kan-inbox-worker}
     build:
       context: ..
       dockerfile: apps/web/Dockerfile

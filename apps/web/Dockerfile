@@ -129,10 +129,15 @@ CMD ["bootstrap.cjs"]
 FROM alpine AS inbox-worker
 WORKDIR /app
 
-COPY --from=deps /app/ ./
-COPY --from=pruner /app/out/full/ .
+COPY --chown=node:node --from=deps /app/ ./
+COPY --chown=node:node --from=pruner /app/out/full/ .
 
 ENV CI=true
 ENV NODE_ENV=production
+
+# This stage parses untrusted, internet-facing email content (mailparser /
+# html-to-text). Unlike the distroless `web` stage it still carries the full
+# dev toolchain (pnpm, turbo, source), so it must not also run as root.
+USER node
 
 CMD ["pnpm", "--filter", "@kan/inbox-worker", "start"]

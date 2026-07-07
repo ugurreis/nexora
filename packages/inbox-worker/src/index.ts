@@ -18,6 +18,18 @@ async function main() {
     return;
   }
 
+  // The shared @kan/db client silently falls back to an ephemeral PGLite
+  // store when POSTGRES_URL is unset (convenient for the web app's zero-config
+  // quick-start). The worker must never run against that fallback: it would
+  // mark emails \Seen (permanent, on the mail server) while writing cards to a
+  // database that vanishes on container restart — silent, unrecoverable mail
+  // loss. Fail fast instead.
+  if (!process.env.POSTGRES_URL) {
+    throw new Error(
+      "POSTGRES_URL is not set — refusing to start inbox worker against the ephemeral PGLite fallback (would silently lose processed emails).",
+    );
+  }
+
   const db = createDrizzleClient();
   logger.info(
     { host: config.imapHost, pollSeconds: config.pollSeconds },

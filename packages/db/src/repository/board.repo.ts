@@ -389,6 +389,10 @@ export const getByPublicId = async (
     ...board,
     favorite: board.userFavorites.length > 0,
     userFavorites: undefined,
+    // Unlike workspace.members (filtered in-query above), this junction has no
+    // where clause, so a workspace member removed after being added to the
+    // project team would otherwise keep showing up here.
+    members: board.members.filter((bm) => bm.member.deletedAt === null),
     lists: board.lists.map((list) => ({
       ...list,
       cards: list.cards.map((card) => ({
@@ -688,16 +692,23 @@ export const update = async (
 };
 
 // Projeye (pano) workspace üyeleri atar. publicId'leri iç id'lere çözer.
+// workspaceId zorunlu: aksi halde başka bir workspace'e ait bir üyenin
+// publicId'si tahmin/bilinirse o kişi bu board'a (yanlış workspace'e) üye
+// olarak eklenebilir ve board.byId üzerinden adı/e-postası/avatarı sızar.
 export const setBoardMembers = async (
   db: dbClient,
   boardId: number,
+  workspaceId: number,
   workspaceMemberPublicIds: string[],
 ) => {
   if (workspaceMemberPublicIds.length === 0) return;
 
   const members = await db.query.workspaceMembers.findMany({
     columns: { id: true },
-    where: inArray(workspaceMembers.publicId, workspaceMemberPublicIds),
+    where: and(
+      inArray(workspaceMembers.publicId, workspaceMemberPublicIds),
+      eq(workspaceMembers.workspaceId, workspaceId),
+    ),
   });
 
   if (members.length === 0) return;

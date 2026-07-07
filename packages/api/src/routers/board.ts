@@ -428,6 +428,7 @@ export const boardRouter = createTRPCRouter({
             await boardRepo.setBoardMembers(
               ctx.db,
               created.id,
+              workspace.id,
               input.memberPublicIds,
             );
         }
@@ -461,6 +462,7 @@ export const boardRouter = createTRPCRouter({
         await boardRepo.setBoardMembers(
           ctx.db,
           result.id,
+          workspace.id,
           input.memberPublicIds,
         );
       }

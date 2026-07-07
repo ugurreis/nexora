@@ -1,4 +1,4 @@
-import { and, count, desc, eq, isNotNull } from "drizzle-orm";
+import { and, count, desc, eq, isNotNull, isNull } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 
 import type { dbClient } from "@kan/db/client";
@@ -143,6 +143,11 @@ export const getInboxEmailToken = async (db: dbClient, userId: string) => {
   return row?.inboxEmailToken ?? null;
 };
 
+// Only mints if the user has no token yet (WHERE ... IS NULL). Two concurrent
+// first-time calls would otherwise both read null, both write a *different*
+// token, and the loser's address (already returned to its caller) becomes
+// permanently invalid — silent mail loss. Returns undefined if another
+// request won the race; the caller should re-read the now-set token.
 export const setInboxEmailToken = async (
   db: dbClient,
   userId: string,
@@ -151,7 +156,7 @@ export const setInboxEmailToken = async (
   const [result] = await db
     .update(users)
     .set({ inboxEmailToken: token })
-    .where(eq(users.id, userId))
+    .where(and(eq(users.id, userId), isNull(users.inboxEmailToken)))
     .returning({ inboxEmailToken: users.inboxEmailToken });
 
   return result;

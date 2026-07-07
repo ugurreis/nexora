@@ -187,9 +187,23 @@ export const userRouter = createTRPCRouter({
 
       let token = await userRepo.getInboxEmailToken(ctx.db, userId);
       if (!token) {
-        token = generateInboxEmailToken();
-        await userRepo.setInboxEmailToken(ctx.db, userId, token);
+        const minted = await userRepo.setInboxEmailToken(
+          ctx.db,
+          userId,
+          generateInboxEmailToken(),
+        );
+        // undefined means a concurrent first call already won the race and
+        // set a different token; use that one instead of the one we generated.
+        token = minted
+          ? minted.inboxEmailToken
+          : await userRepo.getInboxEmailToken(ctx.db, userId);
       }
+
+      if (!token)
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to mint inbox email token",
+        });
 
       const domain = process.env.INBOX_EMAIL_DOMAIN ?? "nexovias.com";
       return { email: `inbox+${token}@${domain}` };
