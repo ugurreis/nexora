@@ -16,3 +16,4 @@ export * from "./permissions";
 export * from "./notifications";
 export * from "./webhooks";
 export * from "./inboxItems";
+export * from "./telegramLink";
