@@ -8,3 +8,4 @@ export * from "./s3";
 export * from "./mentions";
 export * from "./sanitize";
 export * from "./generateInboxEmailToken";
+export * from "./telegramLinkToken";
