@@ -2,6 +2,7 @@ import { relations } from "drizzle-orm";
 import {
   bigint,
   bigserial,
+  index,
   pgTable,
   text,
   timestamp,
@@ -45,6 +46,9 @@ export const telegramPendingTaskBatches = pgTable(
     expiresAt: timestamp("expiresAt").notNull(),
     consumedAt: timestamp("consumedAt"),
   },
+  (table) => [
+    index("telegram_pending_task_batch_expires_at_idx").on(table.expiresAt),
+  ],
 ).enableRLS();
 
 export const telegramPendingTaskBatchesRelations = relations(

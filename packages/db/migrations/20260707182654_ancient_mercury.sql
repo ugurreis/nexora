@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS "telegram_pending_task_batch_expires_at_idx" ON "telegram_pending_task_batch" USING btree ("expiresAt");
