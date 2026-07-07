@@ -1,7 +1,11 @@
-import { and, eq, isNull } from "drizzle-orm";
+import { and, eq, gt, isNull } from "drizzle-orm";
 
 import type { dbClient } from "@kan/db/client";
-import { telegramLinks, telegramPendingTaskBatches } from "@kan/db/schema";
+import {
+  telegramLinks,
+  telegramPendingTaskBatches,
+  telegramLinkTokens,
+} from "@kan/db/schema";
 import { generateUID } from "@kan/shared/utils";
 
 export const getLinkByUserId = async (db: dbClient, userId: string) => {
@@ -88,6 +92,38 @@ export const consumePendingBatch = async (db: dbClient, publicId: string) => {
       payload: telegramPendingTaskBatches.payload,
       expiresAt: telegramPendingTaskBatches.expiresAt,
     });
+
+  return result;
+};
+
+export const createLinkToken = async (
+  db: dbClient,
+  input: { userId: string; token: string; expiresAt: Date },
+) => {
+  const [result] = await db
+    .insert(telegramLinkTokens)
+    .values({
+      token: input.token,
+      userId: input.userId,
+      expiresAt: input.expiresAt,
+    })
+    .returning({ token: telegramLinkTokens.token });
+
+  return result;
+};
+
+export const consumeLinkToken = async (db: dbClient, token: string) => {
+  const [result] = await db
+    .update(telegramLinkTokens)
+    .set({ consumedAt: new Date() })
+    .where(
+      and(
+        eq(telegramLinkTokens.token, token),
+        isNull(telegramLinkTokens.consumedAt),
+        gt(telegramLinkTokens.expiresAt, new Date()),
+      ),
+    )
+    .returning({ userId: telegramLinkTokens.userId });
 
   return result;
 };

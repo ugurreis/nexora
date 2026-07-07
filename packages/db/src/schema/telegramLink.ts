@@ -61,3 +61,30 @@ export const telegramPendingTaskBatchesRelations = relations(
     }),
   }),
 );
+
+export const telegramLinkTokens = pgTable(
+  "telegram_link_token",
+  {
+    id: bigserial("id", { mode: "number" }).primaryKey(),
+    token: varchar("token", { length: 24 }).notNull().unique(),
+    userId: uuid("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    expiresAt: timestamp("expiresAt").notNull(),
+    consumedAt: timestamp("consumedAt"),
+  },
+  (table) => [
+    index("telegram_link_token_expires_at_idx").on(table.expiresAt),
+  ],
+).enableRLS();
+
+export const telegramLinkTokensRelations = relations(
+  telegramLinkTokens,
+  ({ one }) => ({
+    user: one(users, {
+      fields: [telegramLinkTokens.userId],
+      references: [users.id],
+      relationName: "telegramLinkTokenUser",
+    }),
+  }),
+);

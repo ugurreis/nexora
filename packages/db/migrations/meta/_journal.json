@@ -288,6 +288,13 @@
       "when": 1783448814984,
       "tag": "20260707182654_ancient_mercury",
       "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "7",
+      "when": 1783450925688,
+      "tag": "20260707190205_fuzzy_steel_serpent",
+      "breakpoints": true
     }
   ]
 }
