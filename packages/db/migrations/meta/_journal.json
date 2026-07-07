@@ -281,6 +281,13 @@
       "when": 1783448500700,
       "tag": "20260707182140_kind_genesis",
       "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "7",
+      "when": 1783448814984,
+      "tag": "20260707182654_ancient_mercury",
+      "breakpoints": true
     }
   ]
 }
