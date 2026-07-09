@@ -24,8 +24,15 @@ describe("downloadTelegramFile", () => {
 
   it("throws when Telegram returns no file_path", async () => {
     const getFile = vi.fn().mockResolvedValue({});
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+
     await expect(
       downloadTelegramFile("BOT_TOKEN", "file-id-1", getFile),
-    ).rejects.toThrow();
+    ).rejects.toThrow("Telegram getFile returned no file_path");
+
+    expect(fetchMock).not.toHaveBeenCalled();
+
+    vi.unstubAllGlobals();
   });
 });
