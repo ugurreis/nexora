@@ -153,6 +153,14 @@ services:
       - dokploy-network
     env_file:
       - .env
+    restart: unless-stopped
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_WEBHOOK_SECRET=${TELEGRAM_WEBHOOK_SECRET}
+      - TELEGRAM_BOT_USERNAME=${TELEGRAM_BOT_USERNAME}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
     depends_on:
       migrator:
         condition: service_completed_successfully
