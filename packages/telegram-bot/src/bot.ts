@@ -96,28 +96,40 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
     }
 
     if (action === "cancel") {
-      const result = await cancelBatch(db, batchPublicId);
+      try {
+        const result = await cancelBatch(db, batchPublicId);
+        await ctx.answerCallbackQuery();
+        await ctx.editMessageText(
+          result.status === "cancelled"
+            ? "İptal edildi."
+            : "Bu istek zaten işlendi ya da süresi doldu.",
+        );
+      } catch (error) {
+        logger.error({ error }, "cancelBatch failed");
+        await ctx.answerCallbackQuery();
+        await ctx.editMessageText("Bir hata oluştu, tekrar dener misin?");
+      }
+      return;
+    }
+
+    try {
+      const result = await confirmBatch(db, batchPublicId);
       await ctx.answerCallbackQuery();
+      if (result.status !== "confirmed") {
+        await ctx.editMessageText("Bu istek zaten işlendi ya da süresi doldu.");
+        return;
+      }
+
+      const failedSuffix =
+        result.failedCount > 0 ? `, ${result.failedCount} tanesi başarısız oldu` : "";
       await ctx.editMessageText(
-        result.status === "cancelled"
-          ? "İptal edildi."
-          : "Bu istek zaten işlendi ya da süresi doldu.",
+        `${result.createdCount} kart oluşturuldu, ${result.inboxCount} tanesi Gelen Kutusu'na düştü${failedSuffix}.`,
       );
-      return;
+    } catch (error) {
+      logger.error({ error }, "confirmBatch failed");
+      await ctx.answerCallbackQuery();
+      await ctx.editMessageText("Bir hata oluştu, tekrar dener misin?");
     }
-
-    const result = await confirmBatch(db, batchPublicId);
-    await ctx.answerCallbackQuery();
-    if (result.status !== "confirmed") {
-      await ctx.editMessageText("Bu istek zaten işlendi ya da süresi doldu.");
-      return;
-    }
-
-    const failedSuffix =
-      result.failedCount > 0 ? `, ${result.failedCount} tanesi başarısız oldu` : "";
-    await ctx.editMessageText(
-      `${result.createdCount} kart oluşturuldu, ${result.inboxCount} tanesi Gelen Kutusu'na düştü${failedSuffix}.`,
-    );
   });
 
   return bot;
