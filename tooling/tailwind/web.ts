@@ -3,7 +3,7 @@ import forms from "@tailwindcss/forms";
 import scrollbar from "tailwind-scrollbar";
 
 export default {
-  content: ["./src/**/*.tsx"],
+  content: ["./src/**/*.{ts,tsx}"],
   darkMode: "class",
   theme: {
     extend: {

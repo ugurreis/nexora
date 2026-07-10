@@ -89,7 +89,7 @@ const MyApp: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
         <KeyboardShortcutProvider>
           <LinguiProviderWrapper>
             <FontSizeProvider>
-              <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
                 <ModalProvider>
                   <PopupProvider>
                     {posthogKey ? (
