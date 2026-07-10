@@ -3,6 +3,7 @@ import * as boardRepo from "@kan/db/repository/board.repo";
 import * as telegramLinkRepo from "@kan/db/repository/telegramLink.repo";
 
 import { matchOne } from "./match";
+import { t, type Locale } from "./messages";
 import { segmentTranscript } from "./segment";
 
 export interface ResolvedTask {
@@ -84,12 +85,15 @@ export async function resolveAndPersist(
   return { batchPublicId: batch.publicId, resolved };
 }
 
-export function formatSummary(resolved: ResolvedTask[]): string {
+export function formatSummary(
+  resolved: ResolvedTask[],
+  locale: Locale | null,
+): string {
   return resolved
     .map((task, index) => {
       const target = task.boardName
-        ? `${task.boardName} panosu${task.assigneeName ? ` → ${task.assigneeName}` : ""}`
-        : "Gelen Kutusu";
+        ? `${task.boardName} ${t("boardSuffix", locale)}${task.assigneeName ? ` → ${task.assigneeName}` : ""}`
+        : t("inboxLabel", locale);
       const due = task.dueDateISO ? ` — ${task.dueDateISO}` : "";
       return `${index + 1}. [${target}] ${task.title}${due}`;
     })

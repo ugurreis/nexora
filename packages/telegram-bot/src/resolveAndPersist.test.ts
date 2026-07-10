@@ -138,11 +138,27 @@ describe("formatSummary", () => {
         assigneePublicId: null,
         assigneeName: null,
       },
-    ]);
+    ], "tr");
     expect(summary).toContain("1.");
     expect(summary).toContain("TT Firması");
     expect(summary).toContain("Ahmet Yılmaz");
     expect(summary).toContain("2.");
     expect(summary).toContain("Gelen Kutusu");
+  });
+
+  it("formats an English summary when locale is 'en'", () => {
+    const resolved = [
+      {
+        title: "Design review",
+        description: null,
+        dueDateISO: null,
+        boardPublicId: "board1",
+        listPublicId: "list1",
+        boardName: "Marketing",
+        assigneePublicId: null,
+        assigneeName: null,
+      },
+    ];
+    expect(formatSummary(resolved, "en")).toBe("1. [Marketing board] Design review");
   });
 });

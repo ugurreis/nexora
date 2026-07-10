@@ -5,8 +5,10 @@ import { createLogger } from "@kan/logger";
 
 import type { WorkerConfig } from "./config";
 import { cancelBatch, confirmBatch } from "./confirm";
+import { mapWhisperLanguage } from "./locale";
 import { handleStart } from "./linking";
 import * as telegramLinkRepo from "@kan/db/repository/telegramLink.repo";
+import { confirmSummary, t } from "./messages";
 import { formatSummary, resolveAndPersist } from "./resolveAndPersist";
 import { downloadTelegramFile, transcribeVoice } from "./voice";
 
@@ -18,9 +20,7 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
   bot.command("start", async (ctx) => {
     const token = ctx.match?.trim();
     if (!token) {
-      await ctx.reply(
-        "Nexora ayarlarındaki 'Telegram'a Bağlan' butonundan gelen bağlantıyı kullanmalısın.",
-      );
+      await ctx.reply(t("startNoToken", null));
       return;
     }
 
@@ -28,17 +28,11 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
     const result = await handleStart(db, { chatId, token });
 
     if (result === "linked") {
-      await ctx.reply(
-        "Bağlandı! Artık buraya sesli mesaj bırakarak görev oluşturabilirsin.",
-      );
+      await ctx.reply(t("linked", null));
     } else if (result === "invalid-token") {
-      await ctx.reply(
-        "Bu bağlantının süresi dolmuş veya geçersiz. Nexora ayarlarından yeni bir bağlantı üret.",
-      );
+      await ctx.reply(t("invalidToken", null));
     } else {
-      await ctx.reply(
-        "Bu Telegram hesabı zaten başka bir Nexora hesabına bağlı.",
-      );
+      await ctx.reply(t("alreadyLinked", null));
     }
   });
 
@@ -46,9 +40,7 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
     const chatId = BigInt(ctx.chat.id);
     const link = await telegramLinkRepo.getLinkByChatId(db, chatId);
     if (!link) {
-      await ctx.reply(
-        "Önce Nexora ayarlarından 'Telegram'a Bağlan' ile hesabını bağlamalısın.",
-      );
+      await ctx.reply(t("notLinked", null));
       return;
     }
 
@@ -59,13 +51,11 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
       since,
     );
     if (recentCount >= config.telegramMaxVoiceMessagesPerHour) {
-      await ctx.reply(
-        "Bu saat için sesli komut limitine ulaştın, biraz sonra tekrar dener misin?",
-      );
+      await ctx.reply(t("rateLimited", link.locale as "tr" | "en" | null));
       return;
     }
 
-    await ctx.reply("Dinliyorum, bir saniye...");
+    await ctx.reply(t("listening", link.locale as "tr" | "en" | null));
 
     try {
       const audio = await downloadTelegramFile(
@@ -73,7 +63,12 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
         ctx.message.voice.file_id,
         (fileId) => bot.api.getFile(fileId),
       );
-      const transcript = await transcribeVoice(config.openaiApiKey, audio);
+      const { text: transcript, language: rawLanguage } = await transcribeVoice(
+        config.openaiApiKey,
+        audio,
+      );
+      const locale = mapWhisperLanguage(rawLanguage);
+      await telegramLinkRepo.updateLocaleByUserId(db, link.userId, locale);
 
       const result = await resolveAndPersist(db, {
         userId: link.userId,
@@ -82,20 +77,21 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
       });
 
       if (!result) {
-        await ctx.reply("Sesli mesajdan bir görev anlayamadım, tekrar dener misin?");
+        await ctx.reply(t("noTaskUnderstood", locale));
         return;
       }
 
       const keyboard = new InlineKeyboard()
-        .text("✅ Onayla", `confirm:${result.batchPublicId}`)
-        .text("❌ İptal", `cancel:${result.batchPublicId}`);
+        .text(t("confirmButton", locale), `confirm:${result.batchPublicId}`)
+        .text(t("cancelButton", locale), `cancel:${result.batchPublicId}`);
 
-      await ctx.reply(`${formatSummary(result.resolved)}\n\nOnaylıyor musun?`, {
-        reply_markup: keyboard,
-      });
+      await ctx.reply(
+        `${formatSummary(result.resolved, locale)}\n\n${t("confirmPrompt", locale)}`,
+        { reply_markup: keyboard },
+      );
     } catch (error) {
       logger.error({ error }, "voice message processing failed");
-      await ctx.reply("Sesli komutu işleyemedim, tekrar dener misin?");
+      await ctx.reply(t("processingFailed", link.locale as "tr" | "en" | null));
     }
   });
 
@@ -108,19 +104,23 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
       return;
     }
 
+    const chatId = ctx.chat ? BigInt(ctx.chat.id) : null;
+    const link = chatId ? await telegramLinkRepo.getLinkByChatId(db, chatId) : undefined;
+    const locale = (link?.locale as "tr" | "en" | null) ?? null;
+
     if (action === "cancel") {
       try {
         const result = await cancelBatch(db, batchPublicId);
         await ctx.answerCallbackQuery();
         await ctx.editMessageText(
           result.status === "cancelled"
-            ? "İptal edildi."
-            : "Bu istek zaten işlendi ya da süresi doldu.",
+            ? t("cancelled", locale)
+            : t("alreadyProcessedOrExpired", locale),
         );
       } catch (error) {
         logger.error({ error }, "cancelBatch failed");
         await ctx.answerCallbackQuery();
-        await ctx.editMessageText("Bir hata oluştu, tekrar dener misin?");
+        await ctx.editMessageText(t("genericError", locale));
       }
       return;
     }
@@ -129,19 +129,21 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
       const result = await confirmBatch(db, batchPublicId);
       await ctx.answerCallbackQuery();
       if (result.status !== "confirmed") {
-        await ctx.editMessageText("Bu istek zaten işlendi ya da süresi doldu.");
+        await ctx.editMessageText(t("alreadyProcessedOrExpired", locale));
         return;
       }
 
-      const failedSuffix =
-        result.failedCount > 0 ? `, ${result.failedCount} tanesi başarısız oldu` : "";
       await ctx.editMessageText(
-        `${result.createdCount} kart oluşturuldu, ${result.inboxCount} tanesi Gelen Kutusu'na düştü${failedSuffix}.`,
+        confirmSummary(locale, {
+          createdCount: result.createdCount,
+          inboxCount: result.inboxCount,
+          failedCount: result.failedCount,
+        }),
       );
     } catch (error) {
       logger.error({ error }, "confirmBatch failed");
       await ctx.answerCallbackQuery();
-      await ctx.editMessageText("Bir hata oluştu, tekrar dener misin?");
+      await ctx.editMessageText(t("genericError", locale));
     }
   });
 
