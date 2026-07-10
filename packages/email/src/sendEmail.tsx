@@ -8,21 +8,14 @@ import JoinWorkspaceTemplate from "./templates/join-workspace";
 import MagicLinkTemplate from "./templates/magic-link";
 import MentionTemplate from "./templates/mention";
 import ResetPasswordTemplate from "./templates/reset-password";
-import TelegramVoiceTaskTemplate from "./templates/telegram-voice-task";
 
-type Templates =
-  | "MAGIC_LINK"
-  | "JOIN_WORKSPACE"
-  | "RESET_PASSWORD"
-  | "MENTION"
-  | "TELEGRAM_VOICE_TASK";
+type Templates = "MAGIC_LINK" | "JOIN_WORKSPACE" | "RESET_PASSWORD" | "MENTION";
 
 const emailTemplates: Record<Templates, React.ComponentType<any>> = {
   MAGIC_LINK: MagicLinkTemplate,
   JOIN_WORKSPACE: JoinWorkspaceTemplate,
   RESET_PASSWORD: ResetPasswordTemplate,
   MENTION: MentionTemplate,
-  TELEGRAM_VOICE_TASK: TelegramVoiceTaskTemplate,
 };
 
 const transporter = nodemailer.createTransport({

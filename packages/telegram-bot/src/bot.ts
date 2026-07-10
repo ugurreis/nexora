@@ -8,41 +8,9 @@ import { cancelBatch, confirmBatch } from "./confirm";
 import { mapWhisperLanguage } from "./locale";
 import { handleStart } from "./linking";
 import * as telegramLinkRepo from "@kan/db/repository/telegramLink.repo";
-import * as userRepo from "@kan/db/repository/user.repo";
-import { sendEmail } from "@kan/email";
 import { confirmSummary, t } from "./messages";
 import { formatSummary, resolveAndPersist } from "./resolveAndPersist";
 import { downloadTelegramFile, transcribeVoice } from "./voice";
-
-async function sendConfirmationEmail(
-  db: dbClient,
-  input: {
-    userId: string;
-    transcript: string;
-    resolved: Parameters<typeof formatSummary>[0];
-    locale: "tr" | "en" | null;
-  },
-): Promise<void> {
-  try {
-    const user = await userRepo.getById(db, input.userId);
-    if (!user?.email) return;
-
-    await sendEmail(
-      user.email,
-      t("emailSubject", input.locale),
-      "TELEGRAM_VOICE_TASK",
-      {
-        heading: t("emailHeading", input.locale),
-        transcriptLabel: t("emailTranscriptLabel", input.locale),
-        transcript: input.transcript,
-        summaryLabel: t("emailSummaryLabel", input.locale),
-        summary: formatSummary(input.resolved, input.locale),
-      },
-    );
-  } catch (error) {
-    logger.error({ error, userId: input.userId }, "confirmation email failed");
-  }
-}
 
 const logger = createLogger("telegram-bot");
 
@@ -158,7 +126,7 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
     }
 
     try {
-      const result = await confirmBatch(db, batchPublicId);
+      const result = await confirmBatch(db, batchPublicId, locale);
       await ctx.answerCallbackQuery();
       if (result.status !== "confirmed") {
         await ctx.editMessageText(t("alreadyProcessedOrExpired", locale));
@@ -172,15 +140,6 @@ export function createBot(db: dbClient, config: WorkerConfig): Bot {
           failedCount: result.failedCount,
         }),
       );
-
-      if (result.userId && result.transcript) {
-        await sendConfirmationEmail(db, {
-          userId: result.userId,
-          transcript: result.transcript,
-          resolved: result.resolved,
-          locale,
-        });
-      }
     } catch (error) {
       logger.error({ error }, "confirmBatch failed");
       await ctx.answerCallbackQuery();

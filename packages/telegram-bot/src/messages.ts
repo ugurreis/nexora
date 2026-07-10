@@ -56,21 +56,9 @@ export const messages = {
   },
   inboxLabel: { tr: "Gelen Kutusu", en: "Inbox" },
   boardSuffix: { tr: "panosu", en: "board" },
-  emailSubject: {
-    tr: "Telegram sesli görevin onaylandı",
-    en: "Your Telegram voice task was confirmed",
-  },
-  emailHeading: {
-    tr: "Sesli görev onaylandı",
-    en: "Voice task confirmed",
-  },
-  emailTranscriptLabel: {
-    tr: "Söylediklerin (teyit için)",
-    en: "What you said (for confirmation)",
-  },
-  emailSummaryLabel: {
-    tr: "Oluşturulan/atanan görevler",
-    en: "Created/assigned tasks",
+  telegramInboxTitle: {
+    tr: "Telegram sesli mesaj (teyit)",
+    en: "Telegram voice message (confirmation)",
   },
 } as const satisfies Record<string, Record<Locale, string>>;
 

@@ -665,9 +665,6 @@ importers:
       '@kan/db':
         specifier: workspace:*
         version: link:../db
-      '@kan/email':
-        specifier: workspace:*
-        version: link:../email
       '@kan/logger':
         specifier: workspace:^
         version: link:../logger

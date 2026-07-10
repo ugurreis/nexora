@@ -12,7 +12,6 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
     "@kan/db": "workspace:*",
-    "@kan/email": "workspace:*",
     "@kan/logger": "workspace:^",
     "@kan/shared": "workspace:^",
     "grammy": "^1.44.0",

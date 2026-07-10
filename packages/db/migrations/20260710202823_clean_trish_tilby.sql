@@ -1,0 +1,1 @@
+ALTER TYPE "public"."inbox_source" ADD VALUE 'telegram';

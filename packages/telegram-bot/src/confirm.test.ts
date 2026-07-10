@@ -34,7 +34,7 @@ describe("confirmBatch", () => {
       telegramLinkRepo.consumePendingBatch as ReturnType<typeof vi.fn>
     ).mockResolvedValueOnce(undefined);
 
-    const result = await confirmBatch(mockDb, "batch1");
+    const result = await confirmBatch(mockDb, "batch1", "tr");
     expect(result.status).toBe("already-consumed");
   });
 
@@ -47,7 +47,7 @@ describe("confirmBatch", () => {
       expiresAt: new Date(Date.now() - 1000),
     });
 
-    const result = await confirmBatch(mockDb, "batch1");
+    const result = await confirmBatch(mockDb, "batch1", "tr");
     expect(result.status).toBe("expired");
   });
 
@@ -95,7 +95,7 @@ describe("confirmBatch", () => {
       publicId: "inb1",
     });
 
-    const result = await confirmBatch(mockDb, "batch1");
+    const result = await confirmBatch(mockDb, "batch1", "tr");
 
     expect(result).toEqual({
       status: "confirmed",
@@ -110,6 +110,12 @@ describe("confirmBatch", () => {
       mockDb,
       [{ cardId: 1, workspaceMemberId: 42 }],
     );
+    expect(inboxItemRepo.create).toHaveBeenLastCalledWith(mockDb, {
+      userId: "user-1",
+      title: "Telegram sesli mesaj (teyit)",
+      description: "yarın çekim var",
+      source: "telegram",
+    });
   });
 
   it("isolates a per-task failure so the other task in the batch still gets created", async () => {
@@ -151,7 +157,7 @@ describe("confirmBatch", () => {
       .mockRejectedValueOnce(new Error("list was deleted"))
       .mockResolvedValueOnce({ id: 2, publicId: "crd2" });
 
-    const result = await confirmBatch(mockDb, "batch1");
+    const result = await confirmBatch(mockDb, "batch1", "tr");
 
     expect(result).toEqual({
       status: "confirmed",

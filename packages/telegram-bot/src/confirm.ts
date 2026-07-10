@@ -5,6 +5,7 @@ import * as listRepo from "@kan/db/repository/list.repo";
 import * as telegramLinkRepo from "@kan/db/repository/telegramLink.repo";
 import * as workspaceRepo from "@kan/db/repository/workspace.repo";
 
+import { t, type Locale } from "./messages";
 import type { ResolvedTask } from "./resolveAndPersist";
 
 type BatchStatus = "expired" | "already-consumed" | "confirmed" | "cancelled";
@@ -48,6 +49,7 @@ export async function cancelBatch(
 export async function confirmBatch(
   db: dbClient,
   batchPublicId: string,
+  locale: Locale | null,
 ): Promise<{
   status: BatchStatus;
   createdCount: number;
@@ -131,6 +133,13 @@ export async function confirmBatch(
       continue;
     }
   }
+
+  await inboxItemRepo.create(db, {
+    userId: result.userId,
+    title: t("telegramInboxTitle", locale),
+    description: result.transcript,
+    source: "telegram",
+  });
 
   return {
     status: "confirmed",

@@ -12,7 +12,7 @@ import {
 
 import { users } from "./users";
 
-export const inboxSources = ["manual", "email"] as const;
+export const inboxSources = ["manual", "email", "telegram"] as const;
 export type InboxSource = (typeof inboxSources)[number];
 export const inboxSourceEnum = pgEnum("inbox_source", inboxSources);
 
