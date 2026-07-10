@@ -9331,6 +9331,10 @@
       [
         "src/views/public/board/index.tsx",
         87
+      ],
+      [
+        "src/views/settings/AccountSettings.tsx",
+        35
       ]
     ],
     "translation": "Lütfen tekrar deneyin."
@@ -14402,5 +14406,77 @@
       ]
     ],
     "translation": "YouTube URL'si"
+  },
+  "2od6i6": {
+    "message": "Could not connect Telegram",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        34
+      ]
+    ],
+    "translation": "Telegram bağlanamadı"
+  },
+  "SchpMp": {
+    "message": "Telegram",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        103
+      ]
+    ],
+    "translation": "Telegram"
+  },
+  "kJpOa7": {
+    "message": "Connect Telegram to create tasks by leaving a voice message.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        106
+      ]
+    ],
+    "translation": "Sesli mesaj bırakarak görev oluşturmak için Telegram'a bağlan."
+  },
+  "+FW/3O": {
+    "message": "Connected ✓",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        111
+      ]
+    ],
+    "translation": "Bağlandı ✓"
+  },
+  "+K0AvT": {
+    "message": "Disconnect",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        119
+      ]
+    ],
+    "translation": "Bağlantıyı kes"
+  },
+  "D8k2s6": {
+    "message": "Connect Telegram",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        129
+      ]
+    ],
+    "translation": "Telegram'a Bağlan"
   }
 }

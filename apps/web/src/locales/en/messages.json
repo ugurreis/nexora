@@ -9387,6 +9387,10 @@
       [
         "src/views/public/board/index.tsx",
         87
+      ],
+      [
+        "src/views/settings/AccountSettings.tsx",
+        35
       ]
     ],
     "translation": "Please try again."
@@ -14488,5 +14492,77 @@
       ]
     ],
     "translation": "YouTube URL"
+  },
+  "2od6i6": {
+    "message": "Could not connect Telegram",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        34
+      ]
+    ],
+    "translation": "Could not connect Telegram"
+  },
+  "SchpMp": {
+    "message": "Telegram",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        103
+      ]
+    ],
+    "translation": "Telegram"
+  },
+  "kJpOa7": {
+    "message": "Connect Telegram to create tasks by leaving a voice message.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        106
+      ]
+    ],
+    "translation": "Connect Telegram to create tasks by leaving a voice message."
+  },
+  "+FW/3O": {
+    "message": "Connected ✓",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        111
+      ]
+    ],
+    "translation": "Connected ✓"
+  },
+  "+K0AvT": {
+    "message": "Disconnect",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        119
+      ]
+    ],
+    "translation": "Disconnect"
+  },
+  "D8k2s6": {
+    "message": "Connect Telegram",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/views/settings/AccountSettings.tsx",
+        129
+      ]
+    ],
+    "translation": "Connect Telegram"
   }
 }
