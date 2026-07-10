@@ -158,4 +158,5 @@ ENV NODE_ENV=production
 # gerekçeyle root çalıştırılmaz.
 USER node
 
+EXPOSE 8090
 CMD ["pnpm", "--filter", "@kan/telegram-bot", "start"]
