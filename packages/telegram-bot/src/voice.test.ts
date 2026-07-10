@@ -1,6 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { downloadTelegramFile } from "./voice";
+const { mockCreate } = vi.hoisted(() => ({ mockCreate: vi.fn() }));
+vi.mock("openai", () => ({
+  default: class {
+    audio = { transcriptions: { create: mockCreate } };
+  },
+  toFile: vi.fn(async (buffer: Buffer) => buffer),
+}));
+
+import { downloadTelegramFile, transcribeVoice } from "./voice";
 
 describe("downloadTelegramFile", () => {
   it("resolves the file_path via getFile then downloads the bytes", async () => {
@@ -34,5 +42,29 @@ describe("downloadTelegramFile", () => {
     expect(fetchMock).not.toHaveBeenCalled();
 
     vi.unstubAllGlobals();
+  });
+});
+
+describe("transcribeVoice", () => {
+  it("omits the language parameter (lets Whisper auto-detect) and requests verbose_json", async () => {
+    mockCreate.mockResolvedValueOnce({ text: "hello", language: "english" });
+
+    await transcribeVoice("sk-test", Buffer.from([1, 2, 3]));
+
+    expect(mockCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        model: "whisper-1",
+        response_format: "verbose_json",
+      }),
+    );
+    expect(mockCreate.mock.calls[0]![0]).not.toHaveProperty("language");
+  });
+
+  it("returns both the transcript text and the raw detected language", async () => {
+    mockCreate.mockResolvedValueOnce({ text: "merhaba", language: "turkish" });
+
+    const result = await transcribeVoice("sk-test", Buffer.from([1, 2, 3]));
+
+    expect(result).toEqual({ text: "merhaba", language: "turkish" });
   });
 });

@@ -24,15 +24,15 @@ export async function downloadTelegramFile(
 export async function transcribeVoice(
   openaiApiKey: string,
   audio: Buffer,
-): Promise<string> {
+): Promise<{ text: string; language: string }> {
   const client = new OpenAI({ apiKey: openaiApiKey });
   const file = await toFile(audio, "voice.ogg", { type: "audio/ogg" });
 
   const transcription = await client.audio.transcriptions.create({
     file,
     model: "whisper-1",
-    language: "tr",
+    response_format: "verbose_json",
   });
 
-  return transcription.text;
+  return { text: transcription.text, language: transcription.language };
 }
