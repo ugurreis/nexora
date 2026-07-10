@@ -54,6 +54,7 @@ i18n.cache
 
 # pgdata
 /apps/web/pgdata
+/packages/db/pgdata
 
 .claude
 
