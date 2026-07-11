@@ -209,6 +209,53 @@ export const userRouter = createTRPCRouter({
       const domain = process.env.INBOX_EMAIL_DOMAIN ?? "nexovias.com";
       return { email: `inbox+${token}@${domain}` };
     }),
+  setInboxEmailAlias: protectedProcedure
+    .input(
+      z.object({
+        alias: z
+          .string()
+          .min(3, "En az 3 karakter olmalı")
+          .max(32, "En fazla 32 karakter olmalı")
+          .regex(
+            /^[a-z0-9][a-z0-9-]{1,30}[a-z0-9]$/,
+            "Sadece küçük harf, rakam ve tire kullanılabilir",
+          ),
+      }),
+    )
+    .output(z.object({ email: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user?.id;
+      if (!userId)
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "User not authenticated",
+        });
+
+      const existing = await userRepo.getByInboxEmailToken(
+        ctx.db,
+        input.alias,
+      );
+      if (existing && existing.id !== userId)
+        throw new TRPCError({
+          code: "CONFLICT",
+          message: "Bu adres zaten kullanılıyor, başka bir tane deneyin",
+        });
+
+      const result = await userRepo.updateInboxEmailToken(
+        ctx.db,
+        userId,
+        input.alias,
+      );
+
+      if (!result)
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to update inbox alias",
+        });
+
+      const domain = process.env.INBOX_EMAIL_DOMAIN ?? "nexovias.com";
+      return { email: `inbox+${result.inboxEmailToken}@${domain}` };
+    }),
   getTelegramLinkStatus: protectedProcedure
     .input(z.void())
     .output(z.object({ linked: z.boolean() }))

@@ -50,7 +50,7 @@ const Pricing = ({
       id: "tier-teams",
       href: "signup",
       buttonText: t`Get started`,
-      price: { monthly: "$10", annually: "$8" },
+      price: { monthly: "$8", annually: "$6" },
       description: t`Perfect for small and growing teams looking to collaborate.`,
       bestFor: t`Best for small and growing teams that need collaboration`,
       featureHeader: undefined,
@@ -73,7 +73,7 @@ const Pricing = ({
       id: "tier-pro",
       href: "signup",
       buttonText: t`Get started`,
-      price: { monthly: "$29", annually: "$24" },
+      price: { monthly: "$11", annually: "$9" },
       description: t`Unlimited seats and advanced features for growing teams.`,
       bestFor: t`Best for teams that want to scale without limits`,
       featureHeader: undefined,
@@ -196,7 +196,7 @@ const Pricing = ({
                         : "text-light-600 dark:text-dark-600",
                     )}
                   >
-                    {frequency?.value === "annually" ? "$79" : "$100"}
+                    {frequency?.value === "annually" ? "$12" : "$15"}
                   </span>
                 )}
                 {tier.showPriceSuffix && (

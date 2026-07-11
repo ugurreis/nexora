@@ -53,6 +53,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
     "@kan/auth": "workspace:*",
     "@kan/db": "workspace:*",
     "@kan/email": "workspace:^",

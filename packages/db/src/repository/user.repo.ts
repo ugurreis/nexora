@@ -161,3 +161,18 @@ export const setInboxEmailToken = async (
 
   return result;
 };
+
+/** Unconditional overwrite — used when a user picks their own inbox alias. */
+export const updateInboxEmailToken = async (
+  db: dbClient,
+  userId: string,
+  token: string,
+) => {
+  const [result] = await db
+    .update(users)
+    .set({ inboxEmailToken: token })
+    .where(eq(users.id, userId))
+    .returning({ inboxEmailToken: users.inboxEmailToken });
+
+  return result;
+};

@@ -46,7 +46,7 @@ export const MentionTemplate = ({
             color: "#232323",
           }}
         >
-          kan.bn
+          Nexora
         </Heading>
         <Heading
           style={{ fontSize: "24px", fontWeight: "bold", color: "#232323" }}
@@ -95,9 +95,9 @@ export const MentionTemplate = ({
             target="_blank"
             style={{ color: "#7e7e7e", textDecoration: "underline" }}
           >
-            Kan
+            Nexora
           </Link>
-          , the open source Trello alternative.
+          , simple Kanban project management.
         </Text>
       </Container>
     </Body>

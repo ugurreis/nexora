@@ -83,6 +83,7 @@ export const getByPublicId = async (db: dbClient, labelPublicId: string) => {
       publicId: true,
       name: true,
       colourCode: true,
+      boardId: true,
     },
     where: eq(labels.publicId, labelPublicId),
   });

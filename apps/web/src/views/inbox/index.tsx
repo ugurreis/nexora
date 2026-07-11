@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { t } from "@lingui/core/macro";
 
@@ -7,6 +8,14 @@ import { usePopup } from "~/providers/popup";
 import { api } from "~/utils/api";
 import InboxItemRow from "./components/InboxItemRow";
 import MoveToBoardForm from "./components/MoveToBoardForm";
+
+function maskInboxEmail(email: string) {
+  const [local, domain] = email.split("@");
+  const token = local?.replace(/^inbox\+/, "") ?? "";
+  const maskedToken =
+    token.length > 12 ? `${token.slice(0, 6)}…${token.slice(-4)}` : token;
+  return `inbox+${maskedToken}@${domain}`;
+}
 
 export default function InboxView() {
   const utils = api.useUtils();
@@ -67,7 +76,15 @@ export default function InboxView() {
           {inboxEmail ? (
             <p className="mt-2">
               {t`Tip: you can also add items by emailing`}{" "}
-              <span className="font-mono">{inboxEmail.email}</span>
+              <span className="font-mono" title={inboxEmail.email}>
+                {maskInboxEmail(inboxEmail.email)}
+              </span>{" "}
+              <Link
+                href="/settings/account"
+                className="text-brand-600 hover:underline dark:text-brand-400"
+              >
+                {t`(özelleştir)`}
+              </Link>
             </p>
           ) : null}
         </div>

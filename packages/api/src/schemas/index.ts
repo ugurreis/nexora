@@ -10,6 +10,7 @@ export {
   cardCreateResponseSchema,
   cardUpdateResponseSchema,
   cardDetailSchema,
+  calendarCardSchema,
   commentResponseSchema,
   commentDeleteResponseSchema,
   activityItemSchema,

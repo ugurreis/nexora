@@ -6,6 +6,7 @@ import { env } from "next-runtime-env";
 import { useEffect, useState } from "react";
 import {
   HiBolt,
+  HiOutlineCalendarDays,
   HiOutlineChartBarSquare,
   HiOutlineCog6Tooth,
   HiOutlineInbox,
@@ -102,6 +103,18 @@ export default function SideNavigation({
         action: () => router.push("/inbox"),
         group: "NAVIGATION",
         description: t`Go to inbox`,
+      },
+    },
+    {
+      name: t`Takvim`,
+      href: "/calendar",
+      icon: <HiOutlineCalendarDays className={iconClass} />,
+      keyboardShortcut: {
+        type: "SEQUENCE",
+        strokes: [{ key: "G" }, { key: "C" }],
+        action: () => router.push("/calendar"),
+        group: "NAVIGATION",
+        description: t`Go to calendar`,
       },
     },
     {

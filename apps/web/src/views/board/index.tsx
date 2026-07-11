@@ -37,6 +37,7 @@ import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
 import { formatToArray } from "~/utils/helpers";
 import { DeleteCardConfirmation } from "~/views/card/components/DeleteCardConfirmation";
+import { AutomationsModal } from "./components/AutomationsModal";
 import BoardDropdown from "./components/BoardDropdown";
 import Card from "./components/Card";
 import { CardContextDueDateModal } from "./components/CardContextDueDateModal";
@@ -45,11 +46,13 @@ import { CardContextLabelsModal } from "./components/CardContextLabelsModal";
 import { CardContextMembersModal } from "./components/CardContextMembersModal";
 import { CardContextMenu } from "./components/CardContextMenu";
 import { CardContextMoveListModal } from "./components/CardContextMoveListModal";
+import { DeleteAutomationConfirmation } from "./components/DeleteAutomationConfirmation";
 import { DeleteBoardConfirmation } from "./components/DeleteBoardConfirmation";
 import { MoveBoardForm } from "./components/MoveBoardForm";
 import { DeleteListConfirmation } from "./components/DeleteListConfirmation";
 import Filters from "./components/Filters";
 import List from "./components/List";
+import { NewAutomationModal } from "./components/NewAutomationModal";
 import { NewCardForm } from "./components/NewCardForm";
 import { NewListForm } from "./components/NewListForm";
 import { NewTemplateForm } from "./components/NewTemplateForm";
@@ -506,6 +509,27 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
         </Modal>
 
         <Modal
+          modalSize="md"
+          isVisible={isOpen && modalContentType === "AUTOMATIONS"}
+        >
+          <AutomationsModal boardPublicId={boardId ?? ""} />
+        </Modal>
+
+        <Modal
+          modalSize="md"
+          isVisible={isOpen && modalContentType === "NEW_AUTOMATION"}
+        >
+          <NewAutomationModal boardPublicId={boardId ?? ""} />
+        </Modal>
+
+        <Modal
+          modalSize="sm"
+          isVisible={isOpen && modalContentType === "DELETE_AUTOMATION"}
+        >
+          <DeleteAutomationConfirmation boardPublicId={boardId ?? ""} />
+        </Modal>
+
+        <Modal
           modalSize="sm"
           isVisible={isOpen && modalContentType === "CREATE_TEMPLATE"}
         >
@@ -602,7 +626,7 @@ export default function BoardPage({ isTemplate }: { isTemplate?: boolean }) {
               {isTemplate ? t`Şablon bulunamadı` : t`Pano bulunamadı`}
             </p>
           )}
-          <div className="order-1 mb-4 flex items-center justify-end space-x-2 md:order-2 md:mb-0">
+          <div className="order-1 mb-4 flex flex-wrap items-center justify-end gap-2 md:order-2 md:mb-0 md:flex-nowrap">
             {isTemplate && (
               <div className="inline-flex cursor-default items-center justify-center whitespace-nowrap rounded-md border-[1px] border-light-300 bg-light-50 px-3 py-2 text-sm font-semibold text-light-950 shadow-sm dark:border-dark-300 dark:bg-dark-50 dark:text-dark-950">
                 <span className="mr-2">

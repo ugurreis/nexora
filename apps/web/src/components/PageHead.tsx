@@ -9,6 +9,8 @@ export const PageHead = ({ title }: { title: string }) => {
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       <link rel="manifest" href="/manifest.json" />
+      <meta name="theme-color" content="#10b981" />
+      <link rel="apple-touch-icon" href="/icon-512.png" />
     </Head>
   );
 };

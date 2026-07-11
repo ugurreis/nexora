@@ -12,6 +12,7 @@ import { generateAttachmentUrl, generateAvatarUrl } from "@kan/shared/utils";
 
 import {
   activityItemSchema,
+  calendarCardSchema,
   cardCreateResponseSchema,
   cardDetailSchema,
   cardUpdateResponseSchema,
@@ -20,6 +21,13 @@ import {
 } from "../schemas";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { mergeActivities } from "../utils/activities";
+import {
+  consumeAiDescriptionQuota,
+  generateCardDescription,
+  isAiEnabled,
+} from "../utils/ai";
+import { runAutomationsForCardMovedToList } from "../utils/automation";
+import { assertUserInWorkspace } from "../utils/auth";
 import { sendMentionEmails } from "../utils/notifications";
 import {
   assertCanDelete,
@@ -843,6 +851,113 @@ export const cardRouter = createTRPCRouter({
         nextCursor: result.nextCursor?.toISOString() ?? null,
       };
     }),
+  calendar: protectedProcedure
+    .meta({
+      openapi: {
+        summary: "Get all cards with a due date in a workspace",
+        method: "GET",
+        path: "/cards/calendar",
+        description:
+          "Retrieves all cards across all boards in a workspace that have a due date set",
+        tags: ["Cards"],
+        protect: true,
+      },
+    })
+    .input(z.object({ workspacePublicId: z.string().min(12) }))
+    .output(z.array(calendarCardSchema))
+    .query(async ({ ctx, input }) => {
+      const userId = ctx.user?.id;
+
+      if (!userId)
+        throw new TRPCError({
+          message: `User not authenticated`,
+          code: "UNAUTHORIZED",
+        });
+
+      const workspace = await workspaceRepo.getByPublicId(
+        ctx.db,
+        input.workspacePublicId,
+      );
+
+      if (!workspace)
+        throw new TRPCError({
+          message: `Workspace not found`,
+          code: "NOT_FOUND",
+        });
+
+      await assertUserInWorkspace(ctx.db, userId, workspace.id);
+
+      return cardRepo.getAllWithDueDateByWorkspaceId(ctx.db, workspace.id);
+    }),
+  aiDescriptionStatus: protectedProcedure
+    .input(z.void())
+    .output(z.object({ enabled: z.boolean() }))
+    .query(() => ({ enabled: isAiEnabled() })),
+  generateDescription: protectedProcedure
+    .input(z.object({ cardPublicId: z.string().min(12) }))
+    .output(z.object({ description: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user?.id;
+
+      if (!userId)
+        throw new TRPCError({
+          message: `User not authenticated`,
+          code: "UNAUTHORIZED",
+        });
+
+      if (!isAiEnabled())
+        throw new TRPCError({
+          message: `AI description generation is not configured`,
+          code: "PRECONDITION_FAILED",
+        });
+
+      const card = await cardRepo.getWorkspaceAndCardIdByCardPublicId(
+        ctx.db,
+        input.cardPublicId,
+      );
+
+      if (!card)
+        throw new TRPCError({
+          message: `Card with public ID ${input.cardPublicId} not found`,
+          code: "NOT_FOUND",
+        });
+
+      await assertCanEdit(
+        ctx.db,
+        userId,
+        card.workspaceId,
+        "card:edit",
+        card.createdBy,
+      );
+
+      try {
+        await consumeAiDescriptionQuota(userId);
+      } catch {
+        throw new TRPCError({
+          message: `AI generation limit reached, please try again later`,
+          code: "TOO_MANY_REQUESTS",
+        });
+      }
+
+      const existingCard = await cardRepo.getWithListAndMembersByPublicId(
+        ctx.db,
+        input.cardPublicId,
+      );
+
+      if (!existingCard)
+        throw new TRPCError({
+          message: `Card with public ID ${input.cardPublicId} not found`,
+          code: "NOT_FOUND",
+        });
+
+      const description = await generateCardDescription({
+        title: existingCard.title,
+        existingDescription: existingCard.description,
+        labels: existingCard.labels?.map((label) => label.name) ?? [],
+      });
+
+      return { description };
+    }),
   update: protectedProcedure
     .meta({
       openapi: {
@@ -1125,6 +1240,16 @@ export const cardRouter = createTRPCRouter({
       ).catch((error) => {
         console.error("Webhook delivery failed:", error);
       });
+
+      if (movedToNewList && newList) {
+        runAutomationsForCardMovedToList(ctx.db, {
+          boardId: newList.boardId,
+          toListId: newList.id,
+          cardId: result.id,
+        }).catch((error) => {
+          console.error("Automation run failed:", error);
+        });
+      }
 
       return result;
     }),

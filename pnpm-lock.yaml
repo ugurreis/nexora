@@ -305,6 +305,9 @@ importers:
 
   packages/api:
     dependencies:
+      '@anthropic-ai/sdk':
+        specifier: ^0.110.0
+        version: 0.110.0(zod@3.25.76)
       '@kan/auth':
         specifier: workspace:*
         version: link:../auth
@@ -9433,6 +9436,13 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.30
+
+  '@anthropic-ai/sdk@0.110.0(zod@3.25.76)':
+    dependencies:
+      json-schema-to-ts: 3.1.1
+      standardwebhooks: 1.0.0
+    optionalDependencies:
+      zod: 3.25.76
 
   '@anthropic-ai/sdk@0.110.0(zod@4.1.13)':
     dependencies:

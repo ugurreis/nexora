@@ -65,6 +65,16 @@ const MyApp: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
     }
   }, [posthogKey]);
 
+  useEffect(() => {
+    // Registering in dev would let the service worker intercept Turbopack's
+    // HMR/dev-server requests, causing stale-content bugs during development.
+    if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+      navigator.serviceWorker.register("/sw.js").catch((error) => {
+        console.error("Service worker registration failed:", error);
+      });
+    }
+  }, []);
+
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
@@ -89,7 +99,11 @@ const MyApp: AppType = ({ Component, pageProps }: AppPropsWithLayout) => {
         <KeyboardShortcutProvider>
           <LinguiProviderWrapper>
             <FontSizeProvider>
-              <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="light"
+                enableSystem={false}
+              >
                 <ModalProvider>
                   <PopupProvider>
                     {posthogKey ? (

@@ -6,12 +6,14 @@ import {
   eq,
   gt,
   inArray,
+  isNotNull,
   isNull,
   sql,
 } from "drizzle-orm";
 
 import type { dbClient, Transaction } from "@kan/db/client";
 import {
+  boards,
   cardActivities,
   cardAttachments,
   cards,
@@ -281,6 +283,40 @@ export const getByPublicId = (db: dbClient, cardPublicId: string) => {
     },
     where: eq(cards.publicId, cardPublicId),
   });
+};
+
+export const getAllWithDueDateByWorkspaceId = async (
+  db: dbClient,
+  workspaceId: number,
+) => {
+  const rows = await db
+    .select({
+      publicId: cards.publicId,
+      title: cards.title,
+      dueDate: cards.dueDate,
+      completed: cards.completed,
+      listName: lists.name,
+      boardPublicId: boards.publicId,
+      boardName: boards.name,
+    })
+    .from(cards)
+    .innerJoin(lists, eq(cards.listId, lists.id))
+    .innerJoin(boards, eq(lists.boardId, boards.id))
+    .where(
+      and(
+        eq(boards.workspaceId, workspaceId),
+        eq(boards.isArchived, false),
+        isNotNull(cards.dueDate),
+        isNull(cards.deletedAt),
+        isNull(lists.deletedAt),
+        isNull(boards.deletedAt),
+      ),
+    )
+    .orderBy(asc(cards.dueDate));
+
+  // dueDate is guaranteed non-null by the isNotNull filter above, but the
+  // column's nullable type isn't narrowed by drizzle's select() typing.
+  return rows.map((row) => ({ ...row, dueDate: row.dueDate as Date }));
 };
 
 export const getCardLabelRelationship = async (

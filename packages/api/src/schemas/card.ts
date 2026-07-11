@@ -20,6 +20,17 @@ export const cardUpdateResponseSchema = z.object({
   completed: z.boolean().optional(),
 });
 
+// ─── card.calendar ───────────────────────────────────────────
+export const calendarCardSchema = z.object({
+  publicId: z.string(),
+  title: z.string(),
+  dueDate: z.date(),
+  completed: z.boolean(),
+  listName: z.string(),
+  boardPublicId: z.string(),
+  boardName: z.string(),
+});
+
 // ─── Comment responses ───────────────────────────────────────
 export const commentResponseSchema = z.object({
   publicId: z.string(),

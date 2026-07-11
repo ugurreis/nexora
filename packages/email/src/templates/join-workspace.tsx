@@ -22,7 +22,7 @@ export const JoinWorkspaceTemplate = ({
 }) => (
   <Html>
     <Head />
-    <Preview>Join {workspaceName ?? "workspace"} on kan.bn</Preview>
+    <Preview>Join {workspaceName ?? "workspace"} on Nexora</Preview>
     <Body style={{ backgroundColor: "white" }}>
       <Container
         style={{
@@ -42,7 +42,7 @@ export const JoinWorkspaceTemplate = ({
             color: "#232323",
           }}
         >
-          {env("NEXT_PUBLIC_WHITE_LABEL_HIDE_POWERED_BY") !== "true" && "Kan"}
+          Nexora
         </Heading>
         <Heading
           style={{ fontSize: "24px", fontWeight: "bold", color: "#232323" }}
@@ -90,27 +90,23 @@ export const JoinWorkspaceTemplate = ({
         >
           If you don&apos;t want to join this workspace, you can safely ignore this email.
         </Text>
-        {env("NEXT_PUBLIC_WHITE_LABEL_HIDE_POWERED_BY") !== "true" && (
-          <>
-            <Hr
-              style={{
-                marginTop: "2.5rem",
-                marginBottom: "2rem",
-                borderWidth: "1px",
-              }}
-            />
-            <Text style={{ color: "#7e7e7e" }}>
-              <Link
-                href={env("NEXT_PUBLIC_BASE_URL")}
-                target="_blank"
-                style={{ color: "#7e7e7e", textDecoration: "underline" }}
-              >
-                Kan
-              </Link>
-              , the open source Trello alternative.
-            </Text>
-          </>
-        )}
+        <Hr
+          style={{
+            marginTop: "2.5rem",
+            marginBottom: "2rem",
+            borderWidth: "1px",
+          }}
+        />
+        <Text style={{ color: "#7e7e7e" }}>
+          <Link
+            href={env("NEXT_PUBLIC_BASE_URL")}
+            target="_blank"
+            style={{ color: "#7e7e7e", textDecoration: "underline" }}
+          >
+            Nexora
+          </Link>
+          , simple Kanban project management.
+        </Text>
       </Container>
     </Body>
   </Html>

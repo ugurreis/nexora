@@ -7,6 +7,7 @@ import {
   HiOutlineDocumentDuplicate,
   HiOutlineTrash,
   HiOutlineStar,
+  HiSparkles,
   HiStar,
 } from "react-icons/hi2";
 import { IoArchiveOutline } from "react-icons/io5";
@@ -128,6 +129,15 @@ export default function BoardDropdown({
           icon: (
             <HiArrowRightOnRectangle className="h-[16px] w-[16px] text-dark-900" />
           ),
+        },
+      ]
+      : []),
+    ...(!isTemplate && canEditBoard
+      ? [
+        {
+          label: t`Otomasyonlar`,
+          action: () => openModal("AUTOMATIONS"),
+          icon: <HiSparkles className="h-[16px] w-[16px] text-dark-900" />,
         },
       ]
       : []),

@@ -1,0 +1,17 @@
+import type { NextPageWithLayout } from "../_app";
+import { getDashboardLayout } from "~/components/Dashboard";
+import Popup from "~/components/Popup";
+import CalendarView from "~/views/calendar";
+
+const CalendarPage: NextPageWithLayout = () => {
+  return (
+    <>
+      <CalendarView />
+      <Popup />
+    </>
+  );
+};
+
+CalendarPage.getLayout = (page) => getDashboardLayout(page);
+
+export default CalendarPage;

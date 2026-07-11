@@ -4,7 +4,12 @@ import { t } from "@lingui/core/macro";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { HiCheckCircle, HiOutlineCheckCircle, HiXMark } from "react-icons/hi2";
+import {
+  HiCheckCircle,
+  HiOutlineCheckCircle,
+  HiSparkles,
+  HiXMark,
+} from "react-icons/hi2";
 import { IoChevronForwardSharp } from "react-icons/io5";
 import { twMerge } from "tailwind-merge";
 
@@ -261,6 +266,26 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
     },
   });
 
+  const { data: aiStatus } = api.card.aiDescriptionStatus.useQuery(undefined, {
+    enabled: !!canEdit,
+  });
+
+  const generateDescription = api.card.generateDescription.useMutation({
+    onSuccess: (data) => {
+      setValue("description", data.description);
+    },
+    onError: (err) => {
+      showPopup({
+        header: t`AI açıklaması oluşturulamadı`,
+        message:
+          err.data?.code === "TOO_MANY_REQUESTS"
+            ? t`AI kullanım sınırına ulaştınız, lütfen daha sonra tekrar deneyin.`
+            : t`Lütfen tekrar deneyin.`,
+        icon: "error",
+      });
+    },
+  });
+
   const addOrRemoveLabel = api.card.addOrRemoveLabel.useMutation({
     onError: () => {
       showPopup({
@@ -493,6 +518,22 @@ export default function CardPage({ isTemplate }: { isTemplate?: boolean }) {
                       onSubmit={handleSubmit(onSubmit)}
                       className="w-full space-y-6"
                     >
+                      {canEdit && aiStatus?.enabled && (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            cardId &&
+                            generateDescription.mutate({ cardPublicId: cardId })
+                          }
+                          disabled={generateDescription.isPending}
+                          className="inline-flex items-center gap-1.5 rounded-[5px] border border-light-300 px-2.5 py-1 text-xs font-medium text-light-900 hover:bg-light-100 disabled:opacity-60 dark:border-dark-300 dark:text-dark-900 dark:hover:bg-dark-200"
+                        >
+                          <HiSparkles className="h-3.5 w-3.5" />
+                          {generateDescription.isPending
+                            ? t`Oluşturuluyor…`
+                            : t`AI ile Oluştur`}
+                        </button>
+                      )}
                       <div className="mt-2">
                         <Editor
                           content={card.description}
