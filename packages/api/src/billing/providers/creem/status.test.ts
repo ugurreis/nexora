@@ -1,11 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  isEntitledStatus,
-  kindFromCreemEvent,
-  mapCreemStatus,
-  workspacePlanFromKey,
-} from "./status";
+import { kindFromCreemEvent, mapCreemStatus } from "./status";
 
 describe("mapCreemStatus", () => {
   it("maps known statuses", () => {
@@ -47,23 +42,5 @@ describe("kindFromCreemEvent", () => {
   it("ignores unrelated events", () => {
     expect(kindFromCreemEvent("checkout.completed")).toBe("ignored");
     expect(kindFromCreemEvent("something.else")).toBe("ignored");
-  });
-});
-
-describe("isEntitledStatus", () => {
-  it("only active and trialing are entitled", () => {
-    expect(isEntitledStatus("active")).toBe(true);
-    expect(isEntitledStatus("trialing")).toBe(true);
-    expect(isEntitledStatus("past_due")).toBe(false);
-    expect(isEntitledStatus("canceled")).toBe(false);
-    expect(isEntitledStatus("unpaid")).toBe(false);
-  });
-});
-
-describe("workspacePlanFromKey", () => {
-  it("maps neutral plan keys to workspace_plan enum values", () => {
-    expect(workspacePlanFromKey("standard")).toBe("team");
-    expect(workspacePlanFromKey("premium")).toBe("pro");
-    expect(workspacePlanFromKey(null)).toBe("free");
   });
 });

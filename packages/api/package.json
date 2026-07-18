@@ -39,6 +39,18 @@
     "./utils/workspace": {
       "types": "./src/utils/workspace.ts",
       "default": "./src/utils/workspace.ts"
+    },
+    "./billing/gateway": {
+      "types": "./src/billing/gateway.ts",
+      "default": "./src/billing/gateway.ts"
+    },
+    "./billing/types": {
+      "types": "./src/billing/types.ts",
+      "default": "./src/billing/types.ts"
+    },
+    "./billing/entitlement": {
+      "types": "./src/billing/entitlement.ts",
+      "default": "./src/billing/entitlement.ts"
     }
   },
   "license": "GPL-3.0",

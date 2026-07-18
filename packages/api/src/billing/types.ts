@@ -48,8 +48,8 @@ export interface PortalResult {
 
 export interface WebhookInput {
   rawBody: string;
-  signature: string | undefined;
-  secret: string;
+  /** Raw request headers; the provider adapter extracts its own signature header. */
+  headers: Record<string, string | string[] | undefined>;
 }
 
 /** How the entitlement layer should react to a webhook event. */
