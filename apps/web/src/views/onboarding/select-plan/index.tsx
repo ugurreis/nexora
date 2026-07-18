@@ -116,15 +116,13 @@ export default function SelectPlanView() {
 
   const handleContinue = async () => {
     if (workspacePublicId && selected !== "solo") {
-      const response = await fetch("/api/stripe/create_checkout_session", {
+      const response = await fetch("/api/billing/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          plan: selected,
-          billing,
+          plan: selected === "pro" ? "premium" : "standard",
+          billingPeriod: billing === "annual" ? "yearly" : "monthly",
           workspacePublicId,
-          successUrl: returnUrl,
-          cancelUrl: returnUrl,
         }),
       });
       const { url } = (await response.json()) as { url: string };

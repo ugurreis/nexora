@@ -16,18 +16,15 @@ export function UpgradeToProConfirmation({
 
   const handleUpgrade = async () => {
     try {
-      const response = await fetch("/api/stripe/create_checkout_session", {
+      const response = await fetch("/api/billing/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...(entityId && { slug: entityId }),
           workspacePublicId: workspacePublicId,
-          plan: "pro",
-          billing: "monthly",
-          cancelUrl: "/settings",
-          successUrl: "/settings",
+          plan: "premium",
+          billingPeriod: "monthly",
         }),
       });
 

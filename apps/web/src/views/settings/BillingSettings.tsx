@@ -46,9 +46,10 @@ export default function BillingSettings() {
 
   const handleOpenBillingPortal = async () => {
     try {
-      const response = await fetch("/api/stripe/create_billing_session", {
+      const response = await fetch("/api/billing/portal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ workspacePublicId: workspace.publicId }),
       });
       const { url } = (await response.json()) as { url: string };
       if (url) window.location.href = url;
