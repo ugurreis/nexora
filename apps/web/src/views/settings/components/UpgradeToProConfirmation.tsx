@@ -11,7 +11,7 @@ export function UpgradeToProConfirmation({
   userId: string;
   workspacePublicId: string;
 }) {
-  const { closeModal, entityId } = useModal();
+  const { closeModal } = useModal();
   const { showPopup } = usePopup();
 
   const handleUpgrade = async () => {

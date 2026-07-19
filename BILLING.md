@@ -86,6 +86,20 @@ Secrets (`CREEM_API_KEY`, `CREEM_WEBHOOK_SECRET`) live in Coolify, never in the 
 4. Re-enable the landing purchase CTAs (`BILLING_ENABLED` in
    `apps/web/public/nexora-landing.html`) **only after** the above passes.
 
+## Release notes (Faz A)
+
+- **Onboarding (new workspace, paid plan) behavior change**: the workspace is now
+  created immediately (free), then checkout starts for it — previously the
+  workspace was created only on Stripe `checkout.session.completed`. Abandoning
+  checkout now leaves a usable free workspace instead of nothing.
+- **Custom Pro workspace slug is no longer chosen during checkout**; set it in
+  workspace settings after upgrading. (Was previously passed to Stripe and applied
+  on checkout success.)
+- **Failed payment (`past_due`) revokes paid access immediately** — no grace
+  period in Faz A. Revisit if a grace window is desired.
+- **Legacy Stripe HTTP routes now return `410 Gone`** (`/api/stripe/*`). In-app
+  billing goes through `/api/billing/*`.
+
 ## Deferred (not in Faz A)
 
 - Feature gating / seat-limit enforcement (Faz B) and credits (Faz C).
