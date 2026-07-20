@@ -174,10 +174,24 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;line-height:1.02;letter
 .nav-links a:hover{color:var(--ink);background:rgba(15,118,110,.07)}
 .nav-cta{display:flex;align-items:center;gap:10px}
 .nav-burger{display:none;background:#fff;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;place-items:center;cursor:pointer}
+/* signup CTA'nın burger menü içindeki kopyası; yalnız ≤400px'te görünür */
+.nav-menu-cta{display:none}
 @media(max-width:900px){
   .nav-links{display:none}
   .nav-burger{display:grid}
   .nav-cta .btn-ghost{display:none}
+}
+/* ≤400px: .nav-cta satırı (dil + signup + burger) ~383px genişlikte olduğu için
+   viewport'u taşırıyordu. Signup CTA header'dan kaldırılıp burger menüye taşınır:
+   dönüşüm korunur, taşmanın gerçek nedeni (satır genişliği) ortadan kalkar. */
+@media(max-width:400px){
+  .nav-cta .btn-primary{display:none}
+  .nav-links a.nav-menu-cta{display:flex;align-items:center;justify-content:center;
+    margin-top:10px;padding:14px 20px;border-radius:999px;font-size:1rem;
+    background:linear-gradient(135deg,var(--brand-600),var(--brand));
+    color:#fff;box-shadow:var(--shadow-brand)}
+  .nav-links a.nav-menu-cta:hover{color:#fff;
+    background:linear-gradient(135deg,var(--brand-600),var(--brand))}
 }
 
 /* ============================================================
@@ -483,6 +497,7 @@ section{position:relative}
       <a href="#nasil" data-i18n="nav.how">Nasıl çalışır</a>
       <a href="#fiyat" data-i18n="nav.pricing">Fiyatlandırma</a>
       <a href="#sss" data-i18n="nav.faq">SSS</a>
+      <a href="/signup" class="btn btn-primary nav-menu-cta" data-i18n="nav.signup">Ücretsiz başla</a>
     </nav>
     <div class="nav-cta">
       <button class="lang-btn" id="langBtn" aria-label="EN — Switch to English">
