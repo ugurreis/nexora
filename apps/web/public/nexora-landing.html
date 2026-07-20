@@ -199,7 +199,10 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;line-height:1.02;letter
 
 /* ---- Hero board mockup ---- */
 .board-stage{position:relative}
-.board-glow{position:absolute;inset:-8% -6% -12% -6%;z-index:0;border-radius:var(--r-xl);
+/* inset horizontal 0 (was -6%): the negative side inset pushed this decorative
+   glow past the viewport on mobile, causing ~25px horizontal overflow. Vertical
+   bleed kept; no content affected. */
+.board-glow{position:absolute;inset:-8% 0 -12% 0;z-index:0;border-radius:var(--r-xl);
   background:radial-gradient(60% 60% at 60% 20%,rgba(20,184,166,.28),transparent 70%);filter:blur(30px)}
 .board{position:relative;z-index:1;background:linear-gradient(180deg,#ffffff,#fbfaf6);
   border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);
@@ -249,7 +252,10 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;line-height:1.02;letter
    ============================================================ */
 .marquee{margin:34px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
   padding:16px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  /* clip the max-content track: without this the ~4000px .marquee-track expanded
+     the document and made the page pan sideways on mobile (root cause). */
+  overflow:hidden}
 .marquee-track{display:flex;gap:14px;width:max-content;animation:scrollx 34s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes scrollx{to{transform:translateX(-50%)}}
