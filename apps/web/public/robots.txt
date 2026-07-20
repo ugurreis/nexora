@@ -5,3 +5,5 @@ Disallow: /boards
 Disallow: /settings
 Disallow: /members
 Disallow: /templates
+
+Sitemap: https://nexora.nexovias.com/sitemap.xml
