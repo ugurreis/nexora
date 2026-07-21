@@ -127,6 +127,50 @@ export default function WorkspaceNameView() {
 
   const [isRedirectingToCheckout, setIsRedirectingToCheckout] = useState(false);
 
+  // Paid onboarding: create the workspace first (free), then start checkout for
+  // it. The webhook upgrades workspace.plan on a verified payment; abandoning
+  // checkout simply leaves a usable free workspace.
+  const createWorkspaceForCheckout = api.workspace.create.useMutation({
+    onSuccess: async (workspace) => {
+      if (!workspace.publicId) {
+        setIsRedirectingToCheckout(false);
+        return;
+      }
+      try {
+        const response = await fetch("/api/billing/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            plan: effectivePlan === "pro" ? "premium" : "standard",
+            billingPeriod: billing === "annual" ? "yearly" : "monthly",
+            workspacePublicId: workspace.publicId,
+          }),
+        });
+        const { url } = (await response.json()) as { url?: string };
+        if (url) {
+          window.location.href = url;
+          return;
+        }
+      } catch {
+        // fall through to error popup
+      }
+      setIsRedirectingToCheckout(false);
+      showPopup({
+        header: t`Unable to start checkout`,
+        message: t`Please try again later, or contact customer support.`,
+        icon: "error",
+      });
+    },
+    onError: () => {
+      setIsRedirectingToCheckout(false);
+      showPopup({
+        header: t`Unable to create workspace`,
+        message: t`Please try again later, or contact customer support.`,
+        icon: "error",
+      });
+    },
+  });
+
   const handleContinue = async () => {
     if (!name.trim()) return;
 
@@ -138,38 +182,11 @@ export default function WorkspaceNameView() {
       return;
     }
 
-    // team/pro: redirect to Stripe — workspace created on checkout_success
+    // team/pro: create the workspace first, then start checkout for it.
     setIsRedirectingToCheckout(true);
-    try {
-      const response = await fetch("/api/stripe/create_checkout_session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          workspaceName: name.trim(),
-          ...(description.trim() && {
-            workspaceDescription: description.trim(),
-          }),
-          ...(effectivePlan === "pro" && slug ? { workspaceSlug: slug } : {}),
-          cancelUrl: `${window.location.pathname}?plan=${effectivePlan}&billing=${billing}&returnUrl=${encodeURIComponent(returnUrl)}`,
-          successUrl: "/boards",
-          billing,
-          plan: effectivePlan,
-        }),
-      });
-      const data = await response.json();
-      const url = (data as { url: string }).url;
-      if (url) {
-        window.location.href = url;
-        return;
-      }
-    } catch {
-      // fall through
-    }
-    setIsRedirectingToCheckout(false);
-    showPopup({
-      header: t`Unable to start checkout`,
-      message: t`Please try again later, or contact customer support.`,
-      icon: "error",
+    createWorkspaceForCheckout.mutate({
+      name: name.trim(),
+      ...(description.trim() && { description: description.trim() }),
     });
   };
 
