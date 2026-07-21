@@ -3,11 +3,15 @@ import { t } from "@lingui/core/macro";
 import { FaGithub } from "react-icons/fa";
 
 import { LanguageSelector } from "~/components/LanguageSelector";
-import { BRAND_CONTACT_EMAIL, BRAND_NAME } from "~/lib/brand";
+import {
+  BRAND_CONTACT_EMAIL,
+  BRAND_LICENSE_URL,
+  BRAND_NAME,
+  BRAND_SOURCE_URL,
+} from "~/lib/brand";
 
-const SOURCE_CODE_URL = "https://github.com/kanbn/kan";
-const LICENSE_URL =
-  "https://github.com/kanbn/kan?tab=AGPL-3.0-1-ov-file#readme";
+const SOURCE_CODE_URL = BRAND_SOURCE_URL;
+const LICENSE_URL = BRAND_LICENSE_URL;
 
 const Footer = () => {
   const navigation = {
