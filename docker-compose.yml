@@ -1,6 +1,6 @@
 services:
   migrate:
-    image: ghcr.io/kanbn/kan-migrate:latest
+    image: ghcr.io/ugurreis/nexora-migrate:latest
     container_name: ${CONTAINER_NAME:-kan-migrate}
     networks:
       - kan-network
@@ -16,7 +16,7 @@ services:
     restart: "no"
 
   web:
-    image: ghcr.io/kanbn/kan:latest
+    image: ghcr.io/ugurreis/nexora:latest
     container_name: ${CONTAINER_NAME:-kan-web}
     ports:
       - "${WEB_PORT:-3000}:3000"
@@ -135,7 +135,7 @@ services:
     restart: unless-stopped
 
   inbox-worker:
-    image: ghcr.io/kanbn/kan-inbox-worker:latest
+    image: ghcr.io/ugurreis/nexora-inbox-worker:latest
     container_name: ${INBOX_WORKER_CONTAINER_NAME:-kan-inbox-worker}
     networks:
       - kan-network
@@ -163,7 +163,7 @@ services:
     restart: unless-stopped
 
   telegram-bot:
-    image: ghcr.io/kanbn/kan-telegram-bot:latest
+    image: ghcr.io/ugurreis/nexora-telegram-bot:latest
     container_name: ${TELEGRAM_BOT_CONTAINER_NAME:-kan-telegram-bot}
     networks:
       - kan-network
