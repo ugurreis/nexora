@@ -14,3 +14,11 @@ export const BRAND_CONTACT_EMAIL = "destek@nexovias.com";
 
 // Pazarlama/ana alan adı (hukuk metinlerinde ve footer'da geçer).
 export const BRAND_DOMAIN = "nexovias.com";
+
+// Kaynak/lisans/self-host bağlantıları — Nexora'nın kendi public reposu (github.com/ugurreis/nexora).
+// AGPL-3.0 uyumu: ağ üzerinden servis edilen değiştirilmiş türev, kullanıcıya KENDİ değiştirilmiş
+// kaynağını sunar; bu link o kaynağa (public fork) işaret eder. Eski "Kan" markası gösterilmez.
+export const BRAND_SOURCE_URL = "https://github.com/ugurreis/nexora";
+export const BRAND_SELF_HOST_DOCS_URL = "https://github.com/ugurreis/nexora";
+export const BRAND_LICENSE_URL =
+  "https://github.com/ugurreis/nexora?tab=AGPL-3.0-1-ov-file#readme";

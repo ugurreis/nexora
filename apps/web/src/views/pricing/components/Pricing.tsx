@@ -5,6 +5,8 @@ import { useState } from "react";
 import { HiBolt, HiCheckCircle } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 
+import { BRAND_NAME, BRAND_SELF_HOST_DOCS_URL } from "~/lib/brand";
+
 type Frequency = "monthly" | "annually";
 
 const Pricing = () => {
@@ -63,10 +65,10 @@ const Pricing = () => {
     {
       name: t`Self Host`,
       id: "tier-self-host",
-      href: "https://github.com/kanbn/kan",
+      href: BRAND_SELF_HOST_DOCS_URL,
       buttonText: t`View docs`,
       price: { monthly: "-", annually: "-" },
-      description: t`Host Kan on your own infrastructure. Ideal for organisations that need complete control over their data.`,
+      description: t`Host ${BRAND_NAME} on your own infrastructure. Ideal for organisations that need complete control over their data.`,
       featureHeader: t`Complete control and ownership:`,
       features: [
         t`Run on your own infrastructure`,
