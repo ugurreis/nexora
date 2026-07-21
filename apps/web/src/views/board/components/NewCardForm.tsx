@@ -317,6 +317,7 @@ export function NewCardForm({
               closeModal();
               e.preventDefault();
             }}
+          aria-label={t`Close`}
           >
             <HiXMark size={18} className="text-light-900 dark:text-dark-900" />
           </button>

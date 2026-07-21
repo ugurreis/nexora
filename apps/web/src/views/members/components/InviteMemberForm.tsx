@@ -248,6 +248,7 @@ export function InviteMemberForm({
               e.preventDefault();
               closeModal();
             }}
+          aria-label={t`Close`}
           >
             <HiXMark size={18} className="dark:text-dark-9000 text-light-900" />
           </button>

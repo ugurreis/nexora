@@ -516,6 +516,7 @@ export function ImportBoardsForm() {
           type="button"
           className="rounded p-1 hover:bg-light-200 dark:hover:bg-dark-300"
           onClick={() => closeModal()}
+        aria-label={t`Close`}
         >
           <HiXMark size={18} className="text-dark-900" />
         </button>

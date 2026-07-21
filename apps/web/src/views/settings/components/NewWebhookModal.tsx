@@ -216,6 +216,7 @@ export function NewWebhookModal({
               e.preventDefault();
               closeModal();
             }}
+          aria-label={t`Close`}
           >
             <HiXMark size={18} className="text-light-900 dark:text-dark-900" />
           </button>

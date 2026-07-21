@@ -45,8 +45,8 @@ const Footer = () => {
               </span>
             </div>
             <div className="mb-4 flex items-center gap-2">
-              <Link href={SOURCE_CODE_URL} target="_blank">
-                <FaGithub className="h-8 w-8 rounded-lg border border-light-300 p-1.5 text-light-1000 hover:bg-light-100 dark:border-dark-300 dark:text-dark-1000 dark:hover:bg-dark-100" />
+              <Link href={SOURCE_CODE_URL} target="_blank" aria-label={t`Source code`}>
+                <FaGithub aria-hidden="true" className="h-8 w-8 rounded-lg border border-light-300 p-1.5 text-light-1000 hover:bg-light-100 dark:border-dark-300 dark:text-dark-1000 dark:hover:bg-dark-100" />
               </Link>
             </div>
             <LanguageSelector />

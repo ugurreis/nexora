@@ -54,6 +54,7 @@ export function DeleteAutomationConfirmation({
             type="button"
             className="rounded p-1 hover:bg-light-300 focus:outline-none dark:hover:bg-dark-300"
             onClick={() => closeModal()}
+          aria-label={t`Close`}
           >
             <HiXMark size={18} className="text-light-900 dark:text-dark-900" />
           </button>
