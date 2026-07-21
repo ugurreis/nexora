@@ -83,8 +83,11 @@ Secrets (`CREEM_API_KEY`, `CREEM_WEBHOOK_SECRET`) live in Coolify, never in the 
 2. Set the four `CREEM_PRODUCT_*` ids (existing live products already exist).
 3. Run a test-mode end-to-end checkout → webhook → confirm `subscription` row +
    `workspace.plan` update, then a low-value live smoke test.
-4. Re-enable the landing purchase CTAs (`BILLING_ENABLED` in
-   `apps/web/public/nexora-landing.html`) **only after** the above passes.
+4. Re-enable the landing purchase CTAs in `apps/web/public/nexora-landing.html`
+   **only after** the above passes. Note: there is **no `BILLING_ENABLED` flag** —
+   PR #11 disabled the CTAs by removing the live Creem checkout links and showing
+   "Yakında"; re-enabling means restoring the checkout wiring (Creem link /
+   app-onboarding), a separate approved code change.
 
 ## Release notes (Faz A)
 
@@ -111,3 +114,21 @@ Secrets (`CREEM_API_KEY`, `CREEM_WEBHOOK_SECRET`) live in Coolify, never in the 
   codes). The security-critical logic is covered by unit + DB-integration tests;
   the HTTP wiring needs an apps/web integration harness that does not yet exist.
 - Custom pro workspace slug during onboarding checkout (set in settings instead).
+
+## Related billing documents (index)
+
+This file is the canonical entry point for Nexora billing. Companion documents
+live under `docs/`:
+
+- [`docs/GO_LIVE_READINESS.md`](docs/GO_LIVE_READINESS.md) — release status +
+  go-live verdict (🟡 Ready with Conditions).
+- [`docs/GO_LIVE_EXECUTION_PLAN.md`](docs/GO_LIVE_EXECUTION_PLAN.md) — go-live day
+  operational runbook (per-step: precondition · action · expected · on-failure · verify).
+- [`docs/CREEM_GO_LIVE_CHECKLIST.md`](docs/CREEM_GO_LIVE_CHECKLIST.md) — go-live
+  operations checklist with [M]/[K]/[B]/[O] tags.
+- [`docs/STRIPE_RETIREMENT_PLAN.md`](docs/STRIPE_RETIREMENT_PLAN.md) — post-go-live
+  Stripe removal sequence + rollback.
+- [`docs/BILLING_PLATFORM_MIGRATION_BOUNDARY.md`](docs/BILLING_PLATFORM_MIGRATION_BOUNDARY.md) —
+  Nexora ↔ THE NOVA platform migration boundary (platform-migratable, not platform-ready).
+- [`docs/RELEASE_GOVERNANCE.md`](docs/RELEASE_GOVERNANCE.md) — permanent release
+  standard for all future billing changes (Patch/Minor/Major + 10-dimension checklist).
