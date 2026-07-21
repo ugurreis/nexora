@@ -11,7 +11,7 @@ deploy (kod + additive migration)
     -> Creem dashboard webhook kaydı
       -> checkout / webhook / failed-payment testleri
         -> go-live doğrulama
-          -> (EN SON, ayrı onay) landing CTA açma (BILLING_ENABLED = true)
+          -> (EN SON, ayrı onay) landing CTA'larını yeniden etkinleştir (checkout wiring geri; "Yakında" kaldır)
 ```
 
 İlk bloklayıcı: bu PR prod'a deploy edilmeden `/api/billing/webhook` endpoint'i ve
@@ -77,7 +77,7 @@ Mevcut canlı ürün ID'leri (landing config + Creem API, `mode:prod, status:act
 
 ## 9. Rollback adımları
 - [ ] **[K/M][B]** Uygulama seviyesi: Coolify'da bir önceki image'e/commit'e redeploy (billing öncesi sürüm). App-içi ödeme yolu eski haline döner.
-- [ ] **[M][B]** Landing zaten `BILLING_ENABLED=false` (kapalı) — sorun olursa CTA açma adımını (§11) uygulama; kullanıcıdan para alınmaz.
+- [ ] **[M][B]** Landing CTA'ları PR #11'de "Yakında" ile devre dışı (canlı Creem linkleri kaldırıldı; `BILLING_ENABLED` diye bir flag YOK) — sorun olursa CTA yeniden-etkinleştirme adımını (§11) uygulama; kullanıcıdan para alınmaz.
 - [ ] **[M][O]** DB rollback (yalnız zorunlu ve tablo bu işten boşsa) — additive migration geri alınabilir, veri yeniden yazılmaz:
   ```sql
   DROP INDEX IF EXISTS "subscription_provider_subscription_id_idx";
@@ -98,4 +98,4 @@ Mevcut canlı ürün ID'leri (landing config + Creem API, `mode:prod, status:act
 - [ ] **[M][O]** Log/monitoring: webhook 401/500 oranı, checkout 502 oranı izleniyor.
 
 ## 11. Landing CTA açma — EN SON, AYRI ONAY GEREKİR
-- [ ] **[K][B]** Yalnız §0–§10 tamamlanıp doğrulandıktan **ve ayrı bir onay alındıktan sonra**: `apps/web/public/nexora-landing.html` içinde `BILLING_ENABLED = true` yap + landing CTA'larını app onboarding'ine bağla (şu an hosted Creem link'i pasif). **Bu bir kod değişikliğidir** — ayrı commit + review + deploy. Bu adım checklist'in geri kalanı yeşil olmadan ve açık onay olmadan UYGULANMAZ.
+- [ ] **[K][B]** Yalnız §0–§10 tamamlanıp doğrulandıktan **ve ayrı bir onay alındıktan sonra**: `apps/web/public/nexora-landing.html` içinde landing CTA'larını yeniden etkinleştir — "Yakında"yı kaldır + checkout wiring (Creem linki/app onboarding) geri getir (PR #11 bunları kaldırmıştı; `BILLING_ENABLED` diye bir flag yoktur). **Bu bir kod değişikliğidir** — ayrı commit + review + deploy. Bu adım checklist'in geri kalanı yeşil olmadan ve açık onay olmadan UYGULANMAZ.

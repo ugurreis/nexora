@@ -26,8 +26,9 @@
   [Doğrulandı: grep + `BILLING.md`]
 - Test/gate: `@kan/api` 110/110, `@kan/db` 12/12, typecheck db+api temiz, `next build` exit 0,
   sherif temiz. [Doğrulandı: bu oturumda çalıştırıldı ve gözlemlendi]
-- Risk azaltımı: landing satın-alma CTA'ları kapalı (`BILLING_ENABLED=false`).
-  [Doğrulandı: `nexora-landing.html`]
+- Risk azaltımı: landing satın-alma CTA'ları PR #11'de devre dışı — aktif Creem checkout linkleri
+  kaldırıldı, kullanıcıya "Yakında" gösterilir. (`BILLING_ENABLED` diye bir flag YOKTUR; mekanizma
+  link kaldırma + "Yakında"dır.) [Doğrulandı: `nexora-landing.html` + PR #11]
 - Belgeler: `BILLING.md`, go-live checklist, platform boundary, retirement plan, PR #1 (Draft).
 
 ### Bilinçli ertelenenler
@@ -81,12 +82,12 @@
 ### Rollback planı
 
 - **Uygulama:** Coolify'da bir önceki image/commit'e redeploy → app-içi ödeme yolu eski haline döner.
-- **Para akışı:** Landing zaten `BILLING_ENABLED=false` → kullanıcıdan para alınmaz; sorunda CTA açma
-  adımı hiç uygulanmaz. Creem tarafında webhook geçici devre dışı / ürün pasifle.
+- **Para akışı:** Landing CTA'ları PR #11'de devre dışı ("Yakında"; canlı Creem linkleri kaldırıldı)
+  → kullanıcıdan para alınmaz. Creem tarafında webhook geçici devre dışı / ürün pasifle.
 - **DB:** Additive migration geri alınabilir (veri yeniden yazılmaz); kolon DROP yalnız gerçekten
   gerekirse. Genelde kodu geri almak, kolonları bırakmak daha güvenli. [Doğrulandı: `CREEM_GO_LIVE_CHECKLIST.md` §9]
-- **CTA açma en son + ayrı onay** (`BILLING_ENABLED=true`) — kod değişikliği, checklist geri kalanı
-  yeşil olmadan yapılmaz.
+- **CTA yeniden etkinleştirme en son + ayrı onay** — "Yakında" kaldırılıp checkout wiring (Creem
+  linki + app onboarding) geri getirilir; kod değişikliği, checklist geri kalanı yeşil olmadan yapılmaz.
 
 ## 3. Platform Migration Gate
 
@@ -148,7 +149,7 @@ Bu iki gerçek 🟢'yi dışlar (koşullar karşılanmadı) ve 🔴'yi dışlar 
 3. Creem dashboard webhook kaydı + signing secret bağlanır.
 4. Deploy sonrası `/` 200 + `/api/billing/webhook` 405 doğrulanır.
 5. Bir düşük-tutarlı gerçek uçtan-uca abonelik + iptal/`past_due` senaryosu canlıda doğrulanır.
-6. (En son, ayrı onay) `BILLING_ENABLED=true` ile landing CTA açılır.
+6. (En son, ayrı onay) landing CTA'ları yeniden etkinleştirilir: "Yakında" kaldırılıp checkout wiring geri getirilir.
 
 Stripe retirement ve platform migration bu karara dahil **değildir**: retirement go-live sonrası
 ayrı/kontrollü iş; platform migration THE NOVA kararı bekleyen ayrı gate.

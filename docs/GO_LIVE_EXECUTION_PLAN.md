@@ -19,7 +19,7 @@
 | Migration | `20260718200900_creem_billing_provider_neutral.sql` (additive) | [Doğrulandı: migration dosyası] |
 | Coolify app uuid | `yjlhqzqktb12xpnk9qf8ja2r` | [Muhtemel: checklist'te kayıtlı, panelden teyit edilecek] |
 | Deploy branch | `kanbantr-faz0` (Coolify'ın izlediği branch) | [Muhtemel: local'de var; Coolify panelinden teyit — Adım 5.1] |
-| Landing CTA | `BILLING_ENABLED=false` (go-live boyunca kapalı) | [Doğrulandı: `nexora-landing.html`] |
+| Landing CTA | PR #11'de devre dışı ("Yakında"; canlı Creem linkleri kaldırıldı — `BILLING_ENABLED` flag'i YOK) | [Doğrulandı: `nexora-landing.html` + PR #11] |
 
 Secret'lar (`CREEM_API_KEY`, `CREEM_WEBHOOK_SECRET`) yalnız Coolify'da; repoda tutulmaz.
 
@@ -194,7 +194,7 @@ Go-Live'ın "canlı ve doğrulanmış" sayılması için **hepsi** gözlemlenmel
 - [ ] `past_due`/iptal erişimi geri çeker. (6.5)
 - [ ] Portal yalnız kendi kaydını açar. (6.6)
 
-Bu kriterler karşılanana kadar `BILLING_ENABLED=false` kalır; hiçbir kriter "varsayımla" işaretlenmez.
+Bu kriterler karşılanana kadar landing CTA'ları "Yakında" (devre dışı) kalır; hiçbir kriter "varsayımla" işaretlenmez.
 
 ## 8. Rollback planı
 
@@ -207,7 +207,7 @@ Bu kriterler karşılanana kadar `BILLING_ENABLED=false` kalır; hiçbir kriter 
 
 ### 8.2 Para akışını durdur
 - **Ön koşul:** Para akışında sorun.
-- **İşlem:** Landing zaten `BILLING_ENABLED=false` (kullanıcıdan para alınmaz); Creem dashboard'dan webhook'u geçici devre dışı bırak / ürünleri pasifle.
+- **İşlem:** Landing CTA'ları PR #11'de "Yakında" (kullanıcıdan para alınmaz); Creem dashboard'dan webhook'u geçici devre dışı bırak / ürünleri pasifle.
 - **Beklenen sonuç:** Yeni tahsilat durur.
 - **Başarısızlıkta:** Creem desteğiyle ürün/checkout'u kapat.
 - **Doğrulama:** Dashboard webhook/ürün durumu.

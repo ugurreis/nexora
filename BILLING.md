@@ -83,8 +83,11 @@ Secrets (`CREEM_API_KEY`, `CREEM_WEBHOOK_SECRET`) live in Coolify, never in the 
 2. Set the four `CREEM_PRODUCT_*` ids (existing live products already exist).
 3. Run a test-mode end-to-end checkout → webhook → confirm `subscription` row +
    `workspace.plan` update, then a low-value live smoke test.
-4. Re-enable the landing purchase CTAs (`BILLING_ENABLED` in
-   `apps/web/public/nexora-landing.html`) **only after** the above passes.
+4. Re-enable the landing purchase CTAs in `apps/web/public/nexora-landing.html`
+   **only after** the above passes. Note: there is **no `BILLING_ENABLED` flag** —
+   PR #11 disabled the CTAs by removing the live Creem checkout links and showing
+   "Yakında"; re-enabling means restoring the checkout wiring (Creem link /
+   app-onboarding), a separate approved code change.
 
 ## Release notes (Faz A)
 

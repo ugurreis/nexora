@@ -23,8 +23,10 @@
 5. **Entitlement yalnız doğrulanmış webhook'tan değişir.** Success URL kanıt değildir.
 6. **Fail closed.** Eksik kapsam/kanıt/onay = dur ve eskale et; varsayımla ilerleme.
 7. **Her aşama ayrı onay.** Commit, push, PR, merge ve deploy için ayrı ve açık onay gerekir.
-8. **Go-Live gate'i korunur.** Landing CTA (`BILLING_ENABLED`) yalnız go-live doğrulandıktan sonra,
-   ayrı onayla açılır. Stripe retirement yalnız go-live sonrası (`STRIPE_RETIREMENT_PLAN.md`).
+8. **Go-Live gate'i korunur.** Landing satın-alma CTA'ları (PR #11'de "Yakında" ile devre dışı;
+   `BILLING_ENABLED` diye bir flag yoktur) yalnız go-live doğrulandıktan sonra, ayrı onayla yeniden
+   etkinleştirilir (checkout wiring geri getirilir). Stripe retirement yalnız go-live sonrası
+   (`STRIPE_RETIREMENT_PLAN.md`).
 
 ## 2. Değişiklik sınıfları
 
@@ -93,7 +95,7 @@ Bir billing değişikliğinin canlıya alınması için (`GO_LIVE_READINESS.md` 
 - [ ] Env/secret Coolify'da set; repoda secret yok.
 - [ ] CTA açma (varsa) en son + ayrı onay.
 
-Kriterler karşılanana kadar `BILLING_ENABLED=false` kalır; hiçbiri varsayımla işaretlenmez.
+Kriterler karşılanana kadar landing CTA'ları "Yakında" (devre dışı) kalır; hiçbiri varsayımla işaretlenmez.
 
 ## 6. Rollback kabul kriterleri
 
